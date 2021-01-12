@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Tag: tech | 杰克船长的小屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="让医生行医更轻松，让中国的医生也成为最受尊敬的一族">
+<meta property="og:type" content="website">
+<meta property="og:title" content="杰克船长的小屋">
+<meta property="og:url" content="http://wangzhe.github.io/tags/tech/page/2/index.html">
+<meta property="og:site_name" content="杰克船长的小屋">
+<meta property="og:description" content="让医生行医更轻松，让中国的医生也成为最受尊敬的一族">
+<meta property="og:locale">
+<meta property="article:author" content="Jack Wang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="杰克船长的小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">杰克船长的小屋</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wangzhe.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-deeplearning-3-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/04/deeplearning-3-1/" class="article-date">
+  <time datetime="2018-05-04T07:45:00.000Z" itemprop="datePublished">May 4 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/04/deeplearning-3-1/">深度学习第三周神经网络</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一周（章）主要学习的是如何构建模型，梯级下降和使用numpy进行向量计算。这一周开始进入神经网络的学习。同样的首先上大纲：</p>
+<ul>
+<li>神经网络全景图（Neural Networks Overview）</li>
+<li>神经网络表达（Neural Network Representation）</li>
+<li>计算神经网络输出（Computing a Neural Network’s Output）</li>
+<li>向量化（Vectorizing across multiple examples）</li>
+<li>向量实现（Expanation for Vectorized Implmetation）</li>
+<li>激励函数（Activation functions）</li>
+<li>为什么需要非线性模型（Why do you need non-linear ）</li>
+</ul>
+<p>这一周的学习说简单也简单，说难也难。我们来先说简单的：</p>
+<p>所谓简单，指的是这一周的课程主要是在上一周Logistics Regression的基础上加入了一个Hidden Layer的概念，即将所有的内容从两层输入输出结构，变成了三层，因此引入了$n^0, n^1, n^2$的三个层进行计算。这样做的好处是可以将模型变得拟合度更高，进一步提高Accuracy。而所有在Logistics Regression中用到的公式和方法基本沿用，所以数学本质上并不难，只是增加一个维度。</p>
+<p>说他难呢，基本上就是因为增加了一个维度，所以derivative的所有计算方面，确实需要更多的东西了。当然这里也有一些小改变，那就是引入了activation function的概念，将原来那个在逻辑回归中谈到的Sigmoid Functoin，作为一种activation function；从而进一步引入其他的activation function，比如“$tanh$”</p>
+<p>把这一周的内容集中在使用场景方面的总结：<br><img src="/2018/05/04/deeplearning-3-1/hl3_4.png" class="" title="[Hidden Layer 3]"><br>对于3到4层Hidden Layer的时候</p>
+<img src="/2018/05/04/deeplearning-3-1/hl5_20.png" class="" title="[Hidden Layer 5]">
+<p>对于5到20层Hidden Layer的时候</p>
+<img src="/2018/05/04/deeplearning-3-1/hl50.png" class="" title="[Hidden Layer 50]">
+<p>对于50层Hidden Layer的时候</p>
+<p>可以明显的看出当Hidden Layer提升了以后，预测拟合度就更高了，这就是神经网络带来的巨大意义</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2018/05/04/deeplearning-3-1/" data-id="ckjjlgj59000y1oz4hbrh906g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-deep-learning-ai-2-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/25/deep-learning-ai-2-1/" class="article-date">
+  <time datetime="2018-04-25T13:22:38.000Z" itemprop="datePublished">Apr 25 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/25/deep-learning-ai-2-1/">深度学习第二周课程（下）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一章节提到的梯度下降（Gradient Decent）过程需要多层嵌套For-Loop循环。这种循环非常耗费计算资源。为了降低计算资源消耗，提升计算效率，本章节引入向量计算（Vectorization）的概念。本章的主要内容也是围绕着向量计算和使用Python中的numpy库来实现限量计算的过程。</p>
+<p>本章课程内容目录（与本文无关）：</p>
+<ul>
+<li>向量计算（Vectorization）</li>
+<li>使用向量计算逻辑回归（Vectorizing Logistic Regression）</li>
+<li>使用向量计算逻辑回归中的梯度下降（Vectorizing Logistic Regression’s Gradient）</li>
+<li>Python的广播（Broadcasting in Python）</li>
+<li>Python/numpy向量的介绍</li>
+<li>逻辑回归里的Cost Function解释</li>
+</ul>
+<h3 id="安装一下jupyter"><a href="#安装一下jupyter" class="headerlink" title="安装一下jupyter"></a>安装一下jupyter</h3><p>本章开始需要进行练习，Python是必须要装的，强烈建议Python3，课程使用Jupyter，这里也提示了一下安装，不过后来发现好像用处也不大。这个工具主要是可以把Python的程序脚本和文字进行混排，方便与演示。如果从来没有接触过Python的话，可以考虑用一下，毕竟这个是课程也在用的环境。如果有一点基础的话，Python有自己的IDE工具，PyCharm，很好用直接下载就行。</p>
+<p>安装Python&amp;Jupyter。因为一直写Python所以这个一直有没什么大问题，但是Jupyt这个倒是头一次见，好像是一种基于Browser的IDE，挺有意思的。具体可以访问以下几个地址：</p>
+<ul>
+<li>安装Python，我一直用Brew install就好了</li>
+<li>安装Pip，不过因为买了这个新电脑以后就没怎么写代码，所以竟然没有Pip。这个倒也不难，随便上网搜索“install pip”，两步简单操作就搞定了</li>
+<li>安装Jupyter，没有按照web上说的用pkg包的方式，只是担心会安装额外的Python3.所以选择了通过pip命令行形式进行安装。</li>
+</ul>
+<p>OK，三个安装结束，键入下面命令，直接启动Browser的界面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
+<p>下面是标准编辑页面（竟然Hexo的asset_img可以用，好激动，但是asset_link确实不行，估计是因为marked里面escape的问题）</p>
+<img src="/2018/04/25/deep-learning-ai-2-1/jupyter.png" class="" title="[jupyter starter]">
+<p>首界面很简单，就是系统文件夹。右上角有新建功能，可以新建一个可运行的python文件。在课程中，Andrew主要介绍了 np.dot(i,j) 在程序中对比for-loop，超过300倍的优势。笔者后来自己查了一下原因，看来主要还是回到了Python作为解释性语言本身的问题。为了对初学者友好，Python作为解释性语言牺牲了许多性能上的东西。而np.dot之所以much faster，主要原因是一句Python语言，对应的是用C写成numpy库，这个库会将输入进来的数据进行编译，形成编译后的语言进行调用。这种方法，远好于Python一个字符一个字符的进行读取，并根据语法分析器进行描述，占据了大量的时间。当然其他原因也有许多，比如借助编译可以使用CPU或者GPU的SIMD指令集（Simple instuction multiple data）进行并行计算，大大提升效率。根据文章将，numpy的效率可以是原生python的2万倍。而据说选用cpython会达到20万倍之多。具体原理可以参看知乎上的这篇文章：</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/67652386">python的numpy向量化语句为什么会比for快？</a></p>
+<h3 id="建立神经网络的主要过程"><a href="#建立神经网络的主要过程" class="headerlink" title="建立神经网络的主要过程"></a>建立神经网络的主要过程</h3><h4 id="先来回顾一下基础算法："><a href="#先来回顾一下基础算法：" class="headerlink" title="先来回顾一下基础算法："></a>先来回顾一下基础算法：</h4><p>For one example $x^{(i)}$:</p>
+<script type="math/tex; mode=display">z^{(i)} = w^T x^{(i)} + b \tag{1}</script><script type="math/tex; mode=display">\hat{y}^{(i)} = a^{(i)} = sigmoid(z^{(i)})\tag{2}</script><script type="math/tex; mode=display">\mathcal{L}(a^{(i)}, y^{(i)}) =  - y^{(i)}  \log(a^{(i)}) - (1-y^{(i)} )  \log(1-a^{(i)})\tag{3}</script><p>The cost is then computed by summing over all training examples:</p>
+<script type="math/tex; mode=display">J = \frac{1}{m} \sum_{i=1}^m \mathcal{L}(a^{(i)}, y^{(i)})\tag{4}</script><h4 id="建模过程"><a href="#建模过程" class="headerlink" title="建模过程"></a>建模过程</h4><ul>
+<li>定义模型结构（例如输入feature的数量）</li>
+<li>初始化模型参数</li>
+<li>升级参数（Gradient Descent）</li>
+</ul>
+<p>讲上述三个部分逐个建立并整合进一个叫做model()的 $function$ 里。几个简单的 $function$ 会包含的 $sigmoid$ , initialize_with_zeros() , propagate() </p>
+<p>特别说明，关于 propagate() 的算法回顾如下：<br>Forward Propagation:</p>
+<ul>
+<li>You get X</li>
+<li>You compute $A = \sigma(w^T X + b) = (a^{(1)}, a^{(2)}, …, a^{(m-1)}, a^{(m)})$</li>
+<li>You calculate the cost function: $J = -\frac{1}{m}\sum_{i=1}^{m}y^{(i)}\log(a^{(i)})+(1-y^{(i)})\log(1-a^{(i)})$</li>
+</ul>
+<p>Here are the two formulas you will be using: </p>
+<script type="math/tex; mode=display">\frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T\tag{7}</script><script type="math/tex; mode=display">\frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)})\tag{8}</script><p>下面的Code里面用到了一些“内积”、“外积”、“General Dot”的概念。在课程中有相关的联系材料。具体参见这个解释可能会更加实在</p>
+<p><a target="_blank" rel="noopener" href="https://hk.saowen.com/a/c2cbbdb3dc43d41a717517faca384dc6228a9d2cbab31b59eca3f468c59e33b4">使用numpy进行行列式乘积的计算</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">m = X.shape[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># FORWARD PROPAGATION (FROM X TO COST)</span></span><br><span class="line"><span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">A = sigmoid(np.dot(X.T, w) + b).reshape(<span class="number">1</span>, -<span class="number">1</span>) <span class="comment"># compute activation</span></span><br><span class="line">cost = - (<span class="number">1</span>/m) * np.<span class="built_in">sum</span>(Y*np.log(A) + (<span class="number">1</span>-Y) * np.log(<span class="number">1</span>-A))  <span class="comment"># compute cost</span></span><br><span class="line"><span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># BACKWARD PROPAGATION (TO FIND GRAD)</span></span><br><span class="line"><span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">dw = <span class="number">1</span>/m * np.dot(X, (A-Y).T)</span><br><span class="line">db = <span class="number">1</span>/m * np.<span class="built_in">sum</span>(A-Y)</span><br><span class="line"><span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span>(dw.shape == w.shape)</span><br><span class="line"><span class="keyword">assert</span>(db.dtype == <span class="built_in">float</span>)</span><br><span class="line">cost = np.squeeze(cost)</span><br><span class="line"><span class="keyword">assert</span>(cost.shape == ())</span><br><span class="line"></span><br><span class="line">grads = &#123;<span class="string">&quot;dw&quot;</span>: dw,</span><br><span class="line">         <span class="string">&quot;db&quot;</span>: db&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> grads, cost</span><br></pre></td></tr></table></figure>
+<p>总结一下，这里建立的初始模型包括<br>$sigmoid$, $initialize$, $propagate$</p>
+<h4 id="优化模型参数（Optimization）"><a href="#优化模型参数（Optimization）" class="headerlink" title="优化模型参数（Optimization）"></a>优化模型参数（Optimization）</h4><ul>
+<li>初始化参数</li>
+<li>计算cost function </li>
+<li>通过梯级下降的方式进行参数更新并计算w和b的结果()</li>
+</ul>
+<p>最近基本的梯级下降依据如下：</p>
+<script type="math/tex; mode=display">\theta = \theta - \alpha \text{ } d\theta \tag{9}</script><p>where $\alpha$ is the learning rate</p>
+<img src="/2018/04/25/deep-learning-ai-2-1/closing.jpg" class="" title="[gradient descent]">
+<p>总结一下，这里建立的初始模型包括<br>$initialize$, $optimize$, $predict$</p>
+<h4 id="整合模型"><a href="#整合模型" class="headerlink" title="整合模型"></a>整合模型</h4><p>合并模型建立$model$，使用plot建立拟合线</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2018/04/25/deep-learning-ai-2-1/" data-id="ckjjlgj51000h1oz408l34jpu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-deep-learning-ai-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/25/deep-learning-ai-2/" class="article-date">
+  <time datetime="2018-04-25T13:16:40.000Z" itemprop="datePublished">Apr 25 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/25/deep-learning-ai-2/">深度学习第二周课程（上）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是一个比较数学化的一章。本章课程主要分为两部分（数学基础 + Python编程实践）。</p>
+<p>让我们先来看看第一部分。该部分内容重点是基于神经网络的一个基础数学模型，其中包括：</p>
+<ul>
+<li>二元分类（Binary Classification）</li>
+<li>逻辑回归（Logistic Regression）</li>
+<li>逻辑回归中的Cost Function（Logistic Regression Cost Function）</li>
+<li>梯度下降（Gradient Decent）</li>
+<li>导数（Derivatives / Derivatives Examples）</li>
+<li>计算图（Computation Graph）</li>
+<li>计算图求导（Derivatives with a Computation Graph）</li>
+<li>梯度下架求逻辑回顾（Logistic Regression Gradient Decent）</li>
+<li>对m样本的梯度下降（Gradient Decent on m Examples）</li>
+</ul>
+<p>下面我们分部分进行一些描述：</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2018/04/25/deep-learning-ai-2/" data-id="ckjjlgj54000l1oz4ddtsgp30" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-deep-learning-ai-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/24/deep-learning-ai-1/" class="article-date">
+  <time datetime="2018-04-24T13:43:20.000Z" itemprop="datePublished">Apr 24 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/24/deep-learning-ai-1/">深度学习概论</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Andy Ng所讲的深度学习课程里，第一周的课相对比较简单，基本上以通识介绍为主。课程分为了一下几个部分：</p>
+<ul>
+<li>什么是神经网络</li>
+<li>监督学习的神经网络是什么</li>
+<li>为什么深度学习开始受到重视</li>
+<li>三巨头中的Geoffrey Hinton访谈</li>
+</ul>
+<h4 id="第一部分，什么是神经网络（Neural-Network"><a href="#第一部分，什么是神经网络（Neural-Network" class="headerlink" title="第一部分，什么是神经网络（Neural Network)"></a>第一部分，什么是神经网络（Neural Network)</h4><p>看一下关于房价是如何预测的，以及什么是Hidden Unit<br><img src="/2018/04/24/deep-learning-ai-1/nerual_network.png" class="" title="[nerual network]"></p>
+<h4 id="第二部分，监督学习的神经网络是什么（Supervised-Learning"><a href="#第二部分，监督学习的神经网络是什么（Supervised-Learning" class="headerlink" title="第二部分，监督学习的神经网络是什么（Supervised Learning)"></a>第二部分，监督学习的神经网络是什么（Supervised Learning)</h4><p>在神经网络中的监督学习是这个样子的<br><img src="/2018/04/24/deep-learning-ai-1/supervised_learning.png" class="" title="[supervised learning]"></p>
+<p>针对与结构化和非结构化，还是有一定区别的<br><img src="/2018/04/24/deep-learning-ai-1/stuctured_unstructured.png" class="" title="[stuctured unstructured]"></p>
+<h4 id="第三部分，为什么深度学习开始受到重视（Why-Neural-Network-take-off"><a href="#第三部分，为什么深度学习开始受到重视（Why-Neural-Network-take-off" class="headerlink" title="第三部分，为什么深度学习开始受到重视（Why Neural Network take-off)"></a>第三部分，为什么深度学习开始受到重视（Why Neural Network take-off)</h4><p>一张图片说明一切<br><img src="/2018/04/24/deep-learning-ai-1/why_takeoff.png" class="" title="[why takeoff]"></p>
+<h4 id="第四部分，Geoffrey-Hinton访谈"><a href="#第四部分，Geoffrey-Hinton访谈" class="headerlink" title="第四部分，Geoffrey Hinton访谈"></a>第四部分，Geoffrey Hinton访谈</h4><p>这部分是一个访谈，不算是学习内容。讲述了Hinton个人的成长，学习等等吧。两个有意思的Highlight</p>
+<ul>
+<li>Hinton本人大学学生物物理，研究生学习心理学，博士开始研修AI，这也是为什么他在神经网络能做出重大贡献的主要原因吧</li>
+<li>另一个关键是对GAN的学习，生成对抗网络方面的了解。如何在unsupervised的情况下进行学习</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2018/04/24/deep-learning-ai-1/" data-id="ckjjlgj50000f1oz427fxhu5m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-deep-learning-study" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/23/deep-learning-study/" class="article-date">
+  <time datetime="2018-04-23T13:36:17.000Z" itemprop="datePublished">Apr 23 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/23/deep-learning-study/">关于如何用Hexo书写数学符号(深度学习前哨贴)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>翻了几个帖子，总算是搞定了。最主要的帖子是以下两个</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sherlockzoom/article/details/43835613">在hexo博客中使用Mathjax写LaTex数学公式”</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014630987/article/details/78670258">如何在 hexo 中支持 Mathjax？</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mage_EE/article/details/75317083">描述在 hexo 中使用矩阵的方法</a></p>
+<p>另外，按照Hexo文档上写的，理论上Hexo-math应该已经支持MathJax了，但是似乎用起来有点问题，不知道是hexo文档的错，还是我自己那个地方配置有错，以后找时间在研究吧。地址如下：<br><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-math">https://github.com/hexojs/hexo-math</a></p>
+<p>还有最后要提醒一点，本次修改以后，不能用Hexo原生提供的assert方式来写作了，需要使用纯markdown模式。目前感觉良好，不知道后续会不会有什么坑。目前看这个改变不会影响之前的东西。</p>
+<p><a target="_blank" rel="noopener" href="https://help.ghost.org/article/4-markdown-guide">markdown的书写格式</a></p>
+<p>这是一个公式  $E=mc^2$<br>Simple inline $a = b + c$.</p>
+<script type="math/tex; mode=display">\sum_{i=1}^n a_i=0</script><script type="math/tex; mode=display">f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2</script><p>大功告成，接下来需要学习MathJax了<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/ethmery/article/details/50670297">MathJax一些说明</a><br><a target="_blank" rel="noopener" href="https://docs.mathjax.org/en/latest/tex.html">原文文档</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2018/04/23/deep-learning-study/" data-id="ckjjlgj58000v1oz47p1ydf45" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-html2ppt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/16/html2ppt/" class="article-date">
+  <time datetime="2018-04-16T10:10:24.000Z" itemprop="datePublished">Apr 16 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/16/html2ppt/">一个把html生成文件转成ppt的Demo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近需要搞点小东西，需要转换数据成为ppt，老样子github上找了一下。还是比较简单的<br><a target="_blank" rel="noopener" href="https://github.com/gitbrent/PptxGenJS">https://github.com/gitbrent/PptxGenJS</a></p>
+<p>内容详实，联系了一下，值得参考。把内容copy出来，变成html即可<br><a href="test.h">Demo Link</a>    </p>
+<p>注意，这里好像有个问题是关于调用pptxgen.bundle.js，这个貌似要翻墙才可以，后续有空把js文件补进去</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2018/04/16/html2ppt/" data-id="ckjjlgj5m001t1oz414go7xmf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cto-study-summary-1516" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/07/cto-study-summary-1516/" class="article-date">
+  <time datetime="2016-10-07T02:22:41.000Z" itemprop="datePublished">Oct 7 2016</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Management/">Management</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/07/cto-study-summary-1516/">CTO工作总结（15-16年度）--学习篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上回留了个伏笔说：“做业务的技术原则：远景－目标－指标－做事；对应工作方法：监控－报警－处理－优化”</p>
+<p>如果说，之前我懂得的更多是如何根据不同的业务发展节奏，搭建与之相配套的技术体系的话。15-16年度，可以说是我说是重要的一年，让我对于什么叫做“工程技术体系”有了一层更佳深入的认识。这层抽象，让我更懂得回到技术的本源去看事情和问题。从这里一层层扩展开去。</p>
+<h3 id="工程技术的本质"><a href="#工程技术的本质" class="headerlink" title="工程技术的本质"></a>工程技术的本质</h3><p>我最近特别喜欢在技术前面加上工程两个字。因为这些年的工作我其实经历了一个去工程化的过程，那就是太多的人开始说到互联网，说起研发开始弱化工程师这个概念，更多的是在突出“技术”这个说法。但正是对“工程”的弱化，让我们在很多时候忽视了从传统工程领域借鉴经验的机会。事实上，传统工程和如今的IT工程确实存在区别，但本质上，作为工程化理论，就永远摆脱不了一个话题：一个关于“质量”和“速度”之间永恒的矛盾。如果细想想，对于每一个Tech Lead而言，其实就是在不断的针对这两个问题进行抉择和平衡。没有什么需求是真的做不出来，只是怎么做，才能在质量和速度之间寻求一种平衡。我们知道，在相同产能条件的情况下，</p>
+<ul>
+<li>第一、质量越高，要求的精细度越高，对应生产难度也就越大，速度也会因此而降下来。人不是机器会疲倦，会出错。</li>
+<li>第二、而如果对生产速度要求较高，那么质量的下降往往不可避免。但是可以大大提高产出结果</li>
+<li>第三、虽然是最后，但是很重要，那就是长期低质量对产品速度必然产生负面影线。</li>
+</ul>
+<p>由这三点，演化出来一系列方法和理论和话题。我在这里把“质量”与“速度”的矛盾叫做“工程技术本质”，以说明它的地位不可撼动性。</p>
+<h3 id="针对业务的技术原则"><a href="#针对业务的技术原则" class="headerlink" title="针对业务的技术原则"></a>针对业务的技术原则</h3><p>那么既然Tech Lead们需要不断解决的是“质量”和“速度”的矛盾问题。于是乎，这里面就衍生出一个很有意思的话题—如何做技术决策，如何判定自己的决策是合理。在我的这个理论里，若要做好这个决策，第一部分就是要了解业务。可能这对许多人来讲不可理解，作为技术人员，我做好自己的事情就好了，为什么要了解业务呢。这件事源于以人为中心的互联网模式。随着物质的极大丰富，供给模式，从最早的粗放型生产、分销、渠道，转变通过网络快速的寻找人的需求，根据需求进行快速迭代演进从而精细化的扩充人们在某一个或几个点上的消费习惯。在探寻过程中，其实对于互联网业务来讲，就是不断的实验过程。既然是实验，那么快速看到实验结果和实验深浅的把握就显得尤为重要。所谓实验结果，就是“速度”，即越快速度看到结果，越好进行决策是更进一步实验还是改换新的方向。实验深浅，对于技术而言就是实验的“质量”</p>
+<p>那么作为每天坐在IDE前面思考代码和逻辑思路的技术人员而言，我们无法接触真实的用户，没有时间思考和观察用户在干什么，如何才能有效的了解业务呢？我把技术人员了解业务的方法分成了四个基本过程：</p>
+<ul>
+<li><p>远景，大多指一个业务长远的，或者一段时间的方向性目标。远景的很重要，它是指导一切的原则。当然，对于一个大的业务方向来说，形成商业收支目标是核心。但是拆解下来，不同时期，对于形成收支目标的要求不一样，有的是有也不一定是要在财务上展现。比如作为如今的滴滴，当下的最大远景就是实现盈利，但是对于在Nasdaq上市的京东而言，快速增长可能比盈利更重要。作为一个公司而言，远景往往和公司的核心管理人员以及投资人的想法相关。但是，对于一个业务的远景，往往会小许多。比如病历夹工具业务线，他当下远景就是用户活跃的持续增长。所以，绝大多数功能让用户有更强的黏着性。</p>
+</li>
+<li><p>目标，通常和当下所做的工作直接相关。为了实现远景，任何的业务都会拆成几个小步工作。那么目标，就是每个小步要完成的结果。这个结果可能是让用户在上传病历过程中使用不会产生疑问，也可能是让用户更快捷的在医口袋中搜到药品。作为每一个小步而言，多数业务会设立唯一的目标。当然如果优化功能都比较小，也不排除建立几个目标的可能。目标往往是团队的负责人做的定义，但是对于远景的优化角度不同，思考方式不同，小步目标也不一定是单一的。在互联网的实际环境中，目标也是可以被拿来讨论的。从这里开始，有兴趣的技术工程师，便可以参与深入的讨论。</p>
+</li>
+<li><p>指标，既然订立了目标，就一定要寻找可以进行衡量的目标完成好坏的指标。我们拿“让用户在上传病历过程中使用不会产生疑问”这个目标来说，这里可以建立的核心指标是“用户上传病历数增加”，这是核心业务指标。分解下来，可能还有一些其他指标，比如上传服务器反应时间在200ms以下，上传成功了70%以上等等。做任何一件事情，都应该是可衡量的，没有量化的工作，就是刷流氓好么:)。定义指标的工作，需要技术工程师的重度参与，这里包括订立那些指标，以及如何将指标反馈给BI系统或者其他数据报告系统。这一点非常重要。也是后期业务、技术团队跟踪做事好坏的核心。</p>
+</li>
+<li><p>做事，在了解远景，目标达成一致，以及订立好合适的指标后，大家就要开始基于指标工作了。那么指标从某种角度上讲，就是质量的衡量方法，这个一般说来，叫做质量底线标准。任何的速度，在底线标准前，都必须服从。而做事，就是考虑，如何在保证质量的基础上，尽量的提升速度。这里就是Tech Lead们的专业技能体现了。具体的方法有很多，比如XP，Scrum等的工程实践，比如新技术的引用提升研发效率，再比如团队的文化气氛等。</p>
+</li>
+</ul>
+<p>总结一下，技术工程师，Tech Lead都很难真的完全深入业务细节去思考逻辑关系和用户使用习惯。但是经过以上的四个步骤，可以大体梳理每一个小步的背后的逻辑，并通过一系列指标进行有效的质量监控，用一系列工程方法指导做事，提升速度。</p>
+<h3 id="针对工程的技术原则"><a href="#针对工程的技术原则" class="headerlink" title="针对工程的技术原则"></a>针对工程的技术原则</h3><p>上面谈到了做事，谈到了比如工程方法、新技术的引用、团队文化等，那么针对技术工程，是不是可以衡量呢？答案当然是肯定的。任何工作都应该是可以衡量的，只是指标不同。这里我总结下来还是四个步骤：监控－报警－处理－优化</p>
+<p><strong>为什么要衡量？</strong></p>
+<p>在解释具体工程上的四步方法之前，先解释一个问题。可能又不少人会问，为什么你总是说衡量。看看我说的做事顺序，其中最后一步叫做“优化”。人类进行工程实践可能有几千年的历史了，很难说哪些事情是没有干过的。但是，问题的关键在于，对于每一次“质量”和“速度”博弈的实验中，如何进行优化，才是人类和动物最大的分别。我们在不断积累经验，寻找更好的方法。这就是实验的本质，也是任何事物前进的源头。“做事”的方法许多，根据团队、实践、节奏、个人知识能力等等不同，有太多的优秀实践可以应用，但是哪种是最好的，只有在指标定一下进行有效优化，才能得到越来越好的效果。所以下面说的四步，不仅仅适用于业务开发，也适用于技术工程人员对一切问题的抽象解决方案中。</p>
+<ul>
+<li><p>监控，在针对业务的技术原则中，我们说到了指标。我们说技术人员要深度参与指标的定义，并做好指标的数据向BI或其他数据报告系统反馈工作，这就是监控的一种，主要应用在业务的指标监控中。其实，针对技术本身也有一系列的可以做的监控指标，比如线上Bug的数量、Crash率、服务器Apex指标，应用可用性等等。但是这里需要需要特别注意的是，在我看来，监控不是目的，是为了解决问题而存在的，特别是解决上面说的业务目标。比如有段时间业务目标是满足双11的客流访问量，那么Apex、网络带宽、负载均衡的资源使用这些就是重要的监控，可能需要秒级别的信息收集。那么这个时段，其他的比如CPU数量、客户端Crash率、网页兼容性，在这个目标面前，就不需要被严密监控，可能是天级别监控就可以了。所以监控是分级别，也是分时段的。<br>人曾经问我，我是一个Android起家的Tech Lead，对于iOS、Java服务端，我不是很了解，要怎么才能做到很好对团队工作进行有效的带领和优化。这里我想说，通过指标监控，就可以达到目的。与相关的Tech Lead讨论针对特殊目的而细化的监控指标。</p>
+</li>
+<li><p>报警，许多人谈论监控，更多的是一套漂亮的报表，线图、饼图、柱图、箱图各种上。这是我以前常犯的错误，以为报表意味着监控。其实，在过去一年，我学会的最重要的知识就是，展现的目的更多是为了给别人看的直观，用以表明优化的成果，是一种回朔和预测型的工具。但是做事的时候，却不应该作为工具，回到计算机或者生物的本质上，0和1才是我们认识事件最直观的方法。因此，报警在我看来是工程监控最有效的手段（工具）。这种被动式相应能够大大加强响应效率和工作效率，根据响应的情况再去寻找相应的报表或者内容数据进行分析，从而得出有效的处理方案。<br>设立报警的过程本身并不难，最难的是适当报警阀值的斟酌。太高起不到监控的效果，太低虚报误报使得报警无法有效应用。这个时候需要对技术有比较深入理解，对不同阶段对应指标有比较深入理解的技术人员（这里就不是一个纯工程问题，而上升到技术本身能力上），对报警阀值进行准确的把控，并持续优化。</p>
+</li>
+<li><p>处理，这块儿没太多可说的，这是每一个工程师的老本行，根据报警问题，使用数据综合分析，数据不全可能需要进行场景复现，如果是紧急问题可能还需要采取紧急方案、备份方案、临时方案等进行解决。总之是确保报警状态恢复到正常的水平。这个时间会根据不同业务和级别的不同，处理时间也会不同。</p>
+</li>
+<li><p>优化，最后来到了前面说的，工程技术原则的核心，就是优化。前面说到互联网的最大特点就是实验，不断的、快速的实验，了解和提升用户的体验，帮助用户解决问题。所以，无论是对业务指标的优化，还是技术指标，或者别的什么指标的优化，总之优化是技术工程师做事的终点，也是新的一轮工作的起点。研发工程由此不断迭代向前，帮助解决一个又一个业务目标。</p>
+</li>
+</ul>
+<p>最后做个总结，在过去的一年里，对于上面方法的理解和应用真正改变了我将近十年的认识。过去的我，一直在学习，学习各种技术、学习各种最佳时间、学习各种方法论来解决一个又一个的研发问题。记得刚进微软那会儿，我的最大收获是如何通过互联网快速解决问题，把Google用的炉火纯青。在英国的4年里，我明白了从0到1的建设过程和研究方法。ThoughtWorks的3年让我懂得什么叫做研发体系和最佳实践。如今，在杏树林，很高兴能遇到一群志同道合的人，至少现在吧，感觉自己的理解又上升了一个新的高度，实践因什么而存在，要解决哪些问题，如何才算真正解决，解决问题的为了什么。这是我2015-16年度，最有收获的部分，共勉。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2016/10/07/cto-study-summary-1516/" data-id="ckjjlgj4u00061oz4fon226uq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mgnt/" rel="tag">mgnt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cto-summary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/24/cto-summary/" class="article-date">
+  <time datetime="2016-07-24T04:29:42.000Z" itemprop="datePublished">Jul 24 2016</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Management/">Management</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/24/cto-summary/">CTO工作总结（15-16年度）--工作篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通常我会在每个年中对从上一年的7月到这一年的6月的工作做一个总结。主要原因是年终的时候大家都在总结，但绩效、年终奖、年会、圣诞、新年等等，其实是一年中时间最紧张的时候。我不喜把事情都堆到一块儿做。刚好英联邦的财年就是年中，所以索性就选了这个时间做总结。</p>
+<p>本次总结分成两大部分，第一个是工作篇，主要陈述上一个总结中的预期工作在这一年里的开展情况和变化情况。本次总结多增加了一个学习篇，主要是觉得进入创业中期的工作状态是日新月异，学习到的东西越来越多，而不知到的东西也越来越多。希望通过总结暨给自己一个交代，也给未来一年一种鞭策。在一个创业公司，如果你的成长速度慢过于公司，那就坐等淘汰。</p>
+<p><em>工作篇</em></p>
+<p>一般来说，我对CTO的工作理解都会在我的xmind里面不断增加，也会根据实际的公司运行情况做优先级的处理。下面的总图基本反映了我各部分工作优先级预期和状态。其中数字代表在15年6月份的时候我对这几部分工作的优先级安排。而脸谱代表了对所有工作我现在自己看来的满意度。作为一个overall的评价来说，我觉得还是挺满意的。尤其是在商业战略、团队、研发和技术团队运营这几部分。</p>
+<p>对于用户，这一年碰的主要是一些企业用户，大体有所了解，更多的接触还是间接的，通过销售或者面试过程中谈话。医生用户几乎没有接触过。所以这块儿我对自己的工作是相当不满意的。任何事情不站在前台需求的角度，即使我现在有了数据的武器，也不会产生全面的印象和理解。在品牌塑造方面，写了些文章，但是感觉效果不佳，无论是传播力度还是广度并没有达到我预期的效果。</p>
+<img src="/2016/07/24/cto-summary/overall.png" class="" title="总图">
+<p>下面会针对每一个做逐一分析。</p>
+<ul>
+<li><p>先从优先级最高的商业战略开始。这里在新的一年我改一下名字，应该叫做技术战略，是指应对公司发展需要而做出的技术类总方向的决策。之前预期这一年的三个大事儿基本上都做了。</p>
+<img src="/2016/07/24/cto-summary/strategy.png" class="" title="技术战略">     
+<p>第一个是安全管理，这块儿在15年的下半年里，引入了安全宝的安全审计，做了渗透测试，确实发现了不少问题。服务端和运维一起最终将安全审计出来的问题，一一解决掉。让杏树林在安全防范上迈出了一个小步，但同时也是安全体系化的重要一步。接下来的安全工作出过一次事故，但是主要原因不是技术本身的安全隐患，而是出现在业务上的密码过于简单而产生的暴力破解。根据这个，对公司的VPN网络，请求时间间隔，各个系统验证码服务做了升级。接下来一年这一块儿肯定还是要做，但是可以从安全管理，上升到安全体系的高度，对一些安全工作进行常规化管理。</p>
+<p>第二块儿是团队的结构化。终于在杏树林走到50人技术团队的时候，我们迎来了业务化改造。这是我一直希望的事情。在我看来，一个团队，若想保持高效的战斗力，必须团队数量足够小，团队关注点足够专一。只有这样，才有可能把事情打透，把业务做到底，所以我在年度之初就策划了这个改革，好在的是，我们的COO也足够给力，快速的推动了我的改革。让我这个目标得以实现。</p>
+<p>第三块儿是核心技术能力的建立。这里包含了纯工程技术能力和基于业务的技术能力两大部分。纯工程是对原有公司的技术升级。包括了JS大方向的引入，Docker化和AB测试。但是很可惜，AB测试并没有完成，我觉得原因有两个，第一个是如果做AB测试，工具是一方面，但最重要的另外两个方面是基础数据，还有业务需求。这两块儿目前都在建立之中，随着数据驱动的演进，杏树林开始有计划的加功能，减功能。AB测试的需求正在起步，但是在过去的一年，因为数据驱动不到位，所以这部分没有太多需求。所以，这块儿掌握的一个核心是</p>
+<blockquote>
+<p><strong>只有有了数据驱动，才有AB测试的需要</strong>。</p>
+</blockquote>
+<p>另外，除了工程技术外，业务技术当时15年中订立的是OCR的核心技术能力，以及数据结构化。前一个OCR能力基本上已经形成规模，有人持续为之进行优化。后一个数据结构化目前并没有很好的方法，这也是新一年的重点工作。在去年数据结构化里，学到的重要教训是，数据其实本来不需要结构化，关键是有效的检索和回馈。因此搜索引擎，将会成为新一年工作重点。</p>
+</li>
+<li><p>优先级第二的是R&amp;D，研发体系，无论何时都是技术研发的重点部分。基本上当时的计划都完成了。公司从一个对技术仅是零散开发，到如今有了比较成型的各方面技术研发体系。新的一年，研发体系会往基础架构方面进行比较多的拓延。通过公共服务体系持续提升研发能力。但是这块儿，其实很多公司干得并不好，至于我们能不能，拭目以待。</p>
+<img src="/2016/07/24/cto-summary/RnD.png" class="" title="研发体系">     
+</li>
+</ul>
+<ul>
+<li><p>同为第二优先级的是Client，这里其实是一个对用户和客户的共同说法。15-16年度，主要的工作在客户那里。15年下半年做了最重要的事情就是云学院产品的研发，经过内部产品和外部销售的反复沟通，完成了第一版云学院的基本体系和工作方式。从此云学院摆脱了无形态，minisite各类的方式，开始往产品化方式发展。但是在用户方面，确实没做什么，这部分将会作为接下来工作的方向</p>
+<img src="/2016/07/24/cto-summary/client.png" class="" title="用户客户类工作">     
+</li>
+</ul>
+<ul>
+<li><p>第三优先级的是品牌建设，这块儿这一年里花了不少时间。写了前后10片左右的文章，但是文章覆盖面主要是医疗这边，更加偏向于给行业和VC这类人看。但是并没有起到很好的作用。品牌建设的核心应该是面向技术人员。所以，接下来的思考是将之前类的文章数量降下来，像“大数据分析报告”这类的对企业具有一定价值报告。还是考虑在技术类演讲上增加曝光度，并且把团队加入进去。</p>
+<img src="/2016/07/24/cto-summary/branding.png" class="" title="品牌建设类工作">     
+</li>
+</ul>
+<ul>
+<li><p>第四优先级的是团队，这里团队之所以被列为较低的优先级，主要是因为一个相对完整的体系已经建立起来。大家可以看看作为参考吧。我觉得以目前团队的规模，短时间在超过100以前，这套体系应该不会有大的变化。还有一个最关键的，不想做大团队。坚信小而精的团队才能爆发最强的小宇宙。</p>
+<img src="/2016/07/24/cto-summary/team.png" class="" title="团队体系">     
+</li>
+<li><p>最后的部分是团队运营。团队运营主要指的是一些和基础财、物相关的工作。这一块儿属于维持，本来的工作就不是重点。主要是在流程上做了一些努力，其中包括了线上事故和Bug的处理流程，这部分对公司有一定的影响。</p>
+<img src="/2016/07/24/cto-summary/operation.png" class="" title="团队运营体系">     
+</li>
+</ul>
+<p>学习篇</p>
+<p>埋个伏笔吧，上关键词，“做业务的技术原则：远景－目标－指标－做事；对应工作方法：监控－报警－处理－优化”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2016/07/24/cto-summary/" data-id="ckjjlgj4w000a1oz4ckn4dwjy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/career/" rel="tag">career</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mgnt/" rel="tag">mgnt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-no-back-end-design" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/03/no-back-end-design/" class="article-date">
+  <time datetime="2016-07-03T12:40:59.000Z" itemprop="datePublished">Jul 3 2016</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/03/no-back-end-design/">无UI系统设计之实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一个</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2016/07/03/no-back-end-design/" data-id="ckjjlgj5r00231oz4fsc54pms" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-no-back-end-sys" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/02/no-back-end-sys/" class="article-date">
+  <time datetime="2016-07-02T09:54:37.000Z" itemprop="datePublished">Jul 2 2016</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/02/no-back-end-sys/">无UI系统设计之再建图灵</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在过去的十年时间里，从微软到ThoughtWorks，再到后来做了杏树林，历经了Symbian，Windows Mobile，然后的Blackberry和Android，直到后来的iOS，WP，设计了一个又一个从前到后的系统架构，差不多经历了大半个移动时代的发展。还算完整的工程师生涯让我对用户体验和人机交互有着格外的感情。直到有一天，一场争论让我陷入了沉思。</p>
+<p>事情缘起于对后台运维系统的设计。在最开始季度初的时候，我雄心勃勃给DevOps团队定义了一个目标，让运维同学学会使用Axure作出产品设计原型，推演操作路径。这在我们这种搞移动产品设计起家的人眼里是顺理成章的事情。然而，技术专家的反对，却给了我一闷棍。后来想来，UI设计对于运维系统而言简直是极大的浪费。原因如下：</p>
+<ul>
+<li>运维系统的核心任务，是提升运维人员的工作效率，提升运维质量（降低运维差错率）</li>
+<li>运维系统的面向对象，熟练的操作人员（研发、运维）</li>
+<li>运维系统的研发目的，以最快速度，解决现有问题</li>
+</ul>
+<p>第一个很重要的原因就是，正是因为如上所述，要快、要高效的面对熟练人员。如果是工作效率在运维系统中可以使用机器来尽量多的完成任务的话。那么“快”在运维系统的研发中就显得格外的重要。其实，当今世界上最简单的，也是最早出现的交互见面便是Terminal。在Terminal的情况下，大量的UI工作和交互工作都转化成了基本的命令，不再需要写表单，调整在不同窗口大小情况下的适配，也不用做繁琐的IE，Chrome等浏览器适配工作。这让DevOps研发更多的关注于“核心任务”，就是用机器方法提升工作效率本身，让出了核心功能外的代码降低到最大程度。</p>
+<img src="/2016/07/02/no-back-end-sys/terminal.png" class="" title="用户终端">
+<p>第二个原因，其实，随着后移动时代的到来，越来越多的人已经开始从2007年手机触屏所带来的一股极大的UI交互体验旋风中走了出来。渐渐的，一种更加方便简易的形式在兴起。Cortana, Google Now和Siri，人机对话。其实，早在Symbian时代，就有一家著名的公司Nuance公司，从事语音识别，而且效果已经很高了。不过微软、Google和苹果在识别的背后加入了更加强大的语音分析引擎，让识别结果更加语意化，可以基于场景来从事更多的工作。因此，如果说过去我们在交互这个领域，还在苦苦追求更加简单、易于理解和上手的人机交互的时候。新的机遇自然语言或者简易自然语言的交互，很可能会在不远的未来改变我们的生活，而这一切，一定会从技术本身开始。</p>
+<img src="/2016/07/02/no-back-end-sys/siri_cort_now.jpg" class="" title="Cortana, Google Now &amp; Siri">
+<p>Github去年发布了非常有意思的办公自动化软件Hubot，他通过添加adaptor的方法，想Hubot注入更多语言交互指令，让Hubot可以通过一系列在Chat过程中的指令模式完成操作。其实本质上说Hubot和Terminal的工作原理并没有多大不同，但是这一次，对话不再仅仅限制在Terminal上，更加无需了解很复杂的ip地址和命令。如今的交互在IM软件上，通过一些预先设定的语言类指令来完成。</p>
+<img src="/2016/07/02/no-back-end-sys/hubot.jpg" class="" title="Github Hubot">
+<p>前段时间，Google发布了他们的语言搜索系统，WWDC在新版的macOS上面加入了语义搜索功能。可以想见，ChatOps，ChatOffice，ChatXXX为代表的一系列人工语音交互模式，将会实现。那么如今，我们要做的，就是把业务内核准备好，剩下的就是不断探索更新的技术所带来的便捷。</p>
+<p>最后，写到这里的时候，我忽然想到了一个事情－－图灵实验。1950年，图灵发表了具有里程碑意义的论文《电脑能思考吗？》，在里面第一次提到了人工智能的概念。图灵对人工智能的描述就是，有一堵墙，墙上有一个小窗口，窗口的两侧，一边是人，一边是具有人工智能的机器。如果两方都认为对方是人的话，则实验成功。现在看起来，这样的日子真的不远了。:)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2016/07/02/no-back-end-sys/" data-id="ckjjlgj5t002a1oz44d9h2m26" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/tags/tech/">&amp;laquo; Prev</a><a class="page-number" href="/tags/tech/">1</a><span class="page-number current">2</span><a class="page-number" href="/tags/tech/page/3/">3</a><a class="page-number" href="/tags/tech/page/4/">4</a><a class="extend next" rel="next" href="/tags/tech/page/3/">Next &amp;raquo;</a>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Business/">Business</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Strategy/">Business Strategy</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Management/">Management</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/career/" rel="tag">career</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud/" rel="tag">cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/med/" rel="tag">med</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mgnt/" rel="tag">mgnt</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/operation/" rel="tag">operation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/" rel="tag">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/" rel="tag">tech</a><span class="tag-list-count">35</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/book/" style="font-size: 14px;">book</a> <a href="/tags/career/" style="font-size: 14px;">career</a> <a href="/tags/cloud/" style="font-size: 12px;">cloud</a> <a href="/tags/deeplearning/" style="font-size: 18px;">deeplearning</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/med/" style="font-size: 12px;">med</a> <a href="/tags/mgnt/" style="font-size: 18px;">mgnt</a> <a href="/tags/misc/" style="font-size: 12px;">misc</a> <a href="/tags/operation/" style="font-size: 10px;">operation</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/06/summary2020/">留给2020</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/06/summary2019/">留给2019</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/02/gcp-study/">GCP搭建serverless</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/aliyun-server-less/">阿里云函数计算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/deep-learning-sequence-models-w3/">深度学习顺序模型第三周</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Jack Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  <span id="busuanzi_container_site_uv">
+	    with <span id="busuanzi_value_site_uv"></span> visitors
+	  </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>杰克船长的小屋</title>
+  <icon>https://www.gravatar.com/avatar/7389178d8511883b1016e959afbd13f4</icon>
+  <subtitle>做点改变世界的事情，总不妄青春</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://wangzhe.github.io/"/>
+  <updated>2021-01-12T15:41:48.151Z</updated>
+  <id>http://wangzhe.github.io/</id>
+  
+  <author>
+    <name>Jack Wang</name>
+    <email>wangzhe.cs@gmail.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>留给2020</title>
+    <link href="http://wangzhe.github.io/2021/01/06/summary2020/"/>
+    <id>http://wangzhe.github.io/2021/01/06/summary2020/</id>
+    <published>2021-01-06T04:34:52.000Z</published>
+    <updated>2021-01-12T15:41:48.151Z</updated>
+    
+    <content type="html"><![CDATA[<p>很有趣，看了一下，刚好去年也是1月6号写的。嗯，2020，魔幻的一年过去了，如同每年一样，写个总结，既是回顾，又做展望。在去年的基础上，进一步分了三个篇章，回顾是对比2019年初的想法，看看2020年的思考有哪些延续性的不足；总结篇，如同上年度一样分成了方向，方法和技术的三段总结；最后是展望，对方向和技术的2020题一个要求</p><h2 id="回顾篇-2020年的那些想法怎么样了："><a href="#回顾篇-2020年的那些想法怎么样了：" class="headerlink" title="回顾篇-2020年的那些想法怎么样了："></a>回顾篇-2020年的那些想法怎么样了：</h2><p>2020年大概给自己定了技术和业务两个方向的目标，下面一个个分析一下</p><h3 id="技术落地，CloudNative-AI增进工程效率提升"><a href="#技术落地，CloudNative-AI增进工程效率提升" class="headerlink" title="技术落地，CloudNative+AI增进工程效率提升"></a>技术落地，CloudNative+AI增进工程效率提升</h3><p>CloudNative的了解，相较之前应该有比较大的进步，微服务、DevOps、容器化、持续交付，除了一直以来想对比较深刻的持续交付意外，2020年对于微服务的学习和实践也日益加深了。</p><p>想了一下，2020年尝试了2个东西，一个是集成第三方公司邮件，通过自然语言读懂邮件，并将其结构化为需要的内容，这个在NLP领域被称为NER（named-entity recognition），看了些内容论文也因此大体了解了NLP领域常用的语义分析软件。但是很可惜停止在了数据集收集的地方。数据集始终没有准备好，这是个让人很头疼的事。确实也领略了当时有看到行业花大价钱去找人做表标示工作。这的确是个Lessons Learned。接下来这个方向肯定还是要做点什么，就这么放弃了感觉比较可惜。加油吧2021，需要给自己再plan一下</p><p>第二个是关于Menu的OCR，后来因为疫情就没继续。不过这块的确衍生出了接下来的Data方向，在数据vision上有了不少思考</p><h3 id="业务思考"><a href="#业务思考" class="headerlink" title="业务思考"></a>业务思考</h3><p>关于医生经纪人，算了吧，感觉目前还是没有这个动力去做。我觉得从技术出发做点事情可能会更靠谱一点。不过在此基础上，基本上明确了养老这个方向，当然这方向里设计很多上中下游的东西，而且我也知道这个方向不容易做。但是终归还是有这个心，希望做善事吧。接下来的更多思考肯定是做产品行业，还是服务行业</p><p>综合来看，2020面对疫情，整个工作出现了比较大的变化。所以在落地的工作方面却少了很多。但是思考的方面，却多了不少时间。所以还是有了不少的思考时间。包括学习了如何思考的方法，也是很不错的东西。</p><h2 id="总结篇-2020自己取得了哪些值得骄傲的成就："><a href="#总结篇-2020自己取得了哪些值得骄傲的成就：" class="headerlink" title="总结篇-2020自己取得了哪些值得骄傲的成就："></a>总结篇-2020自己取得了哪些值得骄傲的成就：</h2><h3 id="方法论："><a href="#方法论：" class="headerlink" title="方法论："></a>方法论：</h3><ul><li><p>今年的方法论核心应该是在战略安排上。今年最成功的事情是总结了技术上的stability strategy以及数据的Data strategy，这两个的总结提炼让我对与如何写一个让人看得懂的战略规划有了一个新的认识。在我看来这里可能需要分为如下的几个步骤</p><ul><li><p>根据远景定义核心目标，注意这个核心目标往往不是要解决某个问题，而是这个公司、部门或者这个方向存在的意义，比如技术就是提升研发质量，比如数据就是提供高质量、高价值数据</p></li><li><p>将这种目标，增加需要执行目标的限定语句，比如对于提升研发质量，“Build sophisticated tools to Reduce developer mistakes significantly”，这里建立成熟的工具，就是后面降低错误的执行方法限定语句</p></li><li><p>接下里的事情其实就简单了，那就是对这个限定语句进行解释和结构化。比如“Build sophisticated tools”，什么叫成熟的工具，这些工具的彼此支撑结构是什么。后面的东西就是我以前也表熟悉的规划了。特别是对于对词语的抽象能力，这是咨询师必备。</p></li></ul><p>所以我还挺兴奋于今年在战略规划上所学到的东西。因为以前我的工作模式比较偏线性，走到哪儿算哪儿，持续改进是我的长项。不过这次的战略策略实践，让我的视野上升了一层，有了更佳明确年目标级别的规划能力，这东西是一个产品战略能力，很庆幸！</p></li><li><p>提升质量方法论的进一步成型。从Code Protector，Scalable Protector到Process Automation，我觉得这三个的总结基本上涵盖了我现在触及到的形形色色的质量改进，并且关于Code Protector，有数据，有工具，有最佳实践，还是蛮成型的了。接下来可能更关注第二个吧，看看通过第二个的总结，2021年能有什么建树。</p><img src="/2021/01/06/summary2020/stability_1.png" class="" title="stability_1.png border&#x3D;1"></li><li><p>关于数据的理解以数据中台和DaaS数据业务为蓝本，虽然不一定完整，这里简单罗列一些吧，我相信这个也会在2021年有所演进</p><ul><li>BI与BI成熟度模型</li><li>数据分析师（data analyst）和业务分析师（business analytst）之间的skill set差别</li><li>数据工程师（Data Engineer）和数据科学家（Data Scientist）实践中的交集与各自能力，以及他们需要处理的主要问题</li><li>数据治理的困难以及如何提升数据质量的基本方法与指标<img src="/2021/01/06/summary2020/DaaS.png" class="" title="DaaS.png border&#x3D;1"></li></ul></li></ul><h3 id="技术篇："><a href="#技术篇：" class="headerlink" title="技术篇："></a>技术篇：</h3><p>技术上，想象提升的的确比较少，找个借口就是可能数据那块儿想的比较多，确实看了不少书，也用了不少时间。但是这也不能算是接口，实话实说，刚刚过去的2020年，代码写的的确比较少。这一点可以从Github的提交记录可以看到，自从三月份以后，就鲜有提交了。归其原因也是AI这块儿一直没有突破，给自己比较强的挫折感。</p><p>如果一定要说2020学了哪些技术上的东西。我觉得SRE和微服务勉强算吧。之所以说是勉强算是因为自己不是亲身参与，更多的是从书籍以及团队的实践出发。但是这种实践，感觉上还远远不够。SRE嘛，我觉得还得再读，目前皮毛上，确实解决了我一些对于架构的衡量问题，但是具体下来的实际操作还是空白。这不利于给架构组定理合理的目标和预期。</p><h2 id="展望篇-2021要干点啥："><a href="#展望篇-2021要干点啥：" class="headerlink" title="展望篇-2021要干点啥："></a>展望篇-2021要干点啥：</h2><h3 id="方向上要思考的事情："><a href="#方向上要思考的事情：" class="headerlink" title="方向上要思考的事情："></a>方向上要思考的事情：</h3><ul><li><p>工程效率大方向应该不会有大的变化，我觉得目前让我百思不得其解的还是在为什么效率本身遇到的瓶颈问题。目前在40左右似乎遇到了非常大的瓶颈。我觉得接下来需要做更精细化的计算，计算到人，先把DO、研发和QA三个角色分拆开。总之得找到提升的核心问题。慢慢应该可以找到各个工种的效率，说白了就是要做细致</p></li><li><p>战略，2020可以说对于战略的规划有了实践，接下来需要一些书籍进行辅助和体系化，看看之前的实践有哪些问题，优缺点在哪里。从《好战略，坏战略》开始吧。之后进一步改造现有的战略安排</p></li><li><p>业务，就是养老这件事，继续。。。</p></li></ul><h3 id="技术方法论要提高的："><a href="#技术方法论要提高的：" class="headerlink" title="技术方法论要提高的："></a>技术方法论要提高的：</h3><p>这个事儿还是得有些改变才行。立几个可能的flag吧</p><ul><li>Python转Go，Go的成熟度已经开始变高了，而且从外部判断来看，似乎对我而言更合适一些</li><li>容器化，做出两个Go容器吧，一个用来做web service，通过这个来学习一下基本框架的使用</li><li>把Protobuf要弄一下，刚好要做web service嘛，这个以后还是要自己搞过才行</li></ul><p><strong>附录本年度的主要工作结果</strong></p><ul><li><em>质量相关</em><img src="/2021/01/06/summary2020/stability_2.png" class="" title="stability_2.png border&#x3D;1"><img src="/2021/01/06/summary2020/stability_3.png" class="" title="stability_3.png border&#x3D;1"><img src="/2021/01/06/summary2020/stability_4.png" class="" title="stability_4.png border&#x3D;1"><img src="/2021/01/06/summary2020/stability_5.png" class="" title="stability_5.png border&#x3D;1"></li><li><em>成长模型</em><img src="/2021/01/06/summary2020/growth.png" class="" title="growth.png border&#x3D;1"></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;很有趣，看了一下，刚好去年也是1月6号写的。嗯，2020，魔幻的一年过去了，如同每年一样，写个总结，既是回顾，又做展望。在去年的基础上，进一步分了三个篇章，回顾是对比2019年初的想法，看看2020年的思考有哪些延续性的不足；总结篇，如同上年度一样分成了方向，方法和技术的三
+      
+    
+    </summary>
+    
+      <category term="Business Strategy" scheme="http://wangzhe.github.io/categories/Business-Strategy/"/>
+    
+    
+      <category term="mgnt" scheme="http://wangzhe.github.io/tags/mgnt/"/>
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="career" scheme="http://wangzhe.github.io/tags/career/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>留给2019</title>
+    <link href="http://wangzhe.github.io/2020/01/06/summary2019/"/>
+    <id>http://wangzhe.github.io/2020/01/06/summary2019/</id>
+    <published>2020-01-06T12:46:22.000Z</published>
+    <updated>2021-01-05T05:59:18.662Z</updated>
+    
+    <content type="html"><![CDATA[<p>转眼一年过去了，总结一下。确实发现了不少问题。也想清楚了不少问题。花了不少时间在纠结和思考，乐观一点想，这算是一个蜕变的过程吧。</p><h2 id="方向篇："><a href="#方向篇：" class="headerlink" title="方向篇："></a>方向篇：</h2><p>之前也在和不少人谈，觉得这些年，做了业务，做了技术，但是自己的定位到底在哪儿呢？年轻时候，一直想着做寄一个技术的领导者，去改变世界。这之后可以说一直在沿着这个轨迹走，一个技术的BU head，两任CTO都是技术领导者，但这一年，很明显的感到瓶颈来了。这个瓶颈就在于前半句做到了，但是后半句一直没有，怎么也做不到。我到底改变了什么？在这件事情上，就很纠结。团队一直在50人上下徘徊，似乎这也成了自己一个无法逾越的坎儿。从某种意义上讲，我的公司挑选是正确的，地域的选择也没有问题。这是薪酬一路上涨的原因。也确实随之能力也在不断提升。不过忽略了业务与行业的选择问题。也就是后面一件事，去“改变”。从业务也就是公司（或者个人），到行业，自己是否应该把更多精力放到寻求改变里面呢？回到了一个老生常谈的问题，一到业务发展瓶颈期，就退缩了。在TW当时面临的是创建的业务，因为边界不清，始终得不到认可。然后在杏树林，吸取了经验教训，但其实问题并没有得到改善。刚开始做数据业务的时候，其实更多还是波哥在做，要不是他后来离开了，可能也轮不到我来主导业务。但问题存在于销售端的控制上，缺了这个部分，总觉得不踏实。后来药企这摊事儿，也是努力了好久，做了好多，但是最后因为认可问题，一拍两散。准确的说并不能说一拍两散，遇升还是在最后妥协了的。说明有些事情，力争发展是有可能。然而退缩的是自己，一方面担心搞不定。一方面对财富的增值太看重了。我觉得这可能导致了自己长期上的发展僵局。所以目前自己最重要的是对于方向的决心和信心。</p><p>2020年，有两件事情是一定要做的。第一个就是作为技术领导者本身，在AI上一定要取得突破。我觉得自己选择的这个技术数据驱动，提升技术团队效率这个方向蛮有意思的，确实很喜欢。应用Cloud Native + AI技术实现真正的效率提升，代码和测试等一系列自动化编写。我觉得这个的确有可能改变世界些什么。说真的，我是笃信的。然而这个会遇上另一个矛盾，那就是作为业务领导者，因为改变技术本身似乎并不能改造社会，创造多么大的社会价值。或者，我知道机器人的引用，的确是各个公司需要的，因为他们的确在改造传统行业。可技术人员是个相对高级的工种，改造他们，作为技术领导者，他们愿意吗？当然这里也有一个分支方向，就是通过AI赋能Ops，不断寻找和提升Ops的效率，提升系统自动操作性（而不是restaurants，我不觉得restaurants的owner会为更多的功能买账，他们不是搞IT的！！！</p><p>2020年，另一件事情，就是纯业务，比如医生经纪人这样的纯业务领域。很有趣，自己之前做了不少，但想想，可能和数据项目当时的状态类似。我有一个很信任我的人，很愿意和我工作的好朋友在。然而我好像也贡献不了太多的东西。哦，也许运营是我可以做的。不过最关键的医院销售端，似乎还没太搞定。这么说来，这个的确有点意思，这不就又是当年的搭配么，我（用户运营），金尹（医生），华丰（私立医院）。不过这个东西和技术差异真的蛮大的，也是一直下不了决心的原因。2020年，需要考虑考虑。最后还有一件和业务相关的事情，就是我的关于美容美发行业的技术化改造。again，这事儿因为没有初期的伙伴。可能更是八字没一撇。</p><p>这两个想法，四个子想法，接下来要做个计划，留给2020年！否则肯定达不成结果！</p><h2 id="方法论："><a href="#方法论：" class="headerlink" title="方法论："></a>方法论：</h2><ul><li>提升管理OKR方法论：对于国内还摸不着头脑的OKR来说，可能OKR的掌握自己越来越有效了。运用OKR来指导团队管理，还是很明显的。</li><li>提升质量的方法论：自己开始能够运用Tech Solution的四个基础方法，来规范技术解决方案。2020年，有望通过这一些列的技术解决方案提出技术的质量体系。我一直认为，研发的质量体系，应该是可以穷尽的。如果能够积累出一整套tech solution的方面，以后就可以不用这种bug一点一点出的笨办法，就可以把数据和案例驱动，变成最佳实践驱动，这样会大大加快速度。所以这也是2020年，有可能实现的一个重要目标</li><li>提升的纯技术管理方法论：Cloud Native：这个应该是最近要重点攻读的部分，因为感觉做了这么久的技术敏捷，一直没给自己找到个合理的原理来解释。Cloud Native因为继承了大量技术方法和管理方法。觉得应该会有点突破。</li></ul><h2 id="技术篇："><a href="#技术篇：" class="headerlink" title="技术篇："></a>技术篇：</h2><ul><li>云端函数计算：2019年做了两个函数计算的项目，都有始有终了。虽然都不大，但是让自己对于函数计算有了比较好的初始实践。一个是部署在Aliyun上的团队index，一个是部署在GCP上的Jenkins每天总结和Wunderlist总结。Serverless的场景在我看来比较适合DevOps和数据团队做定期数据ETL和数据计算。至少这是目前我认为很合适的领域。至于其他的目前不打算探索。</li><li>从Code Function到Excel再到Data Studio的数据提取、计算到展现闭环打通。未来很多自动化都可以在这个基础上搞了。这回事OKR的重要基础，让OKR的数据收集工作变得相当简单。我认为这个以被写进OKR方法论。</li><li>开始对Python做了一些系统性的总结，这两年用python也比较多了，每次总是要去查，很烦。当然一方面说明还是用得少。训练太少。另一方面，觉得有可能形成一些自己的机械记忆会更好些。</li></ul><h2 id="展望篇："><a href="#展望篇：" class="headerlink" title="展望篇："></a>展望篇：</h2><p>最后展望一下2020年的几个可能的成果</p><h3 id="方向上要思考的事情："><a href="#方向上要思考的事情：" class="headerlink" title="方向上要思考的事情："></a>方向上要思考的事情：</h3><ul><li>Cloud Native + AI完善的管理方法（可以自己不是大公司的管理者，或者没有被大公司管理者认可，在这方面也许可以明确一下方向）</li><li>AI帮助Ops（算了，这个方向是在没精力就算了，虽然有趣，但还是在给别人做嫁衣，最后的结果还是要依靠于业务的发展）</li><li>医生经纪人，这个先写，等等华丰</li><li>美容美发（算了，在有医生经纪人之前，暂时不考虑）</li></ul><h3 id="技术方法论要提高的："><a href="#技术方法论要提高的：" class="headerlink" title="技术方法论要提高的："></a>技术方法论要提高的：</h3><ul><li>解决质量问题，有没有可能出现最佳实践</li><li>Cloud Native方法</li><li>Python进阶语法和编程的进一步总结，需要做些题</li><li>对AWS有更深入的使用，（估计是有八九没戏，虽然是公司使用的主要AWS平台，但是交集太少）</li><li>对GCP有更深入的使用，这个如果AI能做的话，就比较有可能。</li></ul><p>所以综合来说，2020年，属于自己的AI项目势在必行。这个会让自己在2020的技术上进一大步。加油吧2020！</p><p><strong>附录本年度的主要工作结果</strong></p><img src="/2020/01/06/summary2019/stability_1.png" class="" title="stability_1.png border&#x3D;1"><img src="/2020/01/06/summary2019/stability_2.png" class="" title="stability_2.png"><img src="/2020/01/06/summary2019/stability_3.png" class="" title="stability_3.png"><img src="/2020/01/06/summary2019/stability_4.png" class="" title="stability_4.png"><img src="/2020/01/06/summary2019/stability_4_1.png" class="" title="stability_4_1.png"><img src="/2020/01/06/summary2019/stability_4_2.png" class="" title="stability_4_2.png"><img src="/2020/01/06/summary2019/stability_4_3.png" class="" title="stability_4_3.png"><img src="/2020/01/06/summary2019/stability_4_4.png" class="" title="stability_4_4.png">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转眼一年过去了，总结一下。确实发现了不少问题。也想清楚了不少问题。花了不少时间在纠结和思考，乐观一点想，这算是一个蜕变的过程吧。&lt;/p&gt;
+&lt;h2 id=&quot;方向篇：&quot;&gt;&lt;a href=&quot;#方向篇：&quot; class=&quot;headerlink&quot; title=&quot;方向篇：&quot;&gt;&lt;/a&gt;方向
+      
+    
+    </summary>
+    
+      <category term="Business Strategy" scheme="http://wangzhe.github.io/categories/Business-Strategy/"/>
+    
+    
+      <category term="mgnt" scheme="http://wangzhe.github.io/tags/mgnt/"/>
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="career" scheme="http://wangzhe.github.io/tags/career/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GCP搭建serverless</title>
+    <link href="http://wangzhe.github.io/2019/12/02/gcp-study/"/>
+    <id>http://wangzhe.github.io/2019/12/02/gcp-study/</id>
+    <published>2019-12-02T12:35:12.000Z</published>
+    <updated>2021-01-04T05:38:30.299Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前弄了阿里云的事情，最近因为做公司数据分析到AI的部分，所以必须把GCP彻底整理一遍。首先要澄清，从本身GCP的使用方面自己确实不是专家。但是感谢Google这一年多以来的合作，确实让我对high level的GCP以及相关产品，了解了许多。特别是全套的数据产品服务，也直接导致我来决策了GCP作为数据中心的定位，这也是为什么我需要开始把我的一些分析工具转移到GCP的原因。学习成本也是必须要付出的。</p><p>这次转移的部分就是数据分析平台，从原来的RJMetrics转移到以GCP为基础的Data Studio和Tableau上面。既然公司业务已经全面转移了，技术的主要数据分析，我也想一并转进来，并且借这个机会学习一下GCP的几个主要产品，为我在这边这个平台上搭建AI的技术效率分析系统做铺垫，这应该是我最近最大的兴趣所在了。让我们一起动手，消灭我们手里那些反复消磨时间的无意义工作，也许分析业务产生算法，才是程序员，至少是下一代程序员的职责（之后的时代，虽然NLP的普及，也许连分析业务也会被取代，we will see）</p><h2 id="GCP合理使用"><a href="#GCP合理使用" class="headerlink" title="GCP合理使用"></a>GCP合理使用</h2><p>Google prefer to use Google Cloud SDK. so use gsutil in terminal is much easier to use.</p><h3 id="关于serverless"><a href="#关于serverless" class="headerlink" title="关于serverless"></a>关于serverless</h3><p>做这件事情的动因是因为做一个个人工作分析器，内容很简单，就是从wunderlist api里把数据拿出来，然后进行分析。这玩意儿明显就是个serverless。刚好之前在阿里云上研究的也就是serverless，索性用一下，应该蛮cool的。</p><p>gcloud的serverless分为两种，code function和code run, 前者可以绑定若干种触发器，比如时间，event等等，后者主要绑定http触发。code function这里和阿里云的函数计算差不多，这里就不多说了。本次主要使用的是code run，一套基于container的方法进行的http serverless。我只能说太为程序员着想了。</p><p>之前使用阿里云函数计算最大的问题就是，lib被阿里云绑死了，没法进行扩展。而且有些库，阿里云上就没有，导致必须为了兼容serverless该自己的程序。现在不用了，有了code run，完全是一套自己封闭的环境。requirements.txt随便写，系统帮你填上需要的lib和version。好用！好用！</p><h3 id="Storage的选择"><a href="#Storage的选择" class="headerlink" title="Storage的选择"></a>Storage的选择</h3><p>在GCP上面，一共有五种storage，分别是</p><ul><li>SQL，这个基本上就是MySQL</li><li>Datastore, 可扩展的NoSQL database</li><li>Bigtable，这是一个结构化大数据库，是HBase的姊妹形态。如果有TB级别的结构化数据，存在大量写操作，高频low latency的读写要求，使用Bigtable是最合适的。Bigtable使用Hbase shell quickstart.sh来进行 </li><li>Storage, 这个主要用于做object的存储，分为standard 99.9%，Durable Reduced Availability 99%, Nearline 99%, 可以通过gsutil上传或下载</li><li>BigQuery</li></ul><p><a href="https://www.youtube.com/watch?v=mmjuMyRBPO4">Youtube Video: Chose you storage and database on GCP</a></p><h3 id="其他一些内容"><a href="#其他一些内容" class="headerlink" title="其他一些内容"></a>其他一些内容</h3><p>Compute Engine，就是VM，创建instances, 每一个instance都可以依据选择访问project下的所有资源。当使用terminal来访问资源的时候，还需要进行必要的配置工作。进入。首先是在SQL里面，给MySQL配置ip</p><p><img src="/2019/12/02/gcp-study/sql_network.png" class="" title="“给SQL配置IP和访问权限”&lt;&#x2F;p&gt; &lt;p&gt;安装gcloud terminal sdk，suprise，这是我非常少有的一次成功不带阻断的精力。认证直接通过sh脚本启动service，调用远程oauth，在网页端完成认证，这种方式很新颖，免除了以前需要.ssh交换秘钥的麻烦。一气呵成，很赞！&lt;&#x2F;p&gt;">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;之前弄了阿里云的事情，最近因为做公司数据分析到AI的部分，所以必须把GCP彻底整理一遍。首先要澄清，从本身GCP的使用方面自己确实不是专家。但是感谢Google这一年多以来的合作，确实让我对high level的GCP以及相关产品，了解了许多。特别是全套的数据产品服务，也直
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="cloud" scheme="http://wangzhe.github.io/tags/cloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云函数计算</title>
+    <link href="http://wangzhe.github.io/2019/01/02/aliyun-server-less/"/>
+    <id>http://wangzhe.github.io/2019/01/02/aliyun-server-less/</id>
+    <published>2019-01-02T06:43:20.000Z</published>
+    <updated>2021-01-04T05:38:30.229Z</updated>
+    
+    <content type="html"><![CDATA[<p>年前终于做完了自己的阿里云函数计算的一个小项目，总结一下。</p><img src="/2019/01/02/aliyun-server-less/aliyun.png" class="" title="[Aliyun Logo]">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;年前终于做完了自己的阿里云函数计算的一个小项目，总结一下。&lt;/p&gt;
+&lt;img src=&quot;/2019/01/02/aliyun-server-less/aliyun.png&quot; class=&quot;&quot; title=&quot;[Aliyun Logo]&quot;&gt;
+
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="cloud" scheme="http://wangzhe.github.io/tags/cloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习顺序模型第三周</title>
+    <link href="http://wangzhe.github.io/2018/09/13/deep-learning-sequence-models-w3/"/>
+    <id>http://wangzhe.github.io/2018/09/13/deep-learning-sequence-models-w3/</id>
+    <published>2018-09-13T08:07:05.000Z</published>
+    <updated>2021-01-04T05:38:30.276Z</updated>
+    
+    <content type="html"><![CDATA[<p>来到最后一周了，本周分为10课，两个大部分</p><h1 id="Various-sequence-to-sequence-architectures"><a href="#Various-sequence-to-sequence-architectures" class="headerlink" title="Various sequence to sequence architectures"></a>Various sequence to sequence architectures</h1><p>这个部分是本周的重点，8个课都是围绕着展开的。这种模型被广泛应用在了文字翻译和语义识别领域。让我们来看看都讲述了些什么。</p><h2 id="Basic-Models"><a href="#Basic-Models" class="headerlink" title="Basic Models"></a>Basic Models</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x: Jane visite I&#39;Afrique en septembre</span><br><span class="line">y: Jane is visiting Africa in September</span><br></pre></td></tr></table></figure><p>这里用了两套模型进行了组合，</p><ul><li>作为encoding network：$x^{<1>}, x^{<2>}, x^{<3>}, x^{<4>} … x^{ &lt; T_x &gt; }$，可以是一个RNN模型（GRU或者LSTM）</li><li>作为decoding network：$y^{<1>}, y^{<2>}, y^{<3>}, y^{<4>} … y^{ &lt; T_y &gt; }$，同时后面继续跟随了</li></ul><p>这样一种算法，同样对于Image Captioning这样的应用有效。应用是我们的输入是一张图片，应用的输出会把图片转化成一个语义</p><script type="math/tex; mode=display">\begin {matrix}     y^{<1>} & y^{<2>} & y^{<3>} & y^{<4>} & y^{<5>} & y^{<6>} \\     A & Cat & sitting & on & a & chair \\\end {matrix}</script><p>在这样一个应用场景下，我们可以用CNN模型作为encoding network，把这个的输出，feed到RNN的顺序模型里面，进行训练。这个的输出，就是一个对Image的描述了。</p><PlaceHolder for image><h2 id="Picking-the-most-likely-sentence"><a href="#Picking-the-most-likely-sentence" class="headerlink" title="Picking the most likely sentence"></a>Picking the most likely sentence</h2><h3 id="Machine-translation-as-building-a-conditional-language-model"><a href="#Machine-translation-as-building-a-conditional-language-model" class="headerlink" title="Machine translation as building a conditional language model"></a>Machine translation as building a conditional language model</h3><p>一个正常的language model，是一个从$a^{0}$ 到 $x^{<1>}$ 再到 $\hat y^{<1>} $ 再进行混合的演进的顺序模型。同时在这个模型里，会有 $ P(y^{<1>}, …, y^{&lt; T_x &gt;})$ 的数值，来代表每一个过程中产生的y的可能性。这个一般是用来生成普通的句子</p><p>Machine Translation Model对应的是两个部分，encoding model和decoding model。可以看到decoding model和language model是很相似的。做为encoding model的输出，就是decoding model的输入 $ a_{<0>}$</p><p>这也是为什么我们把Machine translation model也叫做conditional language model。在形象一点的说法是，一段被翻译后的句子（比如Jane is visiting Africa）本身，是由前一个被翻译前句子的作为条件形成的。这个说法还挺有意思的，让我认清了翻译这件事情的本质。的确是这样。</p><h3 id="Finding-the-most-likely-translation-（如何找到最好翻译）"><a href="#Finding-the-most-likely-translation-（如何找到最好翻译）" class="headerlink" title="Finding the most likely translation （如何找到最好翻译）"></a>Finding the most likely translation （如何找到最好翻译）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x: Jane visite I&#39;Afrique en septembre</span><br></pre></td></tr></table></figure><p>于是乎，我们就有了 $ P(y^{<1>}, …, y^{&lt; T_x &gt;} |x) $ 这样一个可能性的表示。这里的x就是上面说的那段法语句子。所以整个翻译模型的结果就是寻找P的最大值，找到最有可能的translation结果</p><h3 id="Why-not-Greedy-Search"><a href="#Why-not-Greedy-Search" class="headerlink" title="Why not Greedy Search"></a>Why not Greedy Search</h3><p>Greedy Search是一种算法，大概的意思就是，因为有了x(翻译前句子的输入)，我们接下来寻找每一个 $ P(y^{<1>} |x)$, 然后是$ P(y^{<2>} |x y^{<1>})$，一次类推，就是每次都寻找那个最合适的。而不是 $ P(y|x)$。我觉得其实这里不用多解释，这就是一个局部优化和整体优化的问题。如果计算量允许，肯定尽量采用整体优化，这样才能取得好结果。</p><p>既然Greedy Search不好用，那么如何从$ 10000^{10} $ (假设vocabulary有10000个，句子有10个单次) 这么多种可能性里进行选取呢？当然第一方法，就是使用x作为输入，寻找较大可能性。那么然后呢？还有什么方法？于是这里就用到了更进一步的Search Algorithm。这就又回到了这一课的主题，就是寻找最好的翻译，而不是随机寻找翻译结果（这里作者列举的例子是going和visiting，前者更加常见，但是后者更加适合Jane的语境）</p><h2 id="Beam-Search-Algorith"><a href="#Beam-Search-Algorith" class="headerlink" title="Beam Search Algorith"></a>Beam Search Algorith</h2><p>关于Beam Search算法，第一步是吧10000 words的vacabulary放进array里面。</p><script type="math/tex; mode=display">\begin {pmatrix}     a\\     \vdots\\     in\\     \vdots\\     jane\\     \vdots\\     september\\     \vdots\\     zulu\\\end {pmatrix}</script><p>所以这里的Step1，第一步就是 $P(y^{<1>}|x)$ 对应的单词。这里插入一个概念B，叫做Beam width, 例如B=3.这里给出的Beam的数值，就是为了系统记录下B个最有可能的单词。看起来，其实意思就是说，Greedy Search不是每次只找一个最好的么，这个Beam Search是根据Beam的数值，找B个最好的。</p><p>接下来进行Step2第二步。就很简单了，其实就是因为前一个假设是in了，那想标准的language model一样，会有一个$P(y^{<2>}|x”in“)$这样的表达式，来表示下一个最大可能的单词。因此下面这个公式还挺重要的，就是：</p><script type="math/tex; mode=display">P(y^{<1>}, y^{<2>} |x) = P(y^{<1>}|x) \times P(y^{<2>}|x”in“)</script><p>Again, 这里因为Beam Width为3，所以我们还是，选择最大可能的三个，不过这回就是三个pair了 $P(y^{<1>}, y^{<2>} |x) $. 如此循环进行下一步的运算。你看，这里B=1的话，那就真的是Greedy Search了</p><h2 id="Refinements-to-Beam-Search"><a href="#Refinements-to-Beam-Search" class="headerlink" title="Refinements to Beam Search"></a>Refinements to Beam Search</h2><h3 id="Length-normalization"><a href="#Length-normalization" class="headerlink" title="Length normalization"></a>Length normalization</h3><p>这个就是Beam Search里面的一个部分。他的用法是这样的。</p><p>如同前文讲的，Beam Search的核心是寻找到最大的B个可能性，并进行模型推演。所以</p><script type="math/tex; mode=display">P(y|x) = avg max \prod_{t=1}^{T_y} P(y^{<t>} | x, y^{<1>}, y^{<2>}, ... , y^{<t-1>} )</script><p>但是这里有一个问题，就是若干个百分之几十的数字相乘，会让这个结果趋近于非常小，不方便计算。于是这里引入了log，作为计算函数。这里P的数值越大，</p><script type="math/tex; mode=display">\log^{P(y|x)} = avg max \sum_{t=1}^{T_y} P(y^{<t>} | x, y^{<1>}, y^{<2>}, ... , y^{<t-1>} )</script><script type="math/tex; mode=display">\frac{1}{Ty^\alpha} avg max \sum_{t=1}^{T_y} P(y^{<t>} | x, y^{<1>}, y^{<2>}, ... , y^{<t-1>} )</script><p>$ \alpha $ 一般是从0到1的一个中间值，比如0.7。这个数用来对于模型进行校正和调整是比较管用的</p><h2 id="Error-Analysis-on-Beam-Search"><a href="#Error-Analysis-on-Beam-Search" class="headerlink" title="Error Analysis on Beam Search"></a>Error Analysis on Beam Search</h2><p>关于整个翻译过程实际上是用到了Beam Search算法和两个RNN模型，对于结果而言，如何评价到底是哪里不好导致的问题。Error Analysis提供了一些方法</p><img src="/2018/09/13/deep-learning-sequence-models-w3/error_analysis.png" class="" title="[Error Analysis]"><p>Case1: $ P(y_{<em>}|x) &gt; P( \hat y|x) $<br>在这种情况下，因为Beam Search的作用是用来进行选取$\hat y$，那么既然命名$P(y_{</em>}|x)$会更好，但是Beam Search却选的不对。说明Beam Search有问题</p><p>Case2：$ P(y_{*}|x) &lt; P( \hat y|x) $<br>RNN负责预测 $\hat y$ 而他错误的将$ P( \hat y|x) $ 生成了一个更大的P数值，这说明生成有问题。是RNN需要被调整</p><h2 id="Attention-Module-intuition"><a href="#Attention-Module-intuition" class="headerlink" title="Attention Module intuition"></a>Attention Module intuition</h2><p>对比于简单使用输入RNN和输出RNN，Attention Module更好的处理翻译过程中的长句子问题。我们注意到在日常翻译中，MT在处理10个左右单词的句子时候，表现效果会比较好。但是如果再长，效果就会下降的非常明显。因此我们需要更好的模型来改进这一点。</p><p>首先分析一下原因，主要是单词的记忆导致的。事实上，人类在翻译长句子的时候，采用的是一部分一部分的翻译方式，并不会把他们都记录下来，因为记忆的原因。这个事情同样出现在机器上面，因为计算资源有限，所以我们也无法给计算机留出那么大量的选项进行综合运算。</p><ul><li><p>Attention Weight，标注了对于一个生成的词来讲，哪些input word是应该被关注的，以及关注Weight是多少</p></li><li><p>$ \alpha^{ <1,2> } $ 这个表示第一个翻译后词汇，需要对翻译前句子中的第二个词的关注度有多高</p></li></ul><h2 id="Atention-Module"><a href="#Atention-Module" class="headerlink" title="Atention Module"></a>Atention Module</h2><script type="math/tex; mode=display">\sum_{t} \alpha^{ <1, t> } = 1</script><script type="math/tex; mode=display">C^{ <1> } （context）=  \sum_{t} \alpha^{ <1, t> } a^{ <t> }</script><script type="math/tex; mode=display">bug_{a} =  \alpha * sprint_{a} + \beta * sprint_{a-1} + bias</script><h1 id="领域应用"><a href="#领域应用" class="headerlink" title="领域应用"></a>领域应用</h1><h2 id="语音识别-（Speech-Recorgnition）"><a href="#语音识别-（Speech-Recorgnition）" class="headerlink" title="语音识别 （Speech Recorgnition）"></a>语音识别 （Speech Recorgnition）</h2><p>Audio Clip x，translate to ，Transcript y </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;来到最后一周了，本周分为10课，两个大部分&lt;/p&gt;
+&lt;h1 id=&quot;Various-sequence-to-sequence-architectures&quot;&gt;&lt;a href=&quot;#Various-sequence-to-sequence-architectures&quot; class
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习顺序模型第二周</title>
+    <link href="http://wangzhe.github.io/2018/09/08/deep-learning-sequence-models-w2/"/>
+    <id>http://wangzhe.github.io/2018/09/08/deep-learning-sequence-models-w2/</id>
+    <published>2018-09-08T05:15:35.000Z</published>
+    <updated>2021-01-04T05:38:30.270Z</updated>
+    
+    <content type="html"><![CDATA[<p>第二周啦，这一周开始进入更深入的顺序模型的训练，这一周分为了三个部分，一共10课。</p><h1 id="Introduct-to-word-embedding"><a href="#Introduct-to-word-embedding" class="headerlink" title="Introduct to word embedding"></a>Introduct to word embedding</h1><p>第一部分是NLP and Word Embeddings，词语的嵌入</p><h2 id="Word-Representation-语言表示"><a href="#Word-Representation-语言表示" class="headerlink" title="Word Representation 语言表示"></a>Word Representation 语言表示</h2><p>根据先前所学，每一个word被表现在一个Vocabulary的词典里面<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V=[a, aaron, ..., zulu, &lt;UNK&gt;]  <span class="comment">#假设 |V|=10,000</span></span><br></pre></td></tr></table></figure><br>之前的表示，使用1-hot表达法。比如需要表示“Man”，假设这个词在词汇表的5391位置</p><script type="math/tex; mode=display">Man： O_{5291} =\begin {pmatrix}     0 \\     0 \\     \vdots \\     1 \\     \vdots \\     0 \\     0 \\\end {pmatrix}</script><p>在实际应用场景中，当我们有一个训练模型来预测下一个单次的时候，例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I want a glass of orange ____ (juice)</span><br><span class="line">I want a glass of apple ____</span><br></pre></td></tr></table></figure><br>按照常识，我们可以猜到下一个可能是juice，因为orange juice是比较流行常见的词汇。在训练中，我们当然也是这样做的。这样机器可以知道orange的下一个词可能是juice。然而，如果换成Apple呢？按理说，apple juice应该也是个很组合词汇。按照我们人类的推理，我们大约知道orange和apple是很相近的东西，所以既然有orange juice，大约也就有apple juice。但是根据以目前从训练模型的角度，因为在1-hot的词语表示下，每两个词之间相乘（product）得到的结果都是0。因此在这种情况下，我们说单词与单词之间是没有距离的。也就没有关联性可言，我们无法让机器从orange juice推演出apple后面是juice的预测结果。</p><h3 id="Featurized-representation-word-embedding"><a href="#Featurized-representation-word-embedding" class="headerlink" title="Featurized representation: word embedding"></a>Featurized representation: word embedding</h3><p>这里我们新学了一种方法叫做 word embedding<br><img src="/2018/09/08/deep-learning-sequence-models-w2/featurized.png" class="" title="[featurized representation]"></p><p>每一个单词都会对应有一系列features，比如Man，对应Gender（性别），Royal（皇室），Age（年龄），Food（食物）。把这些feature和Man这个单词的关联关系进行数据化描述，得到一个数组用字母e来表示，比如Man，表示为$e_{5291}$。如图所示，我们可以通过对比$e_{456}$和$e_{4257}$，得到Apple和Orange两者存在较大关联，因此可以得到后面为juice的预测结果。这就是我们说的Word Embeddings</p><p>下一个问题相对简单，就是如何可视化word embeddings。因为按照之前的理论，每一个词，有300个维度（假设这里有300个feature）。为了可视化，我们把它降为展开到2D上。这个被叫做t-SNE</p><h2 id="Using-word-embeddings-使用word-embeddings"><a href="#Using-word-embeddings-使用word-embeddings" class="headerlink" title="Using word embeddings 使用word embeddings"></a>Using word embeddings 使用word embeddings</h2><p>这一节，主要是学习如何应用word embeddings到NLP，从而完成自然语言模型的训练。还是从例子开始</p><ul><li>Sally Johnson is an orange farmer</li></ul><p>根据前面的学习，我们大概知道了Sally和Johnson是两个名字。根据之前我们的学习，</p><ul><li>Sally是$x^{<1>}$, Johnsan是$x^{<2>}$, is是$x^{<3>}$, an是$x^{<4>}$, orange是$x^{<5>}$, farmer是$x^{<6>}$</li></ul><p>接下来就是通过这个的训练，来生成下面的处理结果</p><ul><li>Robert Lin is an apple farmer (a durian cultivator)</li></ul><p>通过网上上百万千万的词汇和特性关联，我们尝试寻找到durian和apple与orange之间的关联，以及farmer和cultivator之间的关联性。transfer learning</p><h3 id="Transfer-learning-and-word-embeddings"><a href="#Transfer-learning-and-word-embeddings" class="headerlink" title="Transfer learning and word embeddings"></a>Transfer learning and word embeddings</h3><ol><li>从大量词汇文集中（1-100B words）学习word embeddings；当然也可以从线上下载一些被pre-trained embedding</li><li>把这些embedding，通过使用一个相对小的训练集，迁移到新的任务中（比如100k的词汇），在这里我们就可以使用一个小得多的特征向量（比如300个，而不是10000个）</li><li>可选项：通过新的数据，持续调整（finetune）word embeddings，来改进模型</li></ol><p>个人觉得，这个其实很容易理解，我们每个人都在学很多的基础知识，然后因为各种不同的场景，我们需要学习一些上下文。比如同样一个词，在军事领域和民用领域就不一样。这个在Wikipedia里查词的时候非常常见。尤其是缩写</p><p>Andrew在这之后介绍了，face encoding（DeepFace）和word embedding的雷同之处。两者都是把一个“object”转化成了一系列特征向量，然后进行对比的方法</p><h2 id="Properties-and-word-embeddings"><a href="#Properties-and-word-embeddings" class="headerlink" title="Properties and word embeddings"></a>Properties and word embeddings</h2><p>一个关键词：analogies（类比），这个确实是一种人类很神奇的东西，但这也是NLP应用最重要的东西</p><p>接下来主要描述的是如何让机器理解类比。课程中描述了，一个类比，如果Man到Woman，如何类别出King到Queen。文章使用的方法是</p><p>$ e_{man}-e_{woman} \approx \begin {pmatrix}<br>     -2 \\<br>     0 \\<br>     0 \\<br>     0 \\<br>\end {pmatrix}<br>$ 和 $ e_{king}-e_{quene} \approx \begin {pmatrix}<br>     -2 \\<br>     0 \\<br>     0 \\<br>     0 \\<br>\end {pmatrix}<br>$ 最终我们得到 $ (e_{man}-e_{woman}) \approx (e_{king}-e_{quene})$ 以此来表明类比关系</p><p>这个的总结公式是 </p><script type="math/tex; mode=display">Find word(w): arg max_w sim(e_w, e_{king}-e_{man}+e_{woman})</script><p>进一步数学化这个公式，来解释$ sim(e_w, e_{king}-e_{man}+e_{woman}) $. 常用的解释方法是Cosine similarity.</p><script type="math/tex; mode=display">sim(u,v) = \frac{u^Tv}{||u||_2 ||v||_2}</script><p>用余弦函数来描述sim的数值。根据余弦函数，$cos \phi$ 是一个在$(1，-1)$区间的值。现实中，也有人使用方差来表示$ ||u-v||^2 $</p><p>Some more examples like:</p><ul><li>Man:Woman as Boy:Girl</li><li>Ottawa:Canada as Noirobi:Kenya</li><li>Big:Bigger as Tall:Taller</li><li>Yen:Japan as Ruble:Russia</li></ul><h2 id="Embedding-matrix"><a href="#Embedding-matrix" class="headerlink" title="Embedding matrix"></a>Embedding matrix</h2><p>$ E \cdot O_{6257} = \begin {pmatrix}<br>     0 \\<br>     0 \\<br>     \vdots \\<br>     1 \\<br>     \vdots \\<br>     0 \\<br>     0 \\<br>\end {pmatrix} = e_{6257} = e_{orange}<br>$  这是一个 $(300, 1)$ 的矩阵，来表示Orange这个词对应的embeddings</p><p>in common，总结一下</p><p>$ E \cdot O_j = e_j $ 等于 embedding for word (j)</p><p>因此我们就得到了，对于模型而言，我们的训练目标就是获得这个Embedding Matrix $E$。在Keas里面，事实上使用embedding layer来解决问题，这样更加有效</p><h1 id="Learning-Word-Embeddings-Word2vec-amp-GloVw"><a href="#Learning-Word-Embeddings-Word2vec-amp-GloVw" class="headerlink" title="Learning Word Embeddings: Word2vec &amp; GloVw"></a>Learning Word Embeddings: Word2vec &amp; GloVw</h1><p>好了，进入第二部分，在上一部分，学习了关于embedding，和模型训练目标Embedding Matrix $E$。这个部分就是来讲述如何训练模型$E$</p><h2 id="Learning-Word-Embeddings"><a href="#Learning-Word-Embeddings" class="headerlink" title="Learning Word Embeddings"></a>Learning Word Embeddings</h2><p>按照andew的介绍，现在的算法变得越来越简单。但是为了方便和便于理解，介绍还是从相对复杂的算法开始</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I       want a glass  of   orange ______</span><br><span class="line">4242    9665 1 3852  6163   6257</span><br></pre></td></tr></table></figure><p>I represent as $ O_{4343} \longrightarrow E \longrightarrow e_{4343} $<br>want represent as $ O_{9665} \longrightarrow E \longrightarrow e_{9665} $<br>a represent as $ O_{1} \longrightarrow E \longrightarrow e_{1} $</p><p>$ e_{x} $ is a 300 dimentional embedding vector. fill all e into a neural network and then feed to a softmax into a 10000 output vector. neural network with $w^{[1]}$, $b^{[1]}$; softmax parameters are $w^{[2]}$, $b^{[2]}$. the dimensional of neural network is 6 words times 300 dimentional word, which is a 1800 dimentional network layer. also we can decide a window like “a glass of orange <strong>__</strong>“, which removed “I want”</p><p>接下来文章讲述了不同的context上下文组合方式，列举例子如：</p><p>原句是：I want a glass of orange juice to go along with my cereal</p><ul><li>Last 4 words (a glass of orange <strong>_</strong>)</li><li>4 words on left &amp; right  (a glass of orange <strong>_</strong> to go along with)</li><li>Last 1 word (orange <strong>_</strong>)</li></ul><p>作者表达了不同的应用上下文学习的方法，如果the goal is just to learn word embedding那么，使用后集中简单方法，被认为已经可以很好地学习到了</p><h2 id="Word2Vec算法"><a href="#Word2Vec算法" class="headerlink" title="Word2Vec算法"></a>Word2Vec算法</h2><p>一种跟简单而有效的算法，学习Word Embeddings。先来看一下Skip-grams，依然是刚刚那个句子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I want a glass of orange juice to go along with my cereal.</span><br></pre></td></tr></table></figure><br>这个算法里面，随机的选取一个word作为context word，例如在上面那个句子里面，我们选择orange作为context word。接下来继续在一个window的去区间里面，选择一个target，比如选择了下一个word，那就是juice，选择之前两个的那个word，那就是glass等等。接下来，对于supervise learning模型而言，以context word为准，让系统去学习预测制定的target，不断校正其对应的W和b参数。</p><h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p>Vocab size = 10000k</p><script type="math/tex; mode=display">ContentC("orange") \longrightarrow TargetT("juice")</script><script type="math/tex; mode=display">O_c \longrightarrow E \longrightarrow e_c \longrightarrow softmax \longrightarrow \hat y</script><p>这里的softmax是个相对特殊的公式</p><script type="math/tex; mode=display">softmax = \frac{e^{\theta^T_te_c}}{\sum_{j=1}^{10000} e^{\theta^T_je_c}}</script><p>关于选择context的问题：</p><p>课程中提出，to，the，a，of，for，在英语中是非常常见的词语。因此在随机选择时，会把这些常见词和非常见词分开来，以保证非常见词语，比如apple，orange甚至durian能够被（sampling）采样到。</p><h2 id="Negative-Sampling算法"><a href="#Negative-Sampling算法" class="headerlink" title="Negative Sampling算法"></a>Negative Sampling算法</h2><p>定义一种新形式的supervised learning problem，举例原句不变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I want a glass of orange juice to go along with my cereal.</span><br></pre></td></tr></table></figure><br>接下来会有两组不同的pair</p><script type="math/tex; mode=display">\begin {matrix}     context & word & target \\     orange & juice & 1 \\     orange & king & 0 \\     orange & book & 0 \\     orange & the & 0 \\     orange & of & 0 \\\end {matrix}</script><p>第一排，是和之前的算法一样，通过在句子中进行选取，得到的一组pair，我们把这样的pair对应target值写成1，然后把从vacabulary里面随机选择出来的word，比如king，对应的target数值叫做0。事实上，所有随机从vacabulary里面抽取的数值，都会视为0</p><h3 id="Model-1"><a href="#Model-1" class="headerlink" title="Model"></a>Model</h3><script type="math/tex; mode=display">p(y=1 | c,t) = \sigma (\theta^T_t e_t)</script><script type="math/tex; mode=display">o_{6357} \longrightarrow E \longrightarrow e_{6357}</script><p>接下来的意思是，$ e_{6357} $ 和 在vacabulary里面的10000个词汇进行配对，生成10000个0和1的target(logistic classification). 在实际应用中，每一次迭代选择也不是10000个，而是k个，k一般在5-20之间。每次迭代只需要计算k+1个logistic classification就可以了</p><p>同样的问题，如何选择negtive example，作者介绍了一种方法，用来做sampling，不过好像就是一种在词汇出现频次的基础上人为调整了数值的方法而已</p><h2 id="GloVe算法"><a href="#GloVe算法" class="headerlink" title="GloVe算法"></a>GloVe算法</h2><p>这是本课程介绍learning word embeddings的最后一种算法。这个算法可能并没有Word2Vec和Skip-gram那么普遍使用，但是因为他更简单，所以也值得被介绍一下。</p><p>GloVe算法的全称是全向量词语表达(Global Vector for word representation)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I want a glass of orange juice to go along with my cereal.</span><br></pre></td></tr></table></figure><br>之前我们用的c和t来表示配对关系。在GloVe算法里有如下的公式</p><script type="math/tex; mode=display">X_{ij} = #times</script><p>$ X_{ij} $ 可以表示为i显示在j的上下文中出现的次数。因此类比一下，这里的i可以相当于Word2Vec里面的target(t), j是context(c)</p><h3 id="Model-2"><a href="#Model-2" class="headerlink" title="Model"></a>Model</h3><p>具体算法暂时不陈述了，因为没太听懂，其实还是使用了上面算法里面的那个 $ \theta^T_te_c $. 我觉得我在这个地方的确没太明白他代表了什么。需要在复习的时候重新看一下。眼下先把考试过了再说</p><h1 id="Applications-using-Word-Embeddings"><a href="#Applications-using-Word-Embeddings" class="headerlink" title="Applications using Word Embeddings"></a>Applications using Word Embeddings</h1><p>最后一部分了，主要讲述对于Word Embeddings的应用方法。</p><h2 id="Sentiment-Classification"><a href="#Sentiment-Classification" class="headerlink" title="Sentiment Classification"></a>Sentiment Classification</h2><p>开始没懂什么意思，看图一下子就明白了<br><img src="/2018/09/08/deep-learning-sequence-models-w2/sentiment.png" class="" title="[sentiment classification]"></p><h3 id="Simple-sentiment-classification-model"><a href="#Simple-sentiment-classification-model" class="headerlink" title="Simple sentiment classification model"></a>Simple sentiment classification model</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The    desert   is   excellent    # goto 4 stars</span><br><span class="line">8928    2468   4694    3180</span><br></pre></td></tr></table></figure><script type="math/tex; mode=display">\begin {matrix}     The & o_{8928} & \longrightarrow & E & \longrightarrow & e_{8928} \\     desert & o_{2468} & \longrightarrow & E & \longrightarrow & e_{2468} \\     is & o_{4694} & \longrightarrow & E & \longrightarrow & e_{4694} \\     excellent & o_{3180} & \longrightarrow & E & \longrightarrow & e_{3180} \\\end {matrix}</script><p>假设每一个是300个dimentional embeddings. 把这四个词放在一起，就是一个由1200个dimention组成的neural network layer。err，这里好像不太一样，这里用的是sum或avg这300个特征向量，然后把这个扔给softmax，得到1-5的一个y</p><h3 id="RNN-for-sentiment-classification"><a href="#RNN-for-sentiment-classification" class="headerlink" title="RNN for sentiment classification"></a>RNN for sentiment classification</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Completely lacking in good taste, good service and good ambience    # goto 1 star</span><br></pre></td></tr></table></figure><p>对于这样一句话，刚刚的算法表示很无奈。这里面虽然出现了许多的good，但是并不是说好的，而是lacking in。所以如果完全的sum或者avg很难实现 goto 1 star的效果。</p><p>使用Many-to-one RNN Achitecture<br><img src="/2018/09/08/deep-learning-sequence-models-w2/rnn.png" class="" title="[RNN for sentiment classification]"></p><p>这里说明使用word embeddings的方法$ e_{4966} $我们训练的是结果可以有更好的类比性，比如lacking和obsent，而不再只是拘泥于一个固定词汇的训练。这让语言有了更强的灵活性。</p><h2 id="Debiasing-Word-Embeddings"><a href="#Debiasing-Word-Embeddings" class="headerlink" title="Debiasing Word Embeddings"></a>Debiasing Word Embeddings</h2><p>去除偏差，这里指的不是deeplearning里面的bias，与embeddings相关的预测结果的偏差问题。比如</p><ul><li>Man:Woman as King:Queen 这个是对的</li><li>Man: Programmer as Woman:Homemaker 这个就不对了</li><li>Father:Doctor as Mother:Nurse 这个也不合适</li></ul><p>源自于我们生活的显示，基于性别，信仰，年龄，性别等造成了许多偏差认知，这在人类社会也广泛存在。但是我们并不希望计算机也有这种所谓偏差，甚至“歧视”出现。所以有了本文中所描述的关于如何去除偏差的方法。</p><h2 id="Addressing-bias-in-Word-Embeddings"><a href="#Addressing-bias-in-Word-Embeddings" class="headerlink" title="Addressing bias in Word Embeddings"></a>Addressing bias in Word Embeddings</h2><p>因为内容感觉和我差的有点远，知道就好，所以这里做个特别简要的描述</p><ol><li>Identifiy bias direction（比如性别，年龄）</li><li>Neutralize: For every word that is not definitional, project to ge rid of bias</li><li>Equalize pairs</li></ol><p>有篇论文，[Bolukbasi et. al., 2016. Man is to computer programmmer as woman is homemaker?]</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;第二周啦，这一周开始进入更深入的顺序模型的训练，这一周分为了三个部分，一共10课。&lt;/p&gt;
+&lt;h1 id=&quot;Introduct-to-word-embedding&quot;&gt;&lt;a href=&quot;#Introduct-to-word-embedding&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>物体检测</title>
+    <link href="http://wangzhe.github.io/2018/08/12/object-detection/"/>
+    <id>http://wangzhe.github.io/2018/08/12/object-detection/</id>
+    <published>2018-08-12T12:58:16.000Z</published>
+    <updated>2021-01-04T05:38:30.326Z</updated>
+    
+    <content type="html"><![CDATA[<p>终于有点时间，可以写继续写notes，这样可以让整个学习过程的印象更加深入。</p><p>本节课为CNN的第三周，总的来说就是讲述如何通过pre-train的物体模型，识别整张照片上的物体。和以往前两周的课程一样，围绕着若干篇论文算法展开 Detecting Algorithm</p><ul><li>Object Localization</li><li>Landmark Detection, which describe less in the class about how to detect the interal features of an object by key landmarks</li><li>Object Detection, talking about how to detect an object with bounding box</li><li>Sliding Window</li></ul><p>这里主要重点回顾YOLO（you only look once）。这是本课重点阐述的内容，video有两个，作业也是直接就是讲述YOLO，顺带一点其他算法。</p><img src="/2018/08/12/object-detection/startyolo.png" class="" title="[Encoding architecture for YOLO]"><ul><li>起点，将原图划分成19x19的区块 （方便简化计算）</li><li>Input image (608, 608, 3)</li><li>The input image goes through a CNN, resulting in a (19,19,5,85) dimensional output.</li><li>After flattening the last two dimensions, the output is a volume of shape (19, 19, 425):<ul><li>Each cell in a 19x19 grid over the input image gives 425 numbers.</li><li>425 = 5 x 85 because each cell contains predictions for 5 boxes, corresponding to 5 anchor boxes, as seen in lecture.</li><li>85 = 5 + 80 where 5 is because  (pc,bx,by,bh,bw)(pc,bx,by,bh,bw)  has 5 numbers, and and 80 is the number of classes we’d like to detect</li></ul></li><li>You then select only few boxes based on:<ul><li>Score-thresholding: throw away boxes that have detected a class with a score less than the threshold</li><li>Non-max suppression: Compute the Intersection over Union and avoid selecting overlapping boxes</li></ul></li><li>This gives you YOLO’s final output.</li></ul><p>What you should remember:</p><ul><li>YOLO is a state-of-the-art object detection model that is fast and accurate</li><li>It runs an input image through a CNN which outputs a 19x19x5x85 dimensional volume.</li><li>The encoding can be seen as a grid where each of the 19x19 cells contains information about 5 boxes.</li><li>You filter through all the boxes using non-max suppression. Specifically:<ul><li>Score thresholding on the probability of detecting a class to keep only accurate (high probability) boxes</li><li>Intersection over Union (IoU) thresholding to eliminate overlapping boxes</li></ul></li><li>Because training a YOLO model from randomly initialized weights is non-trivial and requires a large dataset as well as lot of computation, we used previously trained model parameters in this exercise. If you wish, you can also try fine-tuning the YOLO model with your own dataset, though this would be a fairly non-trivial exercise.</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;终于有点时间，可以写继续写notes，这样可以让整个学习过程的印象更加深入。&lt;/p&gt;
+&lt;p&gt;本节课为CNN的第三周，总的来说就是讲述如何通过pre-train的物体模型，识别整张照片上的物体。和以往前两周的课程一样，围绕着若干篇论文算法展开 Detecting Algori
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>对于tensorflow基本用法的一些记录</title>
+    <link href="http://wangzhe.github.io/2018/08/12/tensorflow-notes/"/>
+    <id>http://wangzhe.github.io/2018/08/12/tensorflow-notes/</id>
+    <published>2018-08-12T12:11:27.000Z</published>
+    <updated>2021-01-04T05:38:30.373Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近已经学到了机器学习的第四课CNN的部分。这个部分里面还是用到了一些Tensorflow的基本内容。这里把一些简单的方法做个总结，以做备忘，也许之后用得上。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Use tf.image.non_max_suppression() to get the list of indices corresponding to boxes you keep</span></span><br><span class="line">   nms_indices = tf.image.non_max_suppression(boxes, scores, max_boxes, iou_threshold)</span><br></pre></td></tr></table></figure><p>对于TF的Run始终觉得需要系统的理解一下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run the session with the correct tensors and choose the correct placeholders in the feed_dict.</span></span><br><span class="line">    <span class="comment"># You&#x27;ll need to use feed_dict=&#123;yolo_model.input: ... , K.learning_phase(): 0&#125;)</span></span><br><span class="line">    out_scores, out_boxes, out_classes = sess.run([scores, boxes, classes],</span><br><span class="line">                                                  feed_dict=&#123;yolo_model.<span class="built_in">input</span>: image_data, K.learning_phase(): <span class="number">0</span>&#125;)</span><br></pre></td></tr></table></figure></p><p>这里除了TensorFlow还得多提一个Keras，一个构建在TF上面更加丰富函数的第三方包</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keras.backend.argmax(x, axis=-<span class="number">1</span>)</span><br><span class="line">keras.backend.<span class="built_in">max</span>(x, axis=<span class="literal">None</span>, keepdims=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure><p>np也有一些特殊的方法，比较不常见和不容易理解，下面np.eye就是把一个Y变成C个为一组的one-hot<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convert_to_one_hot</span>(<span class="params">Y, C</span>):</span></span><br><span class="line">    Y = np.eye(C)[Y.reshape(-<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">return</span> Y</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近已经学到了机器学习的第四课CNN的部分。这个部分里面还是用到了一些Tensorflow的基本内容。这里把一些简单的方法做个总结，以做备忘，也许之后用得上。&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习第二课第二周算法优化</title>
+    <link href="http://wangzhe.github.io/2018/06/01/deeplearning-course2-2-1/"/>
+    <id>http://wangzhe.github.io/2018/06/01/deeplearning-course2-2-1/</id>
+    <published>2018-06-01T11:24:02.000Z</published>
+    <updated>2021-01-04T05:38:30.290Z</updated>
+    
+    <content type="html"><![CDATA[<p>在算法优化这一周的课程里，大纲是这样的</p><ul><li>Mini-batch gradient descent</li><li>Understanding mini-batch gradient</li><li>Exponentially weighted averages</li><li>Understanding exponentially weighted averages</li><li>Bias correction in exponentially weighted averages</li><li>Gradient descent with momentum</li><li>RMSprop</li><li>Adam optimization algorithm</li><li>Learning rate decay</li><li>The problem of local optima</li></ul><p>这一周的课程非常连贯，10节课程一气呵成没有任何分段。我们来看一下他们的内在逻辑。先看几个图：</p><img src="/2018/06/01/deeplearning-course2-2-1/gradient_descent.png" class="" title="[Gradient Descent]"><p>在一个标准的Gradient Descent中，下降是非常直接而且直线的，很完美。然而根据本章的描述，这种完美在大数据的情况下会出现一定的问题。那就是每一次迭代update parameter的过程，因为涉及到的样本的数量过于庞大，导致需要做完所有的样本才能实现一次下降。这导致计算效率过低。如何才能提高计算效率呢，那就是争取早一点出结果，让后面的计算早一点站在“前人”的肩膀上工作。于是有了基于mini-batch的算法。</p><img src="/2018/06/01/deeplearning-course2-2-1/mini_batch_gradient_descent.png" class="" title="[Mini-batch Gradient Descent]"><p>这种算法的好处是，虽有下降不再是那么完美的直线，但是它能让数据计算快速产生结果，让参数的更新加快、</p><p>在之后的学习中，Andew引入了Exponentially weighted averages概念。说白了，因为mini-batch的引入导致了比较剧烈的震荡，这会让下降的偏移度增加，导致下降到类似cost function指标需要的迭代明显增加了，于是引入了加权平均的概念，帮助缩小振幅，这让mini-batch算法既保留了快速应用前人结果进行下降的优势，又让下降的震荡幅度缩小。随后的momentum和RMSprop以及合体的Adam Optimization，大体就是以上逻辑的算法实现。</p><p>最后，章节描述了梯级下降中Learning rate的调优方法以及解释了局部最优困扰为什么是不存在的。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在算法优化这一周的课程里，大纲是这样的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mini-batch gradient descent&lt;/li&gt;
+&lt;li&gt;Understanding mini-batch gradient&lt;/li&gt;
+&lt;li&gt;Exponentially weighted a
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习第四周神经网络</title>
+    <link href="http://wangzhe.github.io/2018/05/18/deeplearning-4-1/"/>
+    <id>http://wangzhe.github.io/2018/05/18/deeplearning-4-1/</id>
+    <published>2018-05-18T04:46:46.000Z</published>
+    <updated>2021-01-04T05:38:30.290Z</updated>
+    
+    <content type="html"><![CDATA[<p>上一周（章）主要学习的是一个Hidden Layer的情况下，如何进行模型搭建。这一周开始进入多个Layer的学习。同样的首先上大纲：</p><ul><li>L层深的神经网络 (Deep L-layer neural network)</li><li>深度网络中的向前扩展 (Forward Propagation in Deep Network)</li><li>正确获取和验证行列式 (Getting your matrix dimensions right)</li><li>深度代表什么 (Why deep representations)</li><li>组建深度神经网络的模块 (Building blocks of deep neural networks)</li><li>向前和向后扩展啊 (Forward and Backward Propagation)</li><li>参数和高度参数 (Parameters vs Hyperparameters)</li><li>计算机神经网络与大脑神经网络 (What does this have to do with the brain)</li></ul><p>一个基本的Linear到sigmoid的公式<br>$A^{[L]} = \sigma(Z^{[L]}) = \sigma(W^{[L]} A^{[L-1]} + b^{[L]})$</p><p>In general, initializing all the weights to zero results in the network failing to break symmetry. This means that every neuron in each layer will learn the same thing, and you might as well be training a neural network with  n[l]=1n[l]=1  for every layer, and the network is no more powerful than a linear classifier such as logistic regression.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;上一周（章）主要学习的是一个Hidden Layer的情况下，如何进行模型搭建。这一周开始进入多个Layer的学习。同样的首先上大纲：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L层深的神经网络 (Deep L-layer neural network)&lt;/li&gt;
+&lt;li&gt;深度网络中的向前
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习第三周神经网络</title>
+    <link href="http://wangzhe.github.io/2018/05/04/deeplearning-3-1/"/>
+    <id>http://wangzhe.github.io/2018/05/04/deeplearning-3-1/</id>
+    <published>2018-05-04T07:45:00.000Z</published>
+    <updated>2021-01-04T05:38:30.282Z</updated>
+    
+    <content type="html"><![CDATA[<p>上一周（章）主要学习的是如何构建模型，梯级下降和使用numpy进行向量计算。这一周开始进入神经网络的学习。同样的首先上大纲：</p><ul><li>神经网络全景图（Neural Networks Overview）</li><li>神经网络表达（Neural Network Representation）</li><li>计算神经网络输出（Computing a Neural Network’s Output）</li><li>向量化（Vectorizing across multiple examples）</li><li>向量实现（Expanation for Vectorized Implmetation）</li><li>激励函数（Activation functions）</li><li>为什么需要非线性模型（Why do you need non-linear ）</li></ul><p>这一周的学习说简单也简单，说难也难。我们来先说简单的：</p><p>所谓简单，指的是这一周的课程主要是在上一周Logistics Regression的基础上加入了一个Hidden Layer的概念，即将所有的内容从两层输入输出结构，变成了三层，因此引入了$n^0, n^1, n^2$的三个层进行计算。这样做的好处是可以将模型变得拟合度更高，进一步提高Accuracy。而所有在Logistics Regression中用到的公式和方法基本沿用，所以数学本质上并不难，只是增加一个维度。</p><p>说他难呢，基本上就是因为增加了一个维度，所以derivative的所有计算方面，确实需要更多的东西了。当然这里也有一些小改变，那就是引入了activation function的概念，将原来那个在逻辑回归中谈到的Sigmoid Functoin，作为一种activation function；从而进一步引入其他的activation function，比如“$tanh$”</p><p>把这一周的内容集中在使用场景方面的总结：<br><img src="/2018/05/04/deeplearning-3-1/hl3_4.png" class="" title="[Hidden Layer 3]"><br>对于3到4层Hidden Layer的时候</p><img src="/2018/05/04/deeplearning-3-1/hl5_20.png" class="" title="[Hidden Layer 5]"><p>对于5到20层Hidden Layer的时候</p><img src="/2018/05/04/deeplearning-3-1/hl50.png" class="" title="[Hidden Layer 50]"><p>对于50层Hidden Layer的时候</p><p>可以明显的看出当Hidden Layer提升了以后，预测拟合度就更高了，这就是神经网络带来的巨大意义</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;上一周（章）主要学习的是如何构建模型，梯级下降和使用numpy进行向量计算。这一周开始进入神经网络的学习。同样的首先上大纲：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;神经网络全景图（Neural Networks Overview）&lt;/li&gt;
+&lt;li&gt;神经网络表达（Neural Netw
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习第二周课程（下）</title>
+    <link href="http://wangzhe.github.io/2018/04/25/deep-learning-ai-2-1/"/>
+    <id>http://wangzhe.github.io/2018/04/25/deep-learning-ai-2-1/</id>
+    <published>2018-04-25T13:22:38.000Z</published>
+    <updated>2021-01-04T05:38:30.246Z</updated>
+    
+    <content type="html"><![CDATA[<p>上一章节提到的梯度下降（Gradient Decent）过程需要多层嵌套For-Loop循环。这种循环非常耗费计算资源。为了降低计算资源消耗，提升计算效率，本章节引入向量计算（Vectorization）的概念。本章的主要内容也是围绕着向量计算和使用Python中的numpy库来实现限量计算的过程。</p><p>本章课程内容目录（与本文无关）：</p><ul><li>向量计算（Vectorization）</li><li>使用向量计算逻辑回归（Vectorizing Logistic Regression）</li><li>使用向量计算逻辑回归中的梯度下降（Vectorizing Logistic Regression’s Gradient）</li><li>Python的广播（Broadcasting in Python）</li><li>Python/numpy向量的介绍</li><li>逻辑回归里的Cost Function解释</li></ul><h3 id="安装一下jupyter"><a href="#安装一下jupyter" class="headerlink" title="安装一下jupyter"></a>安装一下jupyter</h3><p>本章开始需要进行练习，Python是必须要装的，强烈建议Python3，课程使用Jupyter，这里也提示了一下安装，不过后来发现好像用处也不大。这个工具主要是可以把Python的程序脚本和文字进行混排，方便与演示。如果从来没有接触过Python的话，可以考虑用一下，毕竟这个是课程也在用的环境。如果有一点基础的话，Python有自己的IDE工具，PyCharm，很好用直接下载就行。</p><p>安装Python&amp;Jupyter。因为一直写Python所以这个一直有没什么大问题，但是Jupyt这个倒是头一次见，好像是一种基于Browser的IDE，挺有意思的。具体可以访问以下几个地址：</p><ul><li>安装Python，我一直用Brew install就好了</li><li>安装Pip，不过因为买了这个新电脑以后就没怎么写代码，所以竟然没有Pip。这个倒也不难，随便上网搜索“install pip”，两步简单操作就搞定了</li><li>安装Jupyter，没有按照web上说的用pkg包的方式，只是担心会安装额外的Python3.所以选择了通过pip命令行形式进行安装。</li></ul><p>OK，三个安装结束，键入下面命令，直接启动Browser的界面</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure><p>下面是标准编辑页面（竟然Hexo的asset_img可以用，好激动，但是asset_link确实不行，估计是因为marked里面escape的问题）</p><img src="/2018/04/25/deep-learning-ai-2-1/jupyter.png" class="" title="[jupyter starter]"><p>首界面很简单，就是系统文件夹。右上角有新建功能，可以新建一个可运行的python文件。在课程中，Andrew主要介绍了 np.dot(i,j) 在程序中对比for-loop，超过300倍的优势。笔者后来自己查了一下原因，看来主要还是回到了Python作为解释性语言本身的问题。为了对初学者友好，Python作为解释性语言牺牲了许多性能上的东西。而np.dot之所以much faster，主要原因是一句Python语言，对应的是用C写成numpy库，这个库会将输入进来的数据进行编译，形成编译后的语言进行调用。这种方法，远好于Python一个字符一个字符的进行读取，并根据语法分析器进行描述，占据了大量的时间。当然其他原因也有许多，比如借助编译可以使用CPU或者GPU的SIMD指令集（Simple instuction multiple data）进行并行计算，大大提升效率。根据文章将，numpy的效率可以是原生python的2万倍。而据说选用cpython会达到20万倍之多。具体原理可以参看知乎上的这篇文章：</p><p><a href="https://www.zhihu.com/question/67652386">python的numpy向量化语句为什么会比for快？</a></p><h3 id="建立神经网络的主要过程"><a href="#建立神经网络的主要过程" class="headerlink" title="建立神经网络的主要过程"></a>建立神经网络的主要过程</h3><h4 id="先来回顾一下基础算法："><a href="#先来回顾一下基础算法：" class="headerlink" title="先来回顾一下基础算法："></a>先来回顾一下基础算法：</h4><p>For one example $x^{(i)}$:</p><script type="math/tex; mode=display">z^{(i)} = w^T x^{(i)} + b \tag{1}</script><script type="math/tex; mode=display">\hat{y}^{(i)} = a^{(i)} = sigmoid(z^{(i)})\tag{2}</script><script type="math/tex; mode=display">\mathcal{L}(a^{(i)}, y^{(i)}) =  - y^{(i)}  \log(a^{(i)}) - (1-y^{(i)} )  \log(1-a^{(i)})\tag{3}</script><p>The cost is then computed by summing over all training examples:</p><script type="math/tex; mode=display">J = \frac{1}{m} \sum_{i=1}^m \mathcal{L}(a^{(i)}, y^{(i)})\tag{4}</script><h4 id="建模过程"><a href="#建模过程" class="headerlink" title="建模过程"></a>建模过程</h4><ul><li>定义模型结构（例如输入feature的数量）</li><li>初始化模型参数</li><li>升级参数（Gradient Descent）</li></ul><p>讲上述三个部分逐个建立并整合进一个叫做model()的 $function$ 里。几个简单的 $function$ 会包含的 $sigmoid$ , initialize_with_zeros() , propagate() </p><p>特别说明，关于 propagate() 的算法回顾如下：<br>Forward Propagation:</p><ul><li>You get X</li><li>You compute $A = \sigma(w^T X + b) = (a^{(1)}, a^{(2)}, …, a^{(m-1)}, a^{(m)})$</li><li>You calculate the cost function: $J = -\frac{1}{m}\sum_{i=1}^{m}y^{(i)}\log(a^{(i)})+(1-y^{(i)})\log(1-a^{(i)})$</li></ul><p>Here are the two formulas you will be using: </p><script type="math/tex; mode=display">\frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T\tag{7}</script><script type="math/tex; mode=display">\frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)})\tag{8}</script><p>下面的Code里面用到了一些“内积”、“外积”、“General Dot”的概念。在课程中有相关的联系材料。具体参见这个解释可能会更加实在</p><p><a href="https://hk.saowen.com/a/c2cbbdb3dc43d41a717517faca384dc6228a9d2cbab31b59eca3f468c59e33b4">使用numpy进行行列式乘积的计算</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">m = X.shape[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># FORWARD PROPAGATION (FROM X TO COST)</span></span><br><span class="line"><span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">A = sigmoid(np.dot(X.T, w) + b).reshape(<span class="number">1</span>, -<span class="number">1</span>) <span class="comment"># compute activation</span></span><br><span class="line">cost = - (<span class="number">1</span>/m) * np.<span class="built_in">sum</span>(Y*np.log(A) + (<span class="number">1</span>-Y) * np.log(<span class="number">1</span>-A))  <span class="comment"># compute cost</span></span><br><span class="line"><span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># BACKWARD PROPAGATION (TO FIND GRAD)</span></span><br><span class="line"><span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">dw = <span class="number">1</span>/m * np.dot(X, (A-Y).T)</span><br><span class="line">db = <span class="number">1</span>/m * np.<span class="built_in">sum</span>(A-Y)</span><br><span class="line"><span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span>(dw.shape == w.shape)</span><br><span class="line"><span class="keyword">assert</span>(db.dtype == <span class="built_in">float</span>)</span><br><span class="line">cost = np.squeeze(cost)</span><br><span class="line"><span class="keyword">assert</span>(cost.shape == ())</span><br><span class="line"></span><br><span class="line">grads = &#123;<span class="string">&quot;dw&quot;</span>: dw,</span><br><span class="line">         <span class="string">&quot;db&quot;</span>: db&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> grads, cost</span><br></pre></td></tr></table></figure><p>总结一下，这里建立的初始模型包括<br>$sigmoid$, $initialize$, $propagate$</p><h4 id="优化模型参数（Optimization）"><a href="#优化模型参数（Optimization）" class="headerlink" title="优化模型参数（Optimization）"></a>优化模型参数（Optimization）</h4><ul><li>初始化参数</li><li>计算cost function </li><li>通过梯级下降的方式进行参数更新并计算w和b的结果()</li></ul><p>最近基本的梯级下降依据如下：</p><script type="math/tex; mode=display">\theta = \theta - \alpha \text{ } d\theta \tag{9}</script><p>where $\alpha$ is the learning rate</p><img src="/2018/04/25/deep-learning-ai-2-1/closing.jpg" class="" title="[gradient descent]"><p>总结一下，这里建立的初始模型包括<br>$initialize$, $optimize$, $predict$</p><h4 id="整合模型"><a href="#整合模型" class="headerlink" title="整合模型"></a>整合模型</h4><p>合并模型建立$model$，使用plot建立拟合线</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;上一章节提到的梯度下降（Gradient Decent）过程需要多层嵌套For-Loop循环。这种循环非常耗费计算资源。为了降低计算资源消耗，提升计算效率，本章节引入向量计算（Vectorization）的概念。本章的主要内容也是围绕着向量计算和使用Python中的nump
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习第二周课程（上）</title>
+    <link href="http://wangzhe.github.io/2018/04/25/deep-learning-ai-2/"/>
+    <id>http://wangzhe.github.io/2018/04/25/deep-learning-ai-2/</id>
+    <published>2018-04-25T13:16:40.000Z</published>
+    <updated>2021-01-04T05:38:30.270Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一个比较数学化的一章。本章课程主要分为两部分（数学基础 + Python编程实践）。</p><p>让我们先来看看第一部分。该部分内容重点是基于神经网络的一个基础数学模型，其中包括：</p><ul><li>二元分类（Binary Classification）</li><li>逻辑回归（Logistic Regression）</li><li>逻辑回归中的Cost Function（Logistic Regression Cost Function）</li><li>梯度下降（Gradient Decent）</li><li>导数（Derivatives / Derivatives Examples）</li><li>计算图（Computation Graph）</li><li>计算图求导（Derivatives with a Computation Graph）</li><li>梯度下架求逻辑回顾（Logistic Regression Gradient Decent）</li><li>对m样本的梯度下降（Gradient Decent on m Examples）</li></ul><p>下面我们分部分进行一些描述：</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是一个比较数学化的一章。本章课程主要分为两部分（数学基础 + Python编程实践）。&lt;/p&gt;
+&lt;p&gt;让我们先来看看第一部分。该部分内容重点是基于神经网络的一个基础数学模型，其中包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;二元分类（Binary Classification）&lt;/l
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习概论</title>
+    <link href="http://wangzhe.github.io/2018/04/24/deep-learning-ai-1/"/>
+    <id>http://wangzhe.github.io/2018/04/24/deep-learning-ai-1/</id>
+    <published>2018-04-24T13:43:20.000Z</published>
+    <updated>2021-01-04T05:38:30.240Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Andy Ng所讲的深度学习课程里，第一周的课相对比较简单，基本上以通识介绍为主。课程分为了一下几个部分：</p><ul><li>什么是神经网络</li><li>监督学习的神经网络是什么</li><li>为什么深度学习开始受到重视</li><li>三巨头中的Geoffrey Hinton访谈</li></ul><h4 id="第一部分，什么是神经网络（Neural-Network"><a href="#第一部分，什么是神经网络（Neural-Network" class="headerlink" title="第一部分，什么是神经网络（Neural Network)"></a>第一部分，什么是神经网络（Neural Network)</h4><p>看一下关于房价是如何预测的，以及什么是Hidden Unit<br><img src="/2018/04/24/deep-learning-ai-1/nerual_network.png" class="" title="[nerual network]"></p><h4 id="第二部分，监督学习的神经网络是什么（Supervised-Learning"><a href="#第二部分，监督学习的神经网络是什么（Supervised-Learning" class="headerlink" title="第二部分，监督学习的神经网络是什么（Supervised Learning)"></a>第二部分，监督学习的神经网络是什么（Supervised Learning)</h4><p>在神经网络中的监督学习是这个样子的<br><img src="/2018/04/24/deep-learning-ai-1/supervised_learning.png" class="" title="[supervised learning]"></p><p>针对与结构化和非结构化，还是有一定区别的<br><img src="/2018/04/24/deep-learning-ai-1/stuctured_unstructured.png" class="" title="[stuctured unstructured]"></p><h4 id="第三部分，为什么深度学习开始受到重视（Why-Neural-Network-take-off"><a href="#第三部分，为什么深度学习开始受到重视（Why-Neural-Network-take-off" class="headerlink" title="第三部分，为什么深度学习开始受到重视（Why Neural Network take-off)"></a>第三部分，为什么深度学习开始受到重视（Why Neural Network take-off)</h4><p>一张图片说明一切<br><img src="/2018/04/24/deep-learning-ai-1/why_takeoff.png" class="" title="[why takeoff]"></p><h4 id="第四部分，Geoffrey-Hinton访谈"><a href="#第四部分，Geoffrey-Hinton访谈" class="headerlink" title="第四部分，Geoffrey Hinton访谈"></a>第四部分，Geoffrey Hinton访谈</h4><p>这部分是一个访谈，不算是学习内容。讲述了Hinton个人的成长，学习等等吧。两个有意思的Highlight</p><ul><li>Hinton本人大学学生物物理，研究生学习心理学，博士开始研修AI，这也是为什么他在神经网络能做出重大贡献的主要原因吧</li><li>另一个关键是对GAN的学习，生成对抗网络方面的了解。如何在unsupervised的情况下进行学习</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在Andy Ng所讲的深度学习课程里，第一周的课相对比较简单，基本上以通识介绍为主。课程分为了一下几个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;什么是神经网络&lt;/li&gt;
+&lt;li&gt;监督学习的神经网络是什么&lt;/li&gt;
+&lt;li&gt;为什么深度学习开始受到重视&lt;/li&gt;
+&lt;li&gt;三巨头中的Ge
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于如何用Hexo书写数学符号(深度学习前哨贴)</title>
+    <link href="http://wangzhe.github.io/2018/04/23/deep-learning-study/"/>
+    <id>http://wangzhe.github.io/2018/04/23/deep-learning-study/</id>
+    <published>2018-04-23T13:36:17.000Z</published>
+    <updated>2021-01-04T05:38:30.282Z</updated>
+    
+    <content type="html"><![CDATA[<p>翻了几个帖子，总算是搞定了。最主要的帖子是以下两个</p><p><a href="https://blog.csdn.net/sherlockzoom/article/details/43835613">在hexo博客中使用Mathjax写LaTex数学公式”</a><br><a href="https://blog.csdn.net/u014630987/article/details/78670258">如何在 hexo 中支持 Mathjax？</a><br><a href="https://blog.csdn.net/Mage_EE/article/details/75317083">描述在 hexo 中使用矩阵的方法</a></p><p>另外，按照Hexo文档上写的，理论上Hexo-math应该已经支持MathJax了，但是似乎用起来有点问题，不知道是hexo文档的错，还是我自己那个地方配置有错，以后找时间在研究吧。地址如下：<br><a href="https://github.com/hexojs/hexo-math">https://github.com/hexojs/hexo-math</a></p><p>还有最后要提醒一点，本次修改以后，不能用Hexo原生提供的assert方式来写作了，需要使用纯markdown模式。目前感觉良好，不知道后续会不会有什么坑。目前看这个改变不会影响之前的东西。</p><p><a href="https://help.ghost.org/article/4-markdown-guide">markdown的书写格式</a></p><p>这是一个公式  $E=mc^2$<br>Simple inline $a = b + c$.</p><script type="math/tex; mode=display">\sum_{i=1}^n a_i=0</script><script type="math/tex; mode=display">f(x_1,x_2,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2</script><p>大功告成，接下来需要学习MathJax了<br><a href="https://blog.csdn.net/ethmery/article/details/50670297">MathJax一些说明</a><br><a href="https://docs.mathjax.org/en/latest/tex.html">原文文档</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;翻了几个帖子，总算是搞定了。最主要的帖子是以下两个&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/sherlockzoom/article/details/43835613&quot;&gt;在hexo博客中使用Mathjax写LaTex数学公式”&lt;/a&gt;&lt;b
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="deeplearning" scheme="http://wangzhe.github.io/tags/deeplearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个把html生成文件转成ppt的Demo</title>
+    <link href="http://wangzhe.github.io/2018/04/16/html2ppt/"/>
+    <id>http://wangzhe.github.io/2018/04/16/html2ppt/</id>
+    <published>2018-04-16T10:10:24.000Z</published>
+    <updated>2021-01-04T05:38:30.317Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近需要搞点小东西，需要转换数据成为ppt，老样子github上找了一下。还是比较简单的<br><a href="https://github.com/gitbrent/PptxGenJS">https://github.com/gitbrent/PptxGenJS</a></p><p>内容详实，联系了一下，值得参考。把内容copy出来，变成html即可<br><a href="test.h">Demo Link</a>    </p><p>注意，这里好像有个问题是关于调用pptxgen.bundle.js，这个貌似要翻墙才可以，后续有空把js文件补进去</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近需要搞点小东西，需要转换数据成为ppt，老样子github上找了一下。还是比较简单的&lt;br&gt;&lt;a href=&quot;https://github.com/gitbrent/PptxGenJS&quot;&gt;https://github.com/gitbrent/PptxGenJS&lt;/a&gt;
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CTO工作总结（15-16年度）--学习篇</title>
+    <link href="http://wangzhe.github.io/2016/10/07/cto-study-summary-1516/"/>
+    <id>http://wangzhe.github.io/2016/10/07/cto-study-summary-1516/</id>
+    <published>2016-10-07T02:22:41.000Z</published>
+    <updated>2021-01-04T05:38:30.232Z</updated>
+    
+    <content type="html"><![CDATA[<p>上回留了个伏笔说：“做业务的技术原则：远景－目标－指标－做事；对应工作方法：监控－报警－处理－优化”</p><p>如果说，之前我懂得的更多是如何根据不同的业务发展节奏，搭建与之相配套的技术体系的话。15-16年度，可以说是我说是重要的一年，让我对于什么叫做“工程技术体系”有了一层更佳深入的认识。这层抽象，让我更懂得回到技术的本源去看事情和问题。从这里一层层扩展开去。</p><h3 id="工程技术的本质"><a href="#工程技术的本质" class="headerlink" title="工程技术的本质"></a>工程技术的本质</h3><p>我最近特别喜欢在技术前面加上工程两个字。因为这些年的工作我其实经历了一个去工程化的过程，那就是太多的人开始说到互联网，说起研发开始弱化工程师这个概念，更多的是在突出“技术”这个说法。但正是对“工程”的弱化，让我们在很多时候忽视了从传统工程领域借鉴经验的机会。事实上，传统工程和如今的IT工程确实存在区别，但本质上，作为工程化理论，就永远摆脱不了一个话题：一个关于“质量”和“速度”之间永恒的矛盾。如果细想想，对于每一个Tech Lead而言，其实就是在不断的针对这两个问题进行抉择和平衡。没有什么需求是真的做不出来，只是怎么做，才能在质量和速度之间寻求一种平衡。我们知道，在相同产能条件的情况下，</p><ul><li>第一、质量越高，要求的精细度越高，对应生产难度也就越大，速度也会因此而降下来。人不是机器会疲倦，会出错。</li><li>第二、而如果对生产速度要求较高，那么质量的下降往往不可避免。但是可以大大提高产出结果</li><li>第三、虽然是最后，但是很重要，那就是长期低质量对产品速度必然产生负面影线。</li></ul><p>由这三点，演化出来一系列方法和理论和话题。我在这里把“质量”与“速度”的矛盾叫做“工程技术本质”，以说明它的地位不可撼动性。</p><h3 id="针对业务的技术原则"><a href="#针对业务的技术原则" class="headerlink" title="针对业务的技术原则"></a>针对业务的技术原则</h3><p>那么既然Tech Lead们需要不断解决的是“质量”和“速度”的矛盾问题。于是乎，这里面就衍生出一个很有意思的话题—如何做技术决策，如何判定自己的决策是合理。在我的这个理论里，若要做好这个决策，第一部分就是要了解业务。可能这对许多人来讲不可理解，作为技术人员，我做好自己的事情就好了，为什么要了解业务呢。这件事源于以人为中心的互联网模式。随着物质的极大丰富，供给模式，从最早的粗放型生产、分销、渠道，转变通过网络快速的寻找人的需求，根据需求进行快速迭代演进从而精细化的扩充人们在某一个或几个点上的消费习惯。在探寻过程中，其实对于互联网业务来讲，就是不断的实验过程。既然是实验，那么快速看到实验结果和实验深浅的把握就显得尤为重要。所谓实验结果，就是“速度”，即越快速度看到结果，越好进行决策是更进一步实验还是改换新的方向。实验深浅，对于技术而言就是实验的“质量”</p><p>那么作为每天坐在IDE前面思考代码和逻辑思路的技术人员而言，我们无法接触真实的用户，没有时间思考和观察用户在干什么，如何才能有效的了解业务呢？我把技术人员了解业务的方法分成了四个基本过程：</p><ul><li><p>远景，大多指一个业务长远的，或者一段时间的方向性目标。远景的很重要，它是指导一切的原则。当然，对于一个大的业务方向来说，形成商业收支目标是核心。但是拆解下来，不同时期，对于形成收支目标的要求不一样，有的是有也不一定是要在财务上展现。比如作为如今的滴滴，当下的最大远景就是实现盈利，但是对于在Nasdaq上市的京东而言，快速增长可能比盈利更重要。作为一个公司而言，远景往往和公司的核心管理人员以及投资人的想法相关。但是，对于一个业务的远景，往往会小许多。比如病历夹工具业务线，他当下远景就是用户活跃的持续增长。所以，绝大多数功能让用户有更强的黏着性。</p></li><li><p>目标，通常和当下所做的工作直接相关。为了实现远景，任何的业务都会拆成几个小步工作。那么目标，就是每个小步要完成的结果。这个结果可能是让用户在上传病历过程中使用不会产生疑问，也可能是让用户更快捷的在医口袋中搜到药品。作为每一个小步而言，多数业务会设立唯一的目标。当然如果优化功能都比较小，也不排除建立几个目标的可能。目标往往是团队的负责人做的定义，但是对于远景的优化角度不同，思考方式不同，小步目标也不一定是单一的。在互联网的实际环境中，目标也是可以被拿来讨论的。从这里开始，有兴趣的技术工程师，便可以参与深入的讨论。</p></li><li><p>指标，既然订立了目标，就一定要寻找可以进行衡量的目标完成好坏的指标。我们拿“让用户在上传病历过程中使用不会产生疑问”这个目标来说，这里可以建立的核心指标是“用户上传病历数增加”，这是核心业务指标。分解下来，可能还有一些其他指标，比如上传服务器反应时间在200ms以下，上传成功了70%以上等等。做任何一件事情，都应该是可衡量的，没有量化的工作，就是刷流氓好么:)。定义指标的工作，需要技术工程师的重度参与，这里包括订立那些指标，以及如何将指标反馈给BI系统或者其他数据报告系统。这一点非常重要。也是后期业务、技术团队跟踪做事好坏的核心。</p></li><li><p>做事，在了解远景，目标达成一致，以及订立好合适的指标后，大家就要开始基于指标工作了。那么指标从某种角度上讲，就是质量的衡量方法，这个一般说来，叫做质量底线标准。任何的速度，在底线标准前，都必须服从。而做事，就是考虑，如何在保证质量的基础上，尽量的提升速度。这里就是Tech Lead们的专业技能体现了。具体的方法有很多，比如XP，Scrum等的工程实践，比如新技术的引用提升研发效率，再比如团队的文化气氛等。</p></li></ul><p>总结一下，技术工程师，Tech Lead都很难真的完全深入业务细节去思考逻辑关系和用户使用习惯。但是经过以上的四个步骤，可以大体梳理每一个小步的背后的逻辑，并通过一系列指标进行有效的质量监控，用一系列工程方法指导做事，提升速度。</p><h3 id="针对工程的技术原则"><a href="#针对工程的技术原则" class="headerlink" title="针对工程的技术原则"></a>针对工程的技术原则</h3><p>上面谈到了做事，谈到了比如工程方法、新技术的引用、团队文化等，那么针对技术工程，是不是可以衡量呢？答案当然是肯定的。任何工作都应该是可以衡量的，只是指标不同。这里我总结下来还是四个步骤：监控－报警－处理－优化</p><p><strong>为什么要衡量？</strong></p><p>在解释具体工程上的四步方法之前，先解释一个问题。可能又不少人会问，为什么你总是说衡量。看看我说的做事顺序，其中最后一步叫做“优化”。人类进行工程实践可能有几千年的历史了，很难说哪些事情是没有干过的。但是，问题的关键在于，对于每一次“质量”和“速度”博弈的实验中，如何进行优化，才是人类和动物最大的分别。我们在不断积累经验，寻找更好的方法。这就是实验的本质，也是任何事物前进的源头。“做事”的方法许多，根据团队、实践、节奏、个人知识能力等等不同，有太多的优秀实践可以应用，但是哪种是最好的，只有在指标定一下进行有效优化，才能得到越来越好的效果。所以下面说的四步，不仅仅适用于业务开发，也适用于技术工程人员对一切问题的抽象解决方案中。</p><ul><li><p>监控，在针对业务的技术原则中，我们说到了指标。我们说技术人员要深度参与指标的定义，并做好指标的数据向BI或其他数据报告系统反馈工作，这就是监控的一种，主要应用在业务的指标监控中。其实，针对技术本身也有一系列的可以做的监控指标，比如线上Bug的数量、Crash率、服务器Apex指标，应用可用性等等。但是这里需要需要特别注意的是，在我看来，监控不是目的，是为了解决问题而存在的，特别是解决上面说的业务目标。比如有段时间业务目标是满足双11的客流访问量，那么Apex、网络带宽、负载均衡的资源使用这些就是重要的监控，可能需要秒级别的信息收集。那么这个时段，其他的比如CPU数量、客户端Crash率、网页兼容性，在这个目标面前，就不需要被严密监控，可能是天级别监控就可以了。所以监控是分级别，也是分时段的。<br>人曾经问我，我是一个Android起家的Tech Lead，对于iOS、Java服务端，我不是很了解，要怎么才能做到很好对团队工作进行有效的带领和优化。这里我想说，通过指标监控，就可以达到目的。与相关的Tech Lead讨论针对特殊目的而细化的监控指标。</p></li><li><p>报警，许多人谈论监控，更多的是一套漂亮的报表，线图、饼图、柱图、箱图各种上。这是我以前常犯的错误，以为报表意味着监控。其实，在过去一年，我学会的最重要的知识就是，展现的目的更多是为了给别人看的直观，用以表明优化的成果，是一种回朔和预测型的工具。但是做事的时候，却不应该作为工具，回到计算机或者生物的本质上，0和1才是我们认识事件最直观的方法。因此，报警在我看来是工程监控最有效的手段（工具）。这种被动式相应能够大大加强响应效率和工作效率，根据响应的情况再去寻找相应的报表或者内容数据进行分析，从而得出有效的处理方案。<br>设立报警的过程本身并不难，最难的是适当报警阀值的斟酌。太高起不到监控的效果，太低虚报误报使得报警无法有效应用。这个时候需要对技术有比较深入理解，对不同阶段对应指标有比较深入理解的技术人员（这里就不是一个纯工程问题，而上升到技术本身能力上），对报警阀值进行准确的把控，并持续优化。</p></li><li><p>处理，这块儿没太多可说的，这是每一个工程师的老本行，根据报警问题，使用数据综合分析，数据不全可能需要进行场景复现，如果是紧急问题可能还需要采取紧急方案、备份方案、临时方案等进行解决。总之是确保报警状态恢复到正常的水平。这个时间会根据不同业务和级别的不同，处理时间也会不同。</p></li><li><p>优化，最后来到了前面说的，工程技术原则的核心，就是优化。前面说到互联网的最大特点就是实验，不断的、快速的实验，了解和提升用户的体验，帮助用户解决问题。所以，无论是对业务指标的优化，还是技术指标，或者别的什么指标的优化，总之优化是技术工程师做事的终点，也是新的一轮工作的起点。研发工程由此不断迭代向前，帮助解决一个又一个业务目标。</p></li></ul><p>最后做个总结，在过去的一年里，对于上面方法的理解和应用真正改变了我将近十年的认识。过去的我，一直在学习，学习各种技术、学习各种最佳时间、学习各种方法论来解决一个又一个的研发问题。记得刚进微软那会儿，我的最大收获是如何通过互联网快速解决问题，把Google用的炉火纯青。在英国的4年里，我明白了从0到1的建设过程和研究方法。ThoughtWorks的3年让我懂得什么叫做研发体系和最佳实践。如今，在杏树林，很高兴能遇到一群志同道合的人，至少现在吧，感觉自己的理解又上升了一个新的高度，实践因什么而存在，要解决哪些问题，如何才算真正解决，解决问题的为了什么。这是我2015-16年度，最有收获的部分，共勉。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;上回留了个伏笔说：“做业务的技术原则：远景－目标－指标－做事；对应工作方法：监控－报警－处理－优化”&lt;/p&gt;
+&lt;p&gt;如果说，之前我懂得的更多是如何根据不同的业务发展节奏，搭建与之相配套的技术体系的话。15-16年度，可以说是我说是重要的一年，让我对于什么叫做“工程技术体系”
+      
+    
+    </summary>
+    
+      <category term="Management" scheme="http://wangzhe.github.io/categories/Management/"/>
+    
+    
+      <category term="mgnt" scheme="http://wangzhe.github.io/tags/mgnt/"/>
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lesson &amp; Learn</title>
+    <link href="http://wangzhe.github.io/2016/09/13/milestone/"/>
+    <id>http://wangzhe.github.io/2016/09/13/milestone/</id>
+    <published>2016-09-13T15:01:00.000Z</published>
+    <updated>2021-01-04T05:38:30.323Z</updated>
+    
+    <content type="html"><![CDATA[<p>2014年，让我引以为自豪的是学会了“运营是中国互联网的核心”<br>2015年，让我引以为自豪的是在不懈的努力和好友的陪伴下，组建了“JS端团队”，让杏树林称为具有一线互联网技术的公司<br>2016年，希望我可以让数据驱动彻底称为公司的基因，try my best！</p><p>一些具体做大事儿的历史记录：</p><p>2014年：</p><ul><li>产品2周迭代化（发布数据）</li><li>病历夹Crash问题实现完全可控（umeng数据）</li><li>开发自动化（持续打包和发布）</li><li>口袋／文献／病历夹APP产品数据可还原化（每个月的全部流量数据）</li></ul><p>2015年：</p><ul><li>产品目标的数据化（让迭代更能拥有反馈）</li><li>产品客户反馈的及时列表</li><li>将迭代测试时间从5-8天缩短到3天</li><li>运维的自动化（功能运维中ssh比例）</li></ul><p>2016年：</p><ul><li>运维体系化（DevOps发展，产品团队自运维）</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;2014年，让我引以为自豪的是学会了“运营是中国互联网的核心”&lt;br&gt;2015年，让我引以为自豪的是在不懈的努力和好友的陪伴下，组建了“JS端团队”，让杏树林称为具有一线互联网技术的公司&lt;br&gt;2016年，希望我可以让数据驱动彻底称为公司的基因，try my best！&lt;/
+      
+    
+    </summary>
+    
+      <category term="Diary" scheme="http://wangzhe.github.io/categories/Diary/"/>
+    
+    
+      <category term="misc" scheme="http://wangzhe.github.io/tags/misc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CTO工作总结（15-16年度）--工作篇</title>
+    <link href="http://wangzhe.github.io/2016/07/24/cto-summary/"/>
+    <id>http://wangzhe.github.io/2016/07/24/cto-summary/</id>
+    <published>2016-07-24T04:29:42.000Z</published>
+    <updated>2021-01-04T05:38:30.233Z</updated>
+    
+    <content type="html"><![CDATA[<p>通常我会在每个年中对从上一年的7月到这一年的6月的工作做一个总结。主要原因是年终的时候大家都在总结，但绩效、年终奖、年会、圣诞、新年等等，其实是一年中时间最紧张的时候。我不喜把事情都堆到一块儿做。刚好英联邦的财年就是年中，所以索性就选了这个时间做总结。</p><p>本次总结分成两大部分，第一个是工作篇，主要陈述上一个总结中的预期工作在这一年里的开展情况和变化情况。本次总结多增加了一个学习篇，主要是觉得进入创业中期的工作状态是日新月异，学习到的东西越来越多，而不知到的东西也越来越多。希望通过总结暨给自己一个交代，也给未来一年一种鞭策。在一个创业公司，如果你的成长速度慢过于公司，那就坐等淘汰。</p><p><em>工作篇</em></p><p>一般来说，我对CTO的工作理解都会在我的xmind里面不断增加，也会根据实际的公司运行情况做优先级的处理。下面的总图基本反映了我各部分工作优先级预期和状态。其中数字代表在15年6月份的时候我对这几部分工作的优先级安排。而脸谱代表了对所有工作我现在自己看来的满意度。作为一个overall的评价来说，我觉得还是挺满意的。尤其是在商业战略、团队、研发和技术团队运营这几部分。</p><p>对于用户，这一年碰的主要是一些企业用户，大体有所了解，更多的接触还是间接的，通过销售或者面试过程中谈话。医生用户几乎没有接触过。所以这块儿我对自己的工作是相当不满意的。任何事情不站在前台需求的角度，即使我现在有了数据的武器，也不会产生全面的印象和理解。在品牌塑造方面，写了些文章，但是感觉效果不佳，无论是传播力度还是广度并没有达到我预期的效果。</p><img src="/2016/07/24/cto-summary/overall.png" class="" title="总图"><p>下面会针对每一个做逐一分析。</p><ul><li><p>先从优先级最高的商业战略开始。这里在新的一年我改一下名字，应该叫做技术战略，是指应对公司发展需要而做出的技术类总方向的决策。之前预期这一年的三个大事儿基本上都做了。</p><img src="/2016/07/24/cto-summary/strategy.png" class="" title="技术战略">     <p>第一个是安全管理，这块儿在15年的下半年里，引入了安全宝的安全审计，做了渗透测试，确实发现了不少问题。服务端和运维一起最终将安全审计出来的问题，一一解决掉。让杏树林在安全防范上迈出了一个小步，但同时也是安全体系化的重要一步。接下来的安全工作出过一次事故，但是主要原因不是技术本身的安全隐患，而是出现在业务上的密码过于简单而产生的暴力破解。根据这个，对公司的VPN网络，请求时间间隔，各个系统验证码服务做了升级。接下来一年这一块儿肯定还是要做，但是可以从安全管理，上升到安全体系的高度，对一些安全工作进行常规化管理。</p><p>第二块儿是团队的结构化。终于在杏树林走到50人技术团队的时候，我们迎来了业务化改造。这是我一直希望的事情。在我看来，一个团队，若想保持高效的战斗力，必须团队数量足够小，团队关注点足够专一。只有这样，才有可能把事情打透，把业务做到底，所以我在年度之初就策划了这个改革，好在的是，我们的COO也足够给力，快速的推动了我的改革。让我这个目标得以实现。</p><p>第三块儿是核心技术能力的建立。这里包含了纯工程技术能力和基于业务的技术能力两大部分。纯工程是对原有公司的技术升级。包括了JS大方向的引入，Docker化和AB测试。但是很可惜，AB测试并没有完成，我觉得原因有两个，第一个是如果做AB测试，工具是一方面，但最重要的另外两个方面是基础数据，还有业务需求。这两块儿目前都在建立之中，随着数据驱动的演进，杏树林开始有计划的加功能，减功能。AB测试的需求正在起步，但是在过去的一年，因为数据驱动不到位，所以这部分没有太多需求。所以，这块儿掌握的一个核心是</p><blockquote><p><strong>只有有了数据驱动，才有AB测试的需要</strong>。</p></blockquote><p>另外，除了工程技术外，业务技术当时15年中订立的是OCR的核心技术能力，以及数据结构化。前一个OCR能力基本上已经形成规模，有人持续为之进行优化。后一个数据结构化目前并没有很好的方法，这也是新一年的重点工作。在去年数据结构化里，学到的重要教训是，数据其实本来不需要结构化，关键是有效的检索和回馈。因此搜索引擎，将会成为新一年工作重点。</p></li><li><p>优先级第二的是R&amp;D，研发体系，无论何时都是技术研发的重点部分。基本上当时的计划都完成了。公司从一个对技术仅是零散开发，到如今有了比较成型的各方面技术研发体系。新的一年，研发体系会往基础架构方面进行比较多的拓延。通过公共服务体系持续提升研发能力。但是这块儿，其实很多公司干得并不好，至于我们能不能，拭目以待。</p><img src="/2016/07/24/cto-summary/RnD.png" class="" title="研发体系">     </li></ul><ul><li><p>同为第二优先级的是Client，这里其实是一个对用户和客户的共同说法。15-16年度，主要的工作在客户那里。15年下半年做了最重要的事情就是云学院产品的研发，经过内部产品和外部销售的反复沟通，完成了第一版云学院的基本体系和工作方式。从此云学院摆脱了无形态，minisite各类的方式，开始往产品化方式发展。但是在用户方面，确实没做什么，这部分将会作为接下来工作的方向</p><img src="/2016/07/24/cto-summary/client.png" class="" title="用户客户类工作">     </li></ul><ul><li><p>第三优先级的是品牌建设，这块儿这一年里花了不少时间。写了前后10片左右的文章，但是文章覆盖面主要是医疗这边，更加偏向于给行业和VC这类人看。但是并没有起到很好的作用。品牌建设的核心应该是面向技术人员。所以，接下来的思考是将之前类的文章数量降下来，像“大数据分析报告”这类的对企业具有一定价值报告。还是考虑在技术类演讲上增加曝光度，并且把团队加入进去。</p><img src="/2016/07/24/cto-summary/branding.png" class="" title="品牌建设类工作">     </li></ul><ul><li><p>第四优先级的是团队，这里团队之所以被列为较低的优先级，主要是因为一个相对完整的体系已经建立起来。大家可以看看作为参考吧。我觉得以目前团队的规模，短时间在超过100以前，这套体系应该不会有大的变化。还有一个最关键的，不想做大团队。坚信小而精的团队才能爆发最强的小宇宙。</p><img src="/2016/07/24/cto-summary/team.png" class="" title="团队体系">     </li><li><p>最后的部分是团队运营。团队运营主要指的是一些和基础财、物相关的工作。这一块儿属于维持，本来的工作就不是重点。主要是在流程上做了一些努力，其中包括了线上事故和Bug的处理流程，这部分对公司有一定的影响。</p><img src="/2016/07/24/cto-summary/operation.png" class="" title="团队运营体系">     </li></ul><p>学习篇</p><p>埋个伏笔吧，上关键词，“做业务的技术原则：远景－目标－指标－做事；对应工作方法：监控－报警－处理－优化”</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;通常我会在每个年中对从上一年的7月到这一年的6月的工作做一个总结。主要原因是年终的时候大家都在总结，但绩效、年终奖、年会、圣诞、新年等等，其实是一年中时间最紧张的时候。我不喜把事情都堆到一块儿做。刚好英联邦的财年就是年中，所以索性就选了这个时间做总结。&lt;/p&gt;
+&lt;p&gt;本次总
+      
+    
+    </summary>
+    
+      <category term="Management" scheme="http://wangzhe.github.io/categories/Management/"/>
+    
+    
+      <category term="mgnt" scheme="http://wangzhe.github.io/tags/mgnt/"/>
+    
+      <category term="tech" scheme="http://wangzhe.github.io/tags/tech/"/>
+    
+      <category term="career" scheme="http://wangzhe.github.io/tags/career/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ISO27001工作记录之一声叹息</title>
+    <link href="http://wangzhe.github.io/2016/07/03/iso27001/"/>
+    <id>http://wangzhe.github.io/2016/07/03/iso27001/</id>
+    <published>2016-07-03T14:26:22.000Z</published>
+    <updated>2021-01-04T05:38:30.317Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为要和许多中国／国际企业合作，我们需要一套更加完备的信息安全认证。所以这两个礼拜搞ISO27001搞的很心烦，于是写写27001的概念，顺便聊聊认证体系。</p><ul><li><p>关于ISO27001:</p><p>ISO27001认证，由英国标准协会（BSI）于1995年2月提出，中文全称《信息安全管理实施细则》（BS7799-1:1995）。它提供了一套综合性的、由信息安全最佳惯例构成的实施细则，目的是为确定各类信息系统通用控制提供唯一的参考基准。1998，提出了第二个部分，中文全称《信息安全管理体系规范》，它规定了信息安全管理体系的要求和对信息安全控制的要求。2005年被ISO国际标准化组织采纳，形成了ISO/IEC 27001:2005。完整的ISO27001包括了11个方面、39个控制目标和133项控制措施。是一个不折不扣让一个互联网人晕到吐血的管理制度。主要11个方向包括：</p><ol><li>安全方针</li><li>信息安全组织</li><li>资产管理</li><li>人力资源安全</li><li>物理和环境安全</li><li>通信和操作管理</li><li>访问控制</li><li>信息系统获取、开发和维护</li><li>信息安全事故管理</li><li>业务连续性管理</li><li>符合性</li></ol><p>通过对整个ISO27001这11个方面的落地，实现一个ISMS(信息安全管理系统)。这里特别说明，这个系统不是互联网概念上的系统，指的是一个体系化的东西，包括了上面所属管理、行政、人事、信息技术等各个方面。详细的就不在这里说了，实在是好多。目前这个工作已经在做了，这里给大家看一下我们的列表，这里面大概60%是技术团队要做的。</p><img src="/2016/07/03/iso27001/list.png" class="" title="杏树林ISO27001工作清单"></li><li><p>ISO27001与HIPAA</p><p>之前有不少人问HIPAA的事情，现在估计也会有不少人问ISO27991和HIPAA的区别。所以这里简单说明一下。从概念上说，ISO是一个标准，可以由相关评级机构进行评级，办法符合标准的认证证书。这个证书可以用来和企业进行合作，以表明我司在信息安全方面的准备和能力是充分的。而HIPAA是一个法案（也可以说是一个法律），就是每个医疗相关企业遵守是必须的，不遵守如果被举报就要吃官司。哦，对了，这里还要特别说明，ISO和医疗无关，HIPAA是专门为医疗信息保护准备。所以ISO主要讲的是信息保护这个系统工程要做哪些和怎么做；而HIPAA虽然原则上提供了一些强制性的标准和工作方法，但是其核心内容更加强掉哪些信息是禁止泄露的。</p><p>所以说，本次公司的ISO27001认证，我们也是请了相关具有评估资质的公司来进行评审。</p></li><li><p>ISO27001我们所做的和下一步需要做的事情</p><p>下一步主要要做的事情就是完善文档和制度了。这里我想特别说明，之所以我会很重视这件事情，不是为了完善文档和制度，反而是从一个专业技术的角度，想想怎么从里面尽可能找些方法，避免繁琐的文档和制度。在我心里，过于完善的制度和方法，对研发和快速迭代，快速试错本事是有害的。所以，尽最大程度的减少ISO27001对互联网团队的伤害，是我最近想研究的一个话题。有了结果的话，可以再写一篇博文了，呵呵。看一下一片标准的ISO27001文档的样子，像下面这种文档理论上是每次都要写的。做过企业软件的人，应该知道。</p><img src="/2016/07/03/iso27001/doc_list.png" class="" title="ISO27001工作文档清单"><img src="/2016/07/03/iso27001/doc.png" class="" title="ISO27001文档内容"></li></ul><p>总之，ISO27001确实是一个挺麻烦的东西。但是，从企业合作的角度，又不得不去做，并且也可以成为公司系统安全方面比较好的一个PR背书，从这一点上看，质量体系的工作比HIPAA的工作实际上在中国更有公信力。所以吧，对于我来讲对于这东西属于虽然很反感，不屑，但是又知道很有用，不得不去做的东西。希望看到文章的技术兄弟，也是对此表示一种尊敬吧。我自己承认，了解还是有必要的，只是要做多少，大家根据实际情况做到心中有数就好。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;因为要和许多中国／国际企业合作，我们需要一套更加完备的信息安全认证。所以这两个礼拜搞ISO27001搞的很心烦，于是写写27001的概念，顺便聊聊认证体系。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;关于ISO27001:&lt;/p&gt;
+&lt;p&gt;ISO27001认证，由英国标准协会（BSI）
+      
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://wangzhe.github.io/categories/Technology/"/>
+    
+    
+      <category term="Security" scheme="http://wangzhe.github.io/tags/Security/"/>
+    
+  </entry>
+  
+</feed>

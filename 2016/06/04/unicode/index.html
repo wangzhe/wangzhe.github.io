@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>关于文字集与编码 | 杰克船长的小屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="写Python2的人，很多人都见过下面这行Error123456Traceback (most recent call last):  File &quot;&#x2F;Users&#x2F;Jack&#x2F;Documents&#x2F;ApricotForestDoc&#x2F;2_product_rnd&#x2F;redspiderlily&#x2F;mailfetcher.py&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于文字集与编码">
+<meta property="og:url" content="http://wangzhe.github.io/2016/06/04/unicode/index.html">
+<meta property="og:site_name" content="杰克船长的小屋">
+<meta property="og:description" content="写Python2的人，很多人都见过下面这行Error123456Traceback (most recent call last):  File &quot;&#x2F;Users&#x2F;Jack&#x2F;Documents&#x2F;ApricotForestDoc&#x2F;2_product_rnd&#x2F;redspiderlily&#x2F;mailfetcher.py&amp;quot">
+<meta property="og:locale">
+<meta property="og:image" content="http://wangzhe.github.io/2016/06/04/unicode/ascii.png">
+<meta property="og:image" content="http://wangzhe.github.io/2016/06/04/unicode/character_in_word.png">
+<meta property="og:image" content="http://wangzhe.github.io/2016/06/04/unicode/CJK.png">
+<meta property="og:image" content="http://wangzhe.github.io/2016/06/04/unicode/utf8.png">
+<meta property="og:image" content="http://wangzhe.github.io/2016/06/04/unicode/example.png">
+<meta property="article:published_time" content="2016-06-04T05:54:32.000Z">
+<meta property="article:modified_time" content="2021-01-04T05:38:30.374Z">
+<meta property="article:author" content="Jack Wang">
+<meta property="article:tag" content="tech">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangzhe.github.io/2016/06/04/unicode/ascii.png">
+  
+    <link rel="alternative" href="/atom.xml" title="杰克船长的小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">杰克船长的小屋</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wangzhe.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-unicode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/04/unicode/" class="article-date">
+  <time datetime="2016-06-04T05:54:32.000Z" itemprop="datePublished">Jun 4 2016</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于文字集与编码
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>写Python2的人，很多人都见过下面这行Error<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&#x2F;Users&#x2F;Jack&#x2F;Documents&#x2F;ApricotForestDoc&#x2F;2_product_rnd&#x2F;redspiderlily&#x2F;mailfetcher.py&quot;, line 35, in &lt;module&gt;</span><br><span class="line">    if is_reply_mail(subject):</span><br><span class="line">  File &quot;&#x2F;Users&#x2F;Jack&#x2F;Documents&#x2F;ApricotForestDoc&#x2F;2_product_rnd&#x2F;redspiderlily&#x2F;module&#x2F;mailutil.py&quot;, line 46, in is_reply_mail</span><br><span class="line">    return (&quot;回复&quot; in subject_.lower()) or (&quot;re:&quot; in subject_.lower())</span><br><span class="line">UnicodeDecodeError: &#39;ascii&#39; codec can&#39;t decode byte 0xe5 in position 0: ordinal not in range(128)</span><br></pre></td></tr></table></figure><br>上一次聊到Python3升级的一个重头就是unicode编码。所以这次想重点就聊两句字符编码。说实话就是在此之前自己也有些算不清楚。所以还是深入的跑到wiki上研究了一番，分享供参考。</p>
+<p>ASCII，全称American Standard Code for Information Interchange，是一个字符编码标准。使用0-127（2^7)的数字代表不同的英文字符，这里包括大小写字母，空格，特殊字符等。这是一个大家都比较熟悉的字符集标准，可以看看下面图中的内容。这里不做赘述。</p>
+<img src="/2016/06/04/unicode/ascii.png" class="" title="ASCII字符表">
+<p>但是，ASCII因为标准内含有的有限，带有音标的字符‘é’就无法很好的表述，更别提汉字了。到了1980年代，计算机技术发展，那时候大家已经开始使用字节（byte）来作为计算机基本计数单位。1byte＝8bit（2^8=256）,所以可以表述的字符变多了。那个时候开始出现了实用128-255这些数字表示发音单词。所以直到今天，你去看word里面的字符表，Latin依然可以看到这个顺序关系，大体就是这个原因。</p>
+<img src="/2016/06/04/unicode/character_in_word.png" class="" title="MS Word的英文字符集">
+<p>再之后，当世界各地的语言发展出了各自不同的字符集体系，比如中国简体（GBK，GB18030），中文繁体（Big5，以前有个特别扯的名字叫做大五码），法语（Latin1），日语等等。本来各种语言字符集各自写互不干扰，倒也相安无事。但是，世界大融合嘛，于是问题来了。有人需要在中文里写上一段日语，就像这样 ++“日本語にほんご”++ 。于是问题就来了，怎么才能在同一个文件里现实不同的字符集的字符内容呢？1980年，人来开始尝试解决这个问题，并制定了一个新的计算机工业标准用以规范的处理、表示和编码全世界主要文字。这个标准叫做Unicode（全称是The Unicode Standard）。目前，Unicode标准是8.0，已经包含了全世界已经有超过12万个字符，覆盖129种现代和历史上的语言种类。在这里面需要说明一个额外的概念叫做Universal Coded Character Set (UCS，也叫做ISO 10646)。按照Wiki对于Unicode和UCS的说法，目前两套字符集应该是完全相同的。同一个数字在两个字符集里所代表的字符应该是相同的。但是Unicode的外延要多一些。USC仅仅是一个字符集，而对应的Unicode同时还规范了校对、标准化、表示顺序的算法等。就如同本文提及对Unicode的定义一样，Unicode出来包括了字符集，还有表现和处理方法的部分。因此Unicode应该说是一个更加广泛含义上的标准。</p>
+<p>理论上说，Unicode字符集或者UCS有110万字符点数可以被分配，目前时机分配成16个Plane，其中Plane0，被叫做BMP（Basic Multilingual Plane），一共65536个，其中绝大部分是中文（Chinese），日文（Japanese）和韩文（Korean），三者合称CJK。</p>
+<img src="/2016/06/04/unicode/CJK.png" class="" title="Unicode中CJK所包含的字符浮点内容">
+<p>这里需要特别提一下Chinese Simplified（GBK，GB18030），自从2000年以后，中国政府规定，所有在中国售卖的软件产品必须支持Chinese Simplified（GB18030）字符集。因此在我国，就出现了一个神奇的事情，就是Unicode和Chinese Simplified双字符集并行的问题。</p>
+<p>有趣的是，笔者大概调研了几大中文网站的编码如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th>字符编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.taobao.com/">https://www.taobao.com/</a></td>
+<td>Unicode(UTF-8)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.jd.com/">http://www.jd.com/</a></td>
+<td>Chinese Simplified (GBK)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://bj.meituan.com/">http://bj.meituan.com/</a></td>
+<td>Unicode(UTF-8)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com/</a></td>
+<td>Unicode(UTF-8)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://cn.bing.com/">http://cn.bing.com/</a></td>
+<td>Unicode(UTF-8)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.sohu.com/">http://www.sohu.com/</a></td>
+<td>Chinese Simplified (GBK)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.qq.com/">http://www.qq.com/</a></td>
+<td>Chinese Simplified (GBK)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.sina.com.cn/">http://www.sina.com.cn/</a></td>
+<td>Unicode(UTF-8)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>感觉上各个大厂也是自说自话，不是不是很一致要遵守政府规定或者不遵守规定。这么说来，国家对这块儿在申请xxx备案的管理也不是很严格。</p>
+<p>话有点扯远了，咱们再回来。目前Unicode字符集共设定16个Plane（数字从0x000000-0x10FFFF）对应(2^16+2^20)对应（1,114,112）。刚刚说的Plane0，基础语言集定义是从0x000000-0x00FFFF(2^16)。其他的大家可以查，Plane1和2用了一些，其他基本上用的很少。因此总共来说目前分配的字符大约是12万。</p>
+<p>但是这样庞大的数字和计算机的比特（byte）之间并不统一，把一个Unicode字符串转换成Byte的过程，这里引入了一个叫做Encoding，编码的概念。1992年，为了兼容不同处理器和C语言，人们引入了一个编码标准，这就是大家广泛知道的UTF-8。截至2016年5月份，在WWW上的统计，UTF-8的使用率已经达到86.9%，对比GB2312（0.8%）。同时W3C也把UTF-8作为XML和HTML的推荐编码。</p>
+<p>下面我们来阐述一下UTF-8的实现原理（同时可以结合下图来看）：</p>
+<p>如果是7位以内表述的字符表数字，就只占用一个自己，表现为（0xxxxxxx），这样刚好和ASCII码的描述相一致，这样就不会造成原有ASCII的识别错乱，特别是针对C语言的strlen()和strcopy()。从第8位，也就是十位数的256开始，采用两字节表述模式（110xxxxx 10xxxxxx),最多可以表示11个bit位，也就是2^8(256)到2^12-1(4095)。以此类推。是不是一种很有趣的编码模式 :)</p>
+<img src="/2016/06/04/unicode/utf8.png" class="" title="UTF-8在Wiki上的例子截图">
+<p>下面看一个栗子。以杏树林的“杏”字为题。</p>
+<img src="/2016/06/04/unicode/example.png" class="" title="杏字的uft-8编码翻译">
+<p>所以总结一下，Unicode和ASCII是一个字符集的概念，他们是随着电信发展而产生的编码本。只不过Unicode有多包涵了表示和处理部分，范围会更广泛。为了让计算机能读懂编码，适应计算机的计算，我们有了诸如UTF-8类的编码方法。</p>
+<p>值得参考的一系列词条出处<br><a target="_blank" rel="noopener" href="https://docs.python.org/3/howto/unicode.html">https://docs.python.org/3/howto/unicode.html</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Character_encoding">https://en.wikipedia.org/wiki/Character_encoding</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Unicode">https://en.wikipedia.org/wiki/Unicode</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Universal_Coded_Character_Set">https://en.wikipedia.org/wiki/Universal_Coded_Character_Set</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane">https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/UTF-8">https://en.wikipedia.org/wiki/UTF-8</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2016/06/04/unicode/" data-id="ckjjlgj6c003w1oz41f7u0gg1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/14/tech-driven/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          聊聊技术驱动互联网+医疗三个争论
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/22/python3upgrade/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">升级Python3几个小总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Business/">Business</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Strategy/">Business Strategy</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Management/">Management</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/career/" rel="tag">career</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud/" rel="tag">cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/med/" rel="tag">med</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mgnt/" rel="tag">mgnt</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/operation/" rel="tag">operation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/" rel="tag">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/" rel="tag">tech</a><span class="tag-list-count">35</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/book/" style="font-size: 14px;">book</a> <a href="/tags/career/" style="font-size: 14px;">career</a> <a href="/tags/cloud/" style="font-size: 12px;">cloud</a> <a href="/tags/deeplearning/" style="font-size: 18px;">deeplearning</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/med/" style="font-size: 12px;">med</a> <a href="/tags/mgnt/" style="font-size: 18px;">mgnt</a> <a href="/tags/misc/" style="font-size: 12px;">misc</a> <a href="/tags/operation/" style="font-size: 10px;">operation</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/06/summary2020/">留给2020</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/06/summary2019/">留给2019</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/02/gcp-study/">GCP搭建serverless</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/aliyun-server-less/">阿里云函数计算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/deep-learning-sequence-models-w3/">深度学习顺序模型第三周</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Jack Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  <span id="busuanzi_container_site_uv">
+	    with <span id="busuanzi_value_site_uv"></span> visitors
+	  </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

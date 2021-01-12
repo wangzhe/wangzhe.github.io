@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Archives: 2018/9 | 杰克船长的小屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="让医生行医更轻松，让中国的医生也成为最受尊敬的一族">
+<meta property="og:type" content="website">
+<meta property="og:title" content="杰克船长的小屋">
+<meta property="og:url" content="http://wangzhe.github.io/archives/2018/09/index.html">
+<meta property="og:site_name" content="杰克船长的小屋">
+<meta property="og:description" content="让医生行医更轻松，让中国的医生也成为最受尊敬的一族">
+<meta property="og:locale">
+<meta property="article:author" content="Jack Wang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="杰克船长的小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">杰克船长的小屋</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wangzhe.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-deep-learning-sequence-models-w3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/deep-learning-sequence-models-w3/" class="article-date">
+  <time datetime="2018-09-13T08:07:05.000Z" itemprop="datePublished">Sep 13 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/13/deep-learning-sequence-models-w3/">深度学习顺序模型第三周</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>来到最后一周了，本周分为10课，两个大部分</p>
+<h1 id="Various-sequence-to-sequence-architectures"><a href="#Various-sequence-to-sequence-architectures" class="headerlink" title="Various sequence to sequence architectures"></a>Various sequence to sequence architectures</h1><p>这个部分是本周的重点，8个课都是围绕着展开的。这种模型被广泛应用在了文字翻译和语义识别领域。让我们来看看都讲述了些什么。</p>
+<h2 id="Basic-Models"><a href="#Basic-Models" class="headerlink" title="Basic Models"></a>Basic Models</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x: Jane visite I&#39;Afrique en septembre</span><br><span class="line">y: Jane is visiting Africa in September</span><br></pre></td></tr></table></figure>
+<p>这里用了两套模型进行了组合，</p>
+<ul>
+<li>作为encoding network：$x^{<1>}, x^{<2>}, x^{<3>}, x^{<4>} … x^{ &lt; T_x &gt; }$，可以是一个RNN模型（GRU或者LSTM）</li>
+<li>作为decoding network：$y^{<1>}, y^{<2>}, y^{<3>}, y^{<4>} … y^{ &lt; T_y &gt; }$，同时后面继续跟随了</li>
+</ul>
+<p>这样一种算法，同样对于Image Captioning这样的应用有效。应用是我们的输入是一张图片，应用的输出会把图片转化成一个语义</p>
+<script type="math/tex; mode=display">\begin {matrix}
+     y^{<1>} & y^{<2>} & y^{<3>} & y^{<4>} & y^{<5>} & y^{<6>} \\
+     A & Cat & sitting & on & a & chair \\
+\end {matrix}</script><p>在这样一个应用场景下，我们可以用CNN模型作为encoding network，把这个的输出，feed到RNN的顺序模型里面，进行训练。这个的输出，就是一个对Image的描述了。</p>
+<PlaceHolder for image>
+
+<h2 id="Picking-the-most-likely-sentence"><a href="#Picking-the-most-likely-sentence" class="headerlink" title="Picking the most likely sentence"></a>Picking the most likely sentence</h2><h3 id="Machine-translation-as-building-a-conditional-language-model"><a href="#Machine-translation-as-building-a-conditional-language-model" class="headerlink" title="Machine translation as building a conditional language model"></a>Machine translation as building a conditional language model</h3><p>一个正常的language model，是一个从$a^{0}$ 到 $x^{<1>}$ 再到 $\hat y^{<1>} $ 再进行混合的演进的顺序模型。同时在这个模型里，会有 $ P(y^{<1>}, …, y^{&lt; T_x &gt;})$ 的数值，来代表每一个过程中产生的y的可能性。这个一般是用来生成普通的句子</p>
+<p>Machine Translation Model对应的是两个部分，encoding model和decoding model。可以看到decoding model和language model是很相似的。做为encoding model的输出，就是decoding model的输入 $ a_{<0>}$</p>
+<p>这也是为什么我们把Machine translation model也叫做conditional language model。在形象一点的说法是，一段被翻译后的句子（比如Jane is visiting Africa）本身，是由前一个被翻译前句子的作为条件形成的。这个说法还挺有意思的，让我认清了翻译这件事情的本质。的确是这样。</p>
+<h3 id="Finding-the-most-likely-translation-（如何找到最好翻译）"><a href="#Finding-the-most-likely-translation-（如何找到最好翻译）" class="headerlink" title="Finding the most likely translation （如何找到最好翻译）"></a>Finding the most likely translation （如何找到最好翻译）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x: Jane visite I&#39;Afrique en septembre</span><br></pre></td></tr></table></figure>
+<p>于是乎，我们就有了 $ P(y^{<1>}, …, y^{&lt; T_x &gt;} |x) $ 这样一个可能性的表示。这里的x就是上面说的那段法语句子。所以整个翻译模型的结果就是寻找P的最大值，找到最有可能的translation结果</p>
+<h3 id="Why-not-Greedy-Search"><a href="#Why-not-Greedy-Search" class="headerlink" title="Why not Greedy Search"></a>Why not Greedy Search</h3><p>Greedy Search是一种算法，大概的意思就是，因为有了x(翻译前句子的输入)，我们接下来寻找每一个 $ P(y^{<1>} |x)$, 然后是$ P(y^{<2>} |x y^{<1>})$，一次类推，就是每次都寻找那个最合适的。而不是 $ P(y|x)$。我觉得其实这里不用多解释，这就是一个局部优化和整体优化的问题。如果计算量允许，肯定尽量采用整体优化，这样才能取得好结果。</p>
+<p>既然Greedy Search不好用，那么如何从$ 10000^{10} $ (假设vocabulary有10000个，句子有10个单次) 这么多种可能性里进行选取呢？当然第一方法，就是使用x作为输入，寻找较大可能性。那么然后呢？还有什么方法？于是这里就用到了更进一步的Search Algorithm。这就又回到了这一课的主题，就是寻找最好的翻译，而不是随机寻找翻译结果（这里作者列举的例子是going和visiting，前者更加常见，但是后者更加适合Jane的语境）</p>
+<h2 id="Beam-Search-Algorith"><a href="#Beam-Search-Algorith" class="headerlink" title="Beam Search Algorith"></a>Beam Search Algorith</h2><p>关于Beam Search算法，第一步是吧10000 words的vacabulary放进array里面。</p>
+<script type="math/tex; mode=display">\begin {pmatrix}
+     a\\
+     \vdots\\
+     in\\
+     \vdots\\
+     jane\\
+     \vdots\\
+     september\\
+     \vdots\\
+     zulu\\
+\end {pmatrix}</script><p>所以这里的Step1，第一步就是 $P(y^{<1>}|x)$ 对应的单词。这里插入一个概念B，叫做Beam width, 例如B=3.这里给出的Beam的数值，就是为了系统记录下B个最有可能的单词。看起来，其实意思就是说，Greedy Search不是每次只找一个最好的么，这个Beam Search是根据Beam的数值，找B个最好的。</p>
+<p>接下来进行Step2第二步。就很简单了，其实就是因为前一个假设是in了，那想标准的language model一样，会有一个$P(y^{<2>}|x”in“)$这样的表达式，来表示下一个最大可能的单词。因此下面这个公式还挺重要的，就是：</p>
+<script type="math/tex; mode=display">P(y^{<1>}, y^{<2>} |x) = P(y^{<1>}|x) \times P(y^{<2>}|x”in“)</script><p>Again, 这里因为Beam Width为3，所以我们还是，选择最大可能的三个，不过这回就是三个pair了 $P(y^{<1>}, y^{<2>} |x) $. 如此循环进行下一步的运算。你看，这里B=1的话，那就真的是Greedy Search了</p>
+<h2 id="Refinements-to-Beam-Search"><a href="#Refinements-to-Beam-Search" class="headerlink" title="Refinements to Beam Search"></a>Refinements to Beam Search</h2><h3 id="Length-normalization"><a href="#Length-normalization" class="headerlink" title="Length normalization"></a>Length normalization</h3><p>这个就是Beam Search里面的一个部分。他的用法是这样的。</p>
+<p>如同前文讲的，Beam Search的核心是寻找到最大的B个可能性，并进行模型推演。所以</p>
+<script type="math/tex; mode=display">P(y|x) = avg max \prod_{t=1}^{T_y} P(y^{<t>} | x, y^{<1>}, y^{<2>}, ... , y^{<t-1>} )</script><p>但是这里有一个问题，就是若干个百分之几十的数字相乘，会让这个结果趋近于非常小，不方便计算。于是这里引入了log，作为计算函数。这里P的数值越大，</p>
+<script type="math/tex; mode=display">\log^{P(y|x)} = avg max \sum_{t=1}^{T_y} P(y^{<t>} | x, y^{<1>}, y^{<2>}, ... , y^{<t-1>} )</script><script type="math/tex; mode=display">\frac{1}{Ty^\alpha} avg max \sum_{t=1}^{T_y} P(y^{<t>} | x, y^{<1>}, y^{<2>}, ... , y^{<t-1>} )</script><p>$ \alpha $ 一般是从0到1的一个中间值，比如0.7。这个数用来对于模型进行校正和调整是比较管用的</p>
+<h2 id="Error-Analysis-on-Beam-Search"><a href="#Error-Analysis-on-Beam-Search" class="headerlink" title="Error Analysis on Beam Search"></a>Error Analysis on Beam Search</h2><p>关于整个翻译过程实际上是用到了Beam Search算法和两个RNN模型，对于结果而言，如何评价到底是哪里不好导致的问题。Error Analysis提供了一些方法</p>
+<img src="/2018/09/13/deep-learning-sequence-models-w3/error_analysis.png" class="" title="[Error Analysis]">
+<p>Case1: $ P(y_{<em>}|x) &gt; P( \hat y|x) $<br>在这种情况下，因为Beam Search的作用是用来进行选取$\hat y$，那么既然命名$P(y_{</em>}|x)$会更好，但是Beam Search却选的不对。说明Beam Search有问题</p>
+<p>Case2：$ P(y_{*}|x) &lt; P( \hat y|x) $<br>RNN负责预测 $\hat y$ 而他错误的将$ P( \hat y|x) $ 生成了一个更大的P数值，这说明生成有问题。是RNN需要被调整</p>
+<h2 id="Attention-Module-intuition"><a href="#Attention-Module-intuition" class="headerlink" title="Attention Module intuition"></a>Attention Module intuition</h2><p>对比于简单使用输入RNN和输出RNN，Attention Module更好的处理翻译过程中的长句子问题。我们注意到在日常翻译中，MT在处理10个左右单词的句子时候，表现效果会比较好。但是如果再长，效果就会下降的非常明显。因此我们需要更好的模型来改进这一点。</p>
+<p>首先分析一下原因，主要是单词的记忆导致的。事实上，人类在翻译长句子的时候，采用的是一部分一部分的翻译方式，并不会把他们都记录下来，因为记忆的原因。这个事情同样出现在机器上面，因为计算资源有限，所以我们也无法给计算机留出那么大量的选项进行综合运算。</p>
+<ul>
+<li><p>Attention Weight，标注了对于一个生成的词来讲，哪些input word是应该被关注的，以及关注Weight是多少</p>
+</li>
+<li><p>$ \alpha^{ <1,2> } $ 这个表示第一个翻译后词汇，需要对翻译前句子中的第二个词的关注度有多高</p>
+</li>
+</ul>
+<h2 id="Atention-Module"><a href="#Atention-Module" class="headerlink" title="Atention Module"></a>Atention Module</h2><script type="math/tex; mode=display">\sum_{t} \alpha^{ <1, t> } = 1</script><script type="math/tex; mode=display">C^{ <1> } （context）=  \sum_{t} \alpha^{ <1, t> } a^{ <t> }</script><script type="math/tex; mode=display">bug_{a} =  \alpha * sprint_{a} + \beta * sprint_{a-1} + bias</script><h1 id="领域应用"><a href="#领域应用" class="headerlink" title="领域应用"></a>领域应用</h1><h2 id="语音识别-（Speech-Recorgnition）"><a href="#语音识别-（Speech-Recorgnition）" class="headerlink" title="语音识别 （Speech Recorgnition）"></a>语音识别 （Speech Recorgnition）</h2><p>Audio Clip x，translate to ，Transcript y </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2018/09/13/deep-learning-sequence-models-w3/" data-id="ckjjlgj57000s1oz46y010o67" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-deep-learning-sequence-models-w2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/08/deep-learning-sequence-models-w2/" class="article-date">
+  <time datetime="2018-09-08T05:15:35.000Z" itemprop="datePublished">Sep 8 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/08/deep-learning-sequence-models-w2/">深度学习顺序模型第二周</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第二周啦，这一周开始进入更深入的顺序模型的训练，这一周分为了三个部分，一共10课。</p>
+<h1 id="Introduct-to-word-embedding"><a href="#Introduct-to-word-embedding" class="headerlink" title="Introduct to word embedding"></a>Introduct to word embedding</h1><p>第一部分是NLP and Word Embeddings，词语的嵌入</p>
+<h2 id="Word-Representation-语言表示"><a href="#Word-Representation-语言表示" class="headerlink" title="Word Representation 语言表示"></a>Word Representation 语言表示</h2><p>根据先前所学，每一个word被表现在一个Vocabulary的词典里面<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V=[a, aaron, ..., zulu, &lt;UNK&gt;]  <span class="comment">#假设 |V|=10,000</span></span><br></pre></td></tr></table></figure><br>之前的表示，使用1-hot表达法。比如需要表示“Man”，假设这个词在词汇表的5391位置</p>
+<script type="math/tex; mode=display">Man： O_{5291} =
+\begin {pmatrix}
+     0 \\
+     0 \\
+     \vdots \\
+     1 \\
+     \vdots \\
+     0 \\
+     0 \\
+\end {pmatrix}</script><p>在实际应用场景中，当我们有一个训练模型来预测下一个单次的时候，例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I want a glass of orange ____ (juice)</span><br><span class="line">I want a glass of apple ____</span><br></pre></td></tr></table></figure><br>按照常识，我们可以猜到下一个可能是juice，因为orange juice是比较流行常见的词汇。在训练中，我们当然也是这样做的。这样机器可以知道orange的下一个词可能是juice。然而，如果换成Apple呢？按理说，apple juice应该也是个很组合词汇。按照我们人类的推理，我们大约知道orange和apple是很相近的东西，所以既然有orange juice，大约也就有apple juice。但是根据以目前从训练模型的角度，因为在1-hot的词语表示下，每两个词之间相乘（product）得到的结果都是0。因此在这种情况下，我们说单词与单词之间是没有距离的。也就没有关联性可言，我们无法让机器从orange juice推演出apple后面是juice的预测结果。</p>
+<h3 id="Featurized-representation-word-embedding"><a href="#Featurized-representation-word-embedding" class="headerlink" title="Featurized representation: word embedding"></a>Featurized representation: word embedding</h3><p>这里我们新学了一种方法叫做 word embedding<br><img src="/2018/09/08/deep-learning-sequence-models-w2/featurized.png" class="" title="[featurized representation]"></p>
+<p>每一个单词都会对应有一系列features，比如Man，对应Gender（性别），Royal（皇室），Age（年龄），Food（食物）。把这些feature和Man这个单词的关联关系进行数据化描述，得到一个数组用字母e来表示，比如Man，表示为$e_{5291}$。如图所示，我们可以通过对比$e_{456}$和$e_{4257}$，得到Apple和Orange两者存在较大关联，因此可以得到后面为juice的预测结果。这就是我们说的Word Embeddings</p>
+<p>下一个问题相对简单，就是如何可视化word embeddings。因为按照之前的理论，每一个词，有300个维度（假设这里有300个feature）。为了可视化，我们把它降为展开到2D上。这个被叫做t-SNE</p>
+<h2 id="Using-word-embeddings-使用word-embeddings"><a href="#Using-word-embeddings-使用word-embeddings" class="headerlink" title="Using word embeddings 使用word embeddings"></a>Using word embeddings 使用word embeddings</h2><p>这一节，主要是学习如何应用word embeddings到NLP，从而完成自然语言模型的训练。还是从例子开始</p>
+<ul>
+<li>Sally Johnson is an orange farmer</li>
+</ul>
+<p>根据前面的学习，我们大概知道了Sally和Johnson是两个名字。根据之前我们的学习，</p>
+<ul>
+<li>Sally是$x^{<1>}$, Johnsan是$x^{<2>}$, is是$x^{<3>}$, an是$x^{<4>}$, orange是$x^{<5>}$, farmer是$x^{<6>}$</li>
+</ul>
+<p>接下来就是通过这个的训练，来生成下面的处理结果</p>
+<ul>
+<li>Robert Lin is an apple farmer (a durian cultivator)</li>
+</ul>
+<p>通过网上上百万千万的词汇和特性关联，我们尝试寻找到durian和apple与orange之间的关联，以及farmer和cultivator之间的关联性。transfer learning</p>
+<h3 id="Transfer-learning-and-word-embeddings"><a href="#Transfer-learning-and-word-embeddings" class="headerlink" title="Transfer learning and word embeddings"></a>Transfer learning and word embeddings</h3><ol>
+<li>从大量词汇文集中（1-100B words）学习word embeddings；当然也可以从线上下载一些被pre-trained embedding</li>
+<li>把这些embedding，通过使用一个相对小的训练集，迁移到新的任务中（比如100k的词汇），在这里我们就可以使用一个小得多的特征向量（比如300个，而不是10000个）</li>
+<li>可选项：通过新的数据，持续调整（finetune）word embeddings，来改进模型</li>
+</ol>
+<p>个人觉得，这个其实很容易理解，我们每个人都在学很多的基础知识，然后因为各种不同的场景，我们需要学习一些上下文。比如同样一个词，在军事领域和民用领域就不一样。这个在Wikipedia里查词的时候非常常见。尤其是缩写</p>
+<p>Andrew在这之后介绍了，face encoding（DeepFace）和word embedding的雷同之处。两者都是把一个“object”转化成了一系列特征向量，然后进行对比的方法</p>
+<h2 id="Properties-and-word-embeddings"><a href="#Properties-and-word-embeddings" class="headerlink" title="Properties and word embeddings"></a>Properties and word embeddings</h2><p>一个关键词：analogies（类比），这个确实是一种人类很神奇的东西，但这也是NLP应用最重要的东西</p>
+<p>接下来主要描述的是如何让机器理解类比。课程中描述了，一个类比，如果Man到Woman，如何类别出King到Queen。文章使用的方法是</p>
+<p>$ e_{man}-e_{woman} \approx \begin {pmatrix}<br>     -2 \\<br>     0 \\<br>     0 \\<br>     0 \\<br>\end {pmatrix}<br>$ 和 $ e_{king}-e_{quene} \approx \begin {pmatrix}<br>     -2 \\<br>     0 \\<br>     0 \\<br>     0 \\<br>\end {pmatrix}<br>$ 最终我们得到 $ (e_{man}-e_{woman}) \approx (e_{king}-e_{quene})$ 以此来表明类比关系</p>
+<p>这个的总结公式是 </p>
+<script type="math/tex; mode=display">Find word(w): arg max_w sim(e_w, e_{king}-e_{man}+e_{woman})</script><p>进一步数学化这个公式，来解释$ sim(e_w, e_{king}-e_{man}+e_{woman}) $. 常用的解释方法是Cosine similarity.</p>
+<script type="math/tex; mode=display">sim(u,v) = \frac{u^Tv}{||u||_2 ||v||_2}</script><p>用余弦函数来描述sim的数值。根据余弦函数，$cos \phi$ 是一个在$(1，-1)$区间的值。现实中，也有人使用方差来表示$ ||u-v||^2 $</p>
+<p>Some more examples like:</p>
+<ul>
+<li>Man:Woman as Boy:Girl</li>
+<li>Ottawa:Canada as Noirobi:Kenya</li>
+<li>Big:Bigger as Tall:Taller</li>
+<li>Yen:Japan as Ruble:Russia</li>
+</ul>
+<h2 id="Embedding-matrix"><a href="#Embedding-matrix" class="headerlink" title="Embedding matrix"></a>Embedding matrix</h2><p>$ E \cdot O_{6257} = \begin {pmatrix}<br>     0 \\<br>     0 \\<br>     \vdots \\<br>     1 \\<br>     \vdots \\<br>     0 \\<br>     0 \\<br>\end {pmatrix} = e_{6257} = e_{orange}<br>$  这是一个 $(300, 1)$ 的矩阵，来表示Orange这个词对应的embeddings</p>
+<p>in common，总结一下</p>
+<p>$ E \cdot O_j = e_j $ 等于 embedding for word (j)</p>
+<p>因此我们就得到了，对于模型而言，我们的训练目标就是获得这个Embedding Matrix $E$。在Keas里面，事实上使用embedding layer来解决问题，这样更加有效</p>
+<h1 id="Learning-Word-Embeddings-Word2vec-amp-GloVw"><a href="#Learning-Word-Embeddings-Word2vec-amp-GloVw" class="headerlink" title="Learning Word Embeddings: Word2vec &amp; GloVw"></a>Learning Word Embeddings: Word2vec &amp; GloVw</h1><p>好了，进入第二部分，在上一部分，学习了关于embedding，和模型训练目标Embedding Matrix $E$。这个部分就是来讲述如何训练模型$E$</p>
+<h2 id="Learning-Word-Embeddings"><a href="#Learning-Word-Embeddings" class="headerlink" title="Learning Word Embeddings"></a>Learning Word Embeddings</h2><p>按照andew的介绍，现在的算法变得越来越简单。但是为了方便和便于理解，介绍还是从相对复杂的算法开始</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I       want a glass  of   orange ______</span><br><span class="line">4242    9665 1 3852  6163   6257</span><br></pre></td></tr></table></figure>
+<p>I represent as $ O_{4343} \longrightarrow E \longrightarrow e_{4343} $<br>want represent as $ O_{9665} \longrightarrow E \longrightarrow e_{9665} $<br>a represent as $ O_{1} \longrightarrow E \longrightarrow e_{1} $</p>
+<p>$ e_{x} $ is a 300 dimentional embedding vector. fill all e into a neural network and then feed to a softmax into a 10000 output vector. neural network with $w^{[1]}$, $b^{[1]}$; softmax parameters are $w^{[2]}$, $b^{[2]}$. the dimensional of neural network is 6 words times 300 dimentional word, which is a 1800 dimentional network layer. also we can decide a window like “a glass of orange <strong>__</strong>“, which removed “I want”</p>
+<p>接下来文章讲述了不同的context上下文组合方式，列举例子如：</p>
+<p>原句是：I want a glass of orange juice to go along with my cereal</p>
+<ul>
+<li>Last 4 words (a glass of orange <strong>_</strong>)</li>
+<li>4 words on left &amp; right  (a glass of orange <strong>_</strong> to go along with)</li>
+<li>Last 1 word (orange <strong>_</strong>)</li>
+</ul>
+<p>作者表达了不同的应用上下文学习的方法，如果the goal is just to learn word embedding那么，使用后集中简单方法，被认为已经可以很好地学习到了</p>
+<h2 id="Word2Vec算法"><a href="#Word2Vec算法" class="headerlink" title="Word2Vec算法"></a>Word2Vec算法</h2><p>一种跟简单而有效的算法，学习Word Embeddings。先来看一下Skip-grams，依然是刚刚那个句子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I want a glass of orange juice to go along with my cereal.</span><br></pre></td></tr></table></figure><br>这个算法里面，随机的选取一个word作为context word，例如在上面那个句子里面，我们选择orange作为context word。接下来继续在一个window的去区间里面，选择一个target，比如选择了下一个word，那就是juice，选择之前两个的那个word，那就是glass等等。接下来，对于supervise learning模型而言，以context word为准，让系统去学习预测制定的target，不断校正其对应的W和b参数。</p>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p>Vocab size = 10000k</p>
+<script type="math/tex; mode=display">ContentC("orange") \longrightarrow TargetT("juice")</script><script type="math/tex; mode=display">O_c \longrightarrow E \longrightarrow e_c \longrightarrow softmax \longrightarrow \hat y</script><p>这里的softmax是个相对特殊的公式</p>
+<script type="math/tex; mode=display">softmax = \frac{e^{\theta^T_te_c}}{\sum_{j=1}^{10000} e^{\theta^T_je_c}}</script><p>关于选择context的问题：</p>
+<p>课程中提出，to，the，a，of，for，在英语中是非常常见的词语。因此在随机选择时，会把这些常见词和非常见词分开来，以保证非常见词语，比如apple，orange甚至durian能够被（sampling）采样到。</p>
+<h2 id="Negative-Sampling算法"><a href="#Negative-Sampling算法" class="headerlink" title="Negative Sampling算法"></a>Negative Sampling算法</h2><p>定义一种新形式的supervised learning problem，举例原句不变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I want a glass of orange juice to go along with my cereal.</span><br></pre></td></tr></table></figure><br>接下来会有两组不同的pair</p>
+<script type="math/tex; mode=display">\begin {matrix}
+     context & word & target \\
+     orange & juice & 1 \\
+     orange & king & 0 \\
+     orange & book & 0 \\
+     orange & the & 0 \\
+     orange & of & 0 \\
+\end {matrix}</script><p>第一排，是和之前的算法一样，通过在句子中进行选取，得到的一组pair，我们把这样的pair对应target值写成1，然后把从vacabulary里面随机选择出来的word，比如king，对应的target数值叫做0。事实上，所有随机从vacabulary里面抽取的数值，都会视为0</p>
+<h3 id="Model-1"><a href="#Model-1" class="headerlink" title="Model"></a>Model</h3><script type="math/tex; mode=display">p(y=1 | c,t) = \sigma (\theta^T_t e_t)</script><script type="math/tex; mode=display">o_{6357} \longrightarrow E \longrightarrow e_{6357}</script><p>接下来的意思是，$ e_{6357} $ 和 在vacabulary里面的10000个词汇进行配对，生成10000个0和1的target(logistic classification). 在实际应用中，每一次迭代选择也不是10000个，而是k个，k一般在5-20之间。每次迭代只需要计算k+1个logistic classification就可以了</p>
+<p>同样的问题，如何选择negtive example，作者介绍了一种方法，用来做sampling，不过好像就是一种在词汇出现频次的基础上人为调整了数值的方法而已</p>
+<h2 id="GloVe算法"><a href="#GloVe算法" class="headerlink" title="GloVe算法"></a>GloVe算法</h2><p>这是本课程介绍learning word embeddings的最后一种算法。这个算法可能并没有Word2Vec和Skip-gram那么普遍使用，但是因为他更简单，所以也值得被介绍一下。</p>
+<p>GloVe算法的全称是全向量词语表达(Global Vector for word representation)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I want a glass of orange juice to go along with my cereal.</span><br></pre></td></tr></table></figure><br>之前我们用的c和t来表示配对关系。在GloVe算法里有如下的公式</p>
+<script type="math/tex; mode=display">X_{ij} = #times</script><p>$ X_{ij} $ 可以表示为i显示在j的上下文中出现的次数。因此类比一下，这里的i可以相当于Word2Vec里面的target(t), j是context(c)</p>
+<h3 id="Model-2"><a href="#Model-2" class="headerlink" title="Model"></a>Model</h3><p>具体算法暂时不陈述了，因为没太听懂，其实还是使用了上面算法里面的那个 $ \theta^T_te_c $. 我觉得我在这个地方的确没太明白他代表了什么。需要在复习的时候重新看一下。眼下先把考试过了再说</p>
+<h1 id="Applications-using-Word-Embeddings"><a href="#Applications-using-Word-Embeddings" class="headerlink" title="Applications using Word Embeddings"></a>Applications using Word Embeddings</h1><p>最后一部分了，主要讲述对于Word Embeddings的应用方法。</p>
+<h2 id="Sentiment-Classification"><a href="#Sentiment-Classification" class="headerlink" title="Sentiment Classification"></a>Sentiment Classification</h2><p>开始没懂什么意思，看图一下子就明白了<br><img src="/2018/09/08/deep-learning-sequence-models-w2/sentiment.png" class="" title="[sentiment classification]"></p>
+<h3 id="Simple-sentiment-classification-model"><a href="#Simple-sentiment-classification-model" class="headerlink" title="Simple sentiment classification model"></a>Simple sentiment classification model</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The    desert   is   excellent    # goto 4 stars</span><br><span class="line">8928    2468   4694    3180</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">\begin {matrix}
+     The & o_{8928} & \longrightarrow & E & \longrightarrow & e_{8928} \\
+     desert & o_{2468} & \longrightarrow & E & \longrightarrow & e_{2468} \\
+     is & o_{4694} & \longrightarrow & E & \longrightarrow & e_{4694} \\
+     excellent & o_{3180} & \longrightarrow & E & \longrightarrow & e_{3180} \\
+\end {matrix}</script><p>假设每一个是300个dimentional embeddings. 把这四个词放在一起，就是一个由1200个dimention组成的neural network layer。err，这里好像不太一样，这里用的是sum或avg这300个特征向量，然后把这个扔给softmax，得到1-5的一个y</p>
+<h3 id="RNN-for-sentiment-classification"><a href="#RNN-for-sentiment-classification" class="headerlink" title="RNN for sentiment classification"></a>RNN for sentiment classification</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Completely lacking in good taste, good service and good ambience    # goto 1 star</span><br></pre></td></tr></table></figure>
+<p>对于这样一句话，刚刚的算法表示很无奈。这里面虽然出现了许多的good，但是并不是说好的，而是lacking in。所以如果完全的sum或者avg很难实现 goto 1 star的效果。</p>
+<p>使用Many-to-one RNN Achitecture<br><img src="/2018/09/08/deep-learning-sequence-models-w2/rnn.png" class="" title="[RNN for sentiment classification]"></p>
+<p>这里说明使用word embeddings的方法$ e_{4966} $我们训练的是结果可以有更好的类比性，比如lacking和obsent，而不再只是拘泥于一个固定词汇的训练。这让语言有了更强的灵活性。</p>
+<h2 id="Debiasing-Word-Embeddings"><a href="#Debiasing-Word-Embeddings" class="headerlink" title="Debiasing Word Embeddings"></a>Debiasing Word Embeddings</h2><p>去除偏差，这里指的不是deeplearning里面的bias，与embeddings相关的预测结果的偏差问题。比如</p>
+<ul>
+<li>Man:Woman as King:Queen 这个是对的</li>
+<li>Man: Programmer as Woman:Homemaker 这个就不对了</li>
+<li>Father:Doctor as Mother:Nurse 这个也不合适</li>
+</ul>
+<p>源自于我们生活的显示，基于性别，信仰，年龄，性别等造成了许多偏差认知，这在人类社会也广泛存在。但是我们并不希望计算机也有这种所谓偏差，甚至“歧视”出现。所以有了本文中所描述的关于如何去除偏差的方法。</p>
+<h2 id="Addressing-bias-in-Word-Embeddings"><a href="#Addressing-bias-in-Word-Embeddings" class="headerlink" title="Addressing bias in Word Embeddings"></a>Addressing bias in Word Embeddings</h2><p>因为内容感觉和我差的有点远，知道就好，所以这里做个特别简要的描述</p>
+<ol>
+<li>Identifiy bias direction（比如性别，年龄）</li>
+<li>Neutralize: For every word that is not definitional, project to ge rid of bias</li>
+<li>Equalize pairs</li>
+</ol>
+<p>有篇论文，[Bolukbasi et. al., 2016. Man is to computer programmmer as woman is homemaker?]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2018/09/08/deep-learning-sequence-models-w2/" data-id="ckjjlgj55000o1oz42yj05vi9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Business/">Business</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Strategy/">Business Strategy</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Management/">Management</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/career/" rel="tag">career</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud/" rel="tag">cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/med/" rel="tag">med</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mgnt/" rel="tag">mgnt</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/operation/" rel="tag">operation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/" rel="tag">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/" rel="tag">tech</a><span class="tag-list-count">35</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/book/" style="font-size: 14px;">book</a> <a href="/tags/career/" style="font-size: 14px;">career</a> <a href="/tags/cloud/" style="font-size: 12px;">cloud</a> <a href="/tags/deeplearning/" style="font-size: 18px;">deeplearning</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/med/" style="font-size: 12px;">med</a> <a href="/tags/mgnt/" style="font-size: 18px;">mgnt</a> <a href="/tags/misc/" style="font-size: 12px;">misc</a> <a href="/tags/operation/" style="font-size: 10px;">operation</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/06/summary2020/">留给2020</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/06/summary2019/">留给2019</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/02/gcp-study/">GCP搭建serverless</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/aliyun-server-less/">阿里云函数计算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/deep-learning-sequence-models-w3/">深度学习顺序模型第三周</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Jack Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  <span id="busuanzi_container_site_uv">
+	    with <span id="busuanzi_value_site_uv"></span> visitors
+	  </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

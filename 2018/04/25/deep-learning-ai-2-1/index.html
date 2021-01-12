@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>深度学习第二周课程（下） | 杰克船长的小屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="上一章节提到的梯度下降（Gradient Decent）过程需要多层嵌套For-Loop循环。这种循环非常耗费计算资源。为了降低计算资源消耗，提升计算效率，本章节引入向量计算（Vectorization）的概念。本章的主要内容也是围绕着向量计算和使用Python中的numpy库来实现限量计算的过程。 本章课程内容目录（与本文无关）：  向量计算（Vectorization） 使用向量计算逻辑回归（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习第二周课程（下）">
+<meta property="og:url" content="http://wangzhe.github.io/2018/04/25/deep-learning-ai-2-1/index.html">
+<meta property="og:site_name" content="杰克船长的小屋">
+<meta property="og:description" content="上一章节提到的梯度下降（Gradient Decent）过程需要多层嵌套For-Loop循环。这种循环非常耗费计算资源。为了降低计算资源消耗，提升计算效率，本章节引入向量计算（Vectorization）的概念。本章的主要内容也是围绕着向量计算和使用Python中的numpy库来实现限量计算的过程。 本章课程内容目录（与本文无关）：  向量计算（Vectorization） 使用向量计算逻辑回归（">
+<meta property="og:locale">
+<meta property="og:image" content="http://wangzhe.github.io/2018/04/25/deep-learning-ai-2-1/jupyter.png">
+<meta property="og:image" content="http://wangzhe.github.io/2018/04/25/deep-learning-ai-2-1/closing.jpg">
+<meta property="article:published_time" content="2018-04-25T13:22:38.000Z">
+<meta property="article:modified_time" content="2021-01-04T05:38:30.246Z">
+<meta property="article:author" content="Jack Wang">
+<meta property="article:tag" content="tech">
+<meta property="article:tag" content="deeplearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangzhe.github.io/2018/04/25/deep-learning-ai-2-1/jupyter.png">
+  
+    <link rel="alternative" href="/atom.xml" title="杰克船长的小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">杰克船长的小屋</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wangzhe.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-deep-learning-ai-2-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/25/deep-learning-ai-2-1/" class="article-date">
+  <time datetime="2018-04-25T13:22:38.000Z" itemprop="datePublished">Apr 25 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      深度学习第二周课程（下）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一章节提到的梯度下降（Gradient Decent）过程需要多层嵌套For-Loop循环。这种循环非常耗费计算资源。为了降低计算资源消耗，提升计算效率，本章节引入向量计算（Vectorization）的概念。本章的主要内容也是围绕着向量计算和使用Python中的numpy库来实现限量计算的过程。</p>
+<p>本章课程内容目录（与本文无关）：</p>
+<ul>
+<li>向量计算（Vectorization）</li>
+<li>使用向量计算逻辑回归（Vectorizing Logistic Regression）</li>
+<li>使用向量计算逻辑回归中的梯度下降（Vectorizing Logistic Regression’s Gradient）</li>
+<li>Python的广播（Broadcasting in Python）</li>
+<li>Python/numpy向量的介绍</li>
+<li>逻辑回归里的Cost Function解释</li>
+</ul>
+<h3 id="安装一下jupyter"><a href="#安装一下jupyter" class="headerlink" title="安装一下jupyter"></a>安装一下jupyter</h3><p>本章开始需要进行练习，Python是必须要装的，强烈建议Python3，课程使用Jupyter，这里也提示了一下安装，不过后来发现好像用处也不大。这个工具主要是可以把Python的程序脚本和文字进行混排，方便与演示。如果从来没有接触过Python的话，可以考虑用一下，毕竟这个是课程也在用的环境。如果有一点基础的话，Python有自己的IDE工具，PyCharm，很好用直接下载就行。</p>
+<p>安装Python&amp;Jupyter。因为一直写Python所以这个一直有没什么大问题，但是Jupyt这个倒是头一次见，好像是一种基于Browser的IDE，挺有意思的。具体可以访问以下几个地址：</p>
+<ul>
+<li>安装Python，我一直用Brew install就好了</li>
+<li>安装Pip，不过因为买了这个新电脑以后就没怎么写代码，所以竟然没有Pip。这个倒也不难，随便上网搜索“install pip”，两步简单操作就搞定了</li>
+<li>安装Jupyter，没有按照web上说的用pkg包的方式，只是担心会安装额外的Python3.所以选择了通过pip命令行形式进行安装。</li>
+</ul>
+<p>OK，三个安装结束，键入下面命令，直接启动Browser的界面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
+<p>下面是标准编辑页面（竟然Hexo的asset_img可以用，好激动，但是asset_link确实不行，估计是因为marked里面escape的问题）</p>
+<img src="/2018/04/25/deep-learning-ai-2-1/jupyter.png" class="" title="[jupyter starter]">
+<p>首界面很简单，就是系统文件夹。右上角有新建功能，可以新建一个可运行的python文件。在课程中，Andrew主要介绍了 np.dot(i,j) 在程序中对比for-loop，超过300倍的优势。笔者后来自己查了一下原因，看来主要还是回到了Python作为解释性语言本身的问题。为了对初学者友好，Python作为解释性语言牺牲了许多性能上的东西。而np.dot之所以much faster，主要原因是一句Python语言，对应的是用C写成numpy库，这个库会将输入进来的数据进行编译，形成编译后的语言进行调用。这种方法，远好于Python一个字符一个字符的进行读取，并根据语法分析器进行描述，占据了大量的时间。当然其他原因也有许多，比如借助编译可以使用CPU或者GPU的SIMD指令集（Simple instuction multiple data）进行并行计算，大大提升效率。根据文章将，numpy的效率可以是原生python的2万倍。而据说选用cpython会达到20万倍之多。具体原理可以参看知乎上的这篇文章：</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/67652386">python的numpy向量化语句为什么会比for快？</a></p>
+<h3 id="建立神经网络的主要过程"><a href="#建立神经网络的主要过程" class="headerlink" title="建立神经网络的主要过程"></a>建立神经网络的主要过程</h3><h4 id="先来回顾一下基础算法："><a href="#先来回顾一下基础算法：" class="headerlink" title="先来回顾一下基础算法："></a>先来回顾一下基础算法：</h4><p>For one example $x^{(i)}$:</p>
+<script type="math/tex; mode=display">z^{(i)} = w^T x^{(i)} + b \tag{1}</script><script type="math/tex; mode=display">\hat{y}^{(i)} = a^{(i)} = sigmoid(z^{(i)})\tag{2}</script><script type="math/tex; mode=display">\mathcal{L}(a^{(i)}, y^{(i)}) =  - y^{(i)}  \log(a^{(i)}) - (1-y^{(i)} )  \log(1-a^{(i)})\tag{3}</script><p>The cost is then computed by summing over all training examples:</p>
+<script type="math/tex; mode=display">J = \frac{1}{m} \sum_{i=1}^m \mathcal{L}(a^{(i)}, y^{(i)})\tag{4}</script><h4 id="建模过程"><a href="#建模过程" class="headerlink" title="建模过程"></a>建模过程</h4><ul>
+<li>定义模型结构（例如输入feature的数量）</li>
+<li>初始化模型参数</li>
+<li>升级参数（Gradient Descent）</li>
+</ul>
+<p>讲上述三个部分逐个建立并整合进一个叫做model()的 $function$ 里。几个简单的 $function$ 会包含的 $sigmoid$ , initialize_with_zeros() , propagate() </p>
+<p>特别说明，关于 propagate() 的算法回顾如下：<br>Forward Propagation:</p>
+<ul>
+<li>You get X</li>
+<li>You compute $A = \sigma(w^T X + b) = (a^{(1)}, a^{(2)}, …, a^{(m-1)}, a^{(m)})$</li>
+<li>You calculate the cost function: $J = -\frac{1}{m}\sum_{i=1}^{m}y^{(i)}\log(a^{(i)})+(1-y^{(i)})\log(1-a^{(i)})$</li>
+</ul>
+<p>Here are the two formulas you will be using: </p>
+<script type="math/tex; mode=display">\frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T\tag{7}</script><script type="math/tex; mode=display">\frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)})\tag{8}</script><p>下面的Code里面用到了一些“内积”、“外积”、“General Dot”的概念。在课程中有相关的联系材料。具体参见这个解释可能会更加实在</p>
+<p><a target="_blank" rel="noopener" href="https://hk.saowen.com/a/c2cbbdb3dc43d41a717517faca384dc6228a9d2cbab31b59eca3f468c59e33b4">使用numpy进行行列式乘积的计算</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">m = X.shape[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># FORWARD PROPAGATION (FROM X TO COST)</span></span><br><span class="line"><span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">A = sigmoid(np.dot(X.T, w) + b).reshape(<span class="number">1</span>, -<span class="number">1</span>) <span class="comment"># compute activation</span></span><br><span class="line">cost = - (<span class="number">1</span>/m) * np.<span class="built_in">sum</span>(Y*np.log(A) + (<span class="number">1</span>-Y) * np.log(<span class="number">1</span>-A))  <span class="comment"># compute cost</span></span><br><span class="line"><span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># BACKWARD PROPAGATION (TO FIND GRAD)</span></span><br><span class="line"><span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">dw = <span class="number">1</span>/m * np.dot(X, (A-Y).T)</span><br><span class="line">db = <span class="number">1</span>/m * np.<span class="built_in">sum</span>(A-Y)</span><br><span class="line"><span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span>(dw.shape == w.shape)</span><br><span class="line"><span class="keyword">assert</span>(db.dtype == <span class="built_in">float</span>)</span><br><span class="line">cost = np.squeeze(cost)</span><br><span class="line"><span class="keyword">assert</span>(cost.shape == ())</span><br><span class="line"></span><br><span class="line">grads = &#123;<span class="string">&quot;dw&quot;</span>: dw,</span><br><span class="line">         <span class="string">&quot;db&quot;</span>: db&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> grads, cost</span><br></pre></td></tr></table></figure>
+<p>总结一下，这里建立的初始模型包括<br>$sigmoid$, $initialize$, $propagate$</p>
+<h4 id="优化模型参数（Optimization）"><a href="#优化模型参数（Optimization）" class="headerlink" title="优化模型参数（Optimization）"></a>优化模型参数（Optimization）</h4><ul>
+<li>初始化参数</li>
+<li>计算cost function </li>
+<li>通过梯级下降的方式进行参数更新并计算w和b的结果()</li>
+</ul>
+<p>最近基本的梯级下降依据如下：</p>
+<script type="math/tex; mode=display">\theta = \theta - \alpha \text{ } d\theta \tag{9}</script><p>where $\alpha$ is the learning rate</p>
+<img src="/2018/04/25/deep-learning-ai-2-1/closing.jpg" class="" title="[gradient descent]">
+<p>总结一下，这里建立的初始模型包括<br>$initialize$, $optimize$, $predict$</p>
+<h4 id="整合模型"><a href="#整合模型" class="headerlink" title="整合模型"></a>整合模型</h4><p>合并模型建立$model$，使用plot建立拟合线</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2018/04/25/deep-learning-ai-2-1/" data-id="ckjjlgj51000h1oz408l34jpu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/04/deeplearning-3-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          深度学习第三周神经网络
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/25/deep-learning-ai-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">深度学习第二周课程（上）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Business/">Business</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Strategy/">Business Strategy</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Management/">Management</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/career/" rel="tag">career</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud/" rel="tag">cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/med/" rel="tag">med</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mgnt/" rel="tag">mgnt</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/operation/" rel="tag">operation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/" rel="tag">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/" rel="tag">tech</a><span class="tag-list-count">35</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/book/" style="font-size: 14px;">book</a> <a href="/tags/career/" style="font-size: 14px;">career</a> <a href="/tags/cloud/" style="font-size: 12px;">cloud</a> <a href="/tags/deeplearning/" style="font-size: 18px;">deeplearning</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/med/" style="font-size: 12px;">med</a> <a href="/tags/mgnt/" style="font-size: 18px;">mgnt</a> <a href="/tags/misc/" style="font-size: 12px;">misc</a> <a href="/tags/operation/" style="font-size: 10px;">operation</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/06/summary2020/">留给2020</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/06/summary2019/">留给2019</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/02/gcp-study/">GCP搭建serverless</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/aliyun-server-less/">阿里云函数计算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/deep-learning-sequence-models-w3/">深度学习顺序模型第三周</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Jack Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  <span id="busuanzi_container_site_uv">
+	    with <span id="busuanzi_value_site_uv"></span> visitors
+	  </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>无UI系统设计之再建图灵 | 杰克船长的小屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在过去的十年时间里，从微软到ThoughtWorks，再到后来做了杏树林，历经了Symbian，Windows Mobile，然后的Blackberry和Android，直到后来的iOS，WP，设计了一个又一个从前到后的系统架构，差不多经历了大半个移动时代的发展。还算完整的工程师生涯让我对用户体验和人机交互有着格外的感情。直到有一天，一场争论让我陷入了沉思。 事情缘起于对后台运维系统的设计。在最开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无UI系统设计之再建图灵">
+<meta property="og:url" content="http://wangzhe.github.io/2016/07/02/no-back-end-sys/index.html">
+<meta property="og:site_name" content="杰克船长的小屋">
+<meta property="og:description" content="在过去的十年时间里，从微软到ThoughtWorks，再到后来做了杏树林，历经了Symbian，Windows Mobile，然后的Blackberry和Android，直到后来的iOS，WP，设计了一个又一个从前到后的系统架构，差不多经历了大半个移动时代的发展。还算完整的工程师生涯让我对用户体验和人机交互有着格外的感情。直到有一天，一场争论让我陷入了沉思。 事情缘起于对后台运维系统的设计。在最开">
+<meta property="og:locale">
+<meta property="og:image" content="http://wangzhe.github.io/2016/07/02/no-back-end-sys/terminal.png">
+<meta property="og:image" content="http://wangzhe.github.io/2016/07/02/no-back-end-sys/siri_cort_now.jpg">
+<meta property="og:image" content="http://wangzhe.github.io/2016/07/02/no-back-end-sys/hubot.jpg">
+<meta property="article:published_time" content="2016-07-02T09:54:37.000Z">
+<meta property="article:modified_time" content="2021-01-04T05:38:30.324Z">
+<meta property="article:author" content="Jack Wang">
+<meta property="article:tag" content="tech">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangzhe.github.io/2016/07/02/no-back-end-sys/terminal.png">
+  
+    <link rel="alternative" href="/atom.xml" title="杰克船长的小屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">杰克船长的小屋</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wangzhe.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-no-back-end-sys" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/02/no-back-end-sys/" class="article-date">
+  <time datetime="2016-07-02T09:54:37.000Z" itemprop="datePublished">Jul 2 2016</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Technology/">Technology</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      无UI系统设计之再建图灵
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在过去的十年时间里，从微软到ThoughtWorks，再到后来做了杏树林，历经了Symbian，Windows Mobile，然后的Blackberry和Android，直到后来的iOS，WP，设计了一个又一个从前到后的系统架构，差不多经历了大半个移动时代的发展。还算完整的工程师生涯让我对用户体验和人机交互有着格外的感情。直到有一天，一场争论让我陷入了沉思。</p>
+<p>事情缘起于对后台运维系统的设计。在最开始季度初的时候，我雄心勃勃给DevOps团队定义了一个目标，让运维同学学会使用Axure作出产品设计原型，推演操作路径。这在我们这种搞移动产品设计起家的人眼里是顺理成章的事情。然而，技术专家的反对，却给了我一闷棍。后来想来，UI设计对于运维系统而言简直是极大的浪费。原因如下：</p>
+<ul>
+<li>运维系统的核心任务，是提升运维人员的工作效率，提升运维质量（降低运维差错率）</li>
+<li>运维系统的面向对象，熟练的操作人员（研发、运维）</li>
+<li>运维系统的研发目的，以最快速度，解决现有问题</li>
+</ul>
+<p>第一个很重要的原因就是，正是因为如上所述，要快、要高效的面对熟练人员。如果是工作效率在运维系统中可以使用机器来尽量多的完成任务的话。那么“快”在运维系统的研发中就显得格外的重要。其实，当今世界上最简单的，也是最早出现的交互见面便是Terminal。在Terminal的情况下，大量的UI工作和交互工作都转化成了基本的命令，不再需要写表单，调整在不同窗口大小情况下的适配，也不用做繁琐的IE，Chrome等浏览器适配工作。这让DevOps研发更多的关注于“核心任务”，就是用机器方法提升工作效率本身，让出了核心功能外的代码降低到最大程度。</p>
+<img src="/2016/07/02/no-back-end-sys/terminal.png" class="" title="用户终端">
+<p>第二个原因，其实，随着后移动时代的到来，越来越多的人已经开始从2007年手机触屏所带来的一股极大的UI交互体验旋风中走了出来。渐渐的，一种更加方便简易的形式在兴起。Cortana, Google Now和Siri，人机对话。其实，早在Symbian时代，就有一家著名的公司Nuance公司，从事语音识别，而且效果已经很高了。不过微软、Google和苹果在识别的背后加入了更加强大的语音分析引擎，让识别结果更加语意化，可以基于场景来从事更多的工作。因此，如果说过去我们在交互这个领域，还在苦苦追求更加简单、易于理解和上手的人机交互的时候。新的机遇自然语言或者简易自然语言的交互，很可能会在不远的未来改变我们的生活，而这一切，一定会从技术本身开始。</p>
+<img src="/2016/07/02/no-back-end-sys/siri_cort_now.jpg" class="" title="Cortana, Google Now &amp; Siri">
+<p>Github去年发布了非常有意思的办公自动化软件Hubot，他通过添加adaptor的方法，想Hubot注入更多语言交互指令，让Hubot可以通过一系列在Chat过程中的指令模式完成操作。其实本质上说Hubot和Terminal的工作原理并没有多大不同，但是这一次，对话不再仅仅限制在Terminal上，更加无需了解很复杂的ip地址和命令。如今的交互在IM软件上，通过一些预先设定的语言类指令来完成。</p>
+<img src="/2016/07/02/no-back-end-sys/hubot.jpg" class="" title="Github Hubot">
+<p>前段时间，Google发布了他们的语言搜索系统，WWDC在新版的macOS上面加入了语义搜索功能。可以想见，ChatOps，ChatOffice，ChatXXX为代表的一系列人工语音交互模式，将会实现。那么如今，我们要做的，就是把业务内核准备好，剩下的就是不断探索更新的技术所带来的便捷。</p>
+<p>最后，写到这里的时候，我忽然想到了一个事情－－图灵实验。1950年，图灵发表了具有里程碑意义的论文《电脑能思考吗？》，在里面第一次提到了人工智能的概念。图灵对人工智能的描述就是，有一堵墙，墙上有一个小窗口，窗口的两侧，一边是人，一边是具有人工智能的机器。如果两方都认为对方是人的话，则实验成功。现在看起来，这样的日子真的不远了。:)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wangzhe.github.io/2016/07/02/no-back-end-sys/" data-id="ckjjlgj5t002a1oz44d9h2m26" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tech/" rel="tag">tech</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/03/no-back-end-design/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          无UI系统设计之实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/14/tech-driven/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">聊聊技术驱动互联网+医疗三个争论</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Business/">Business</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Strategy/">Business Strategy</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Management/">Management</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/book/" rel="tag">book</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/career/" rel="tag">career</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud/" rel="tag">cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning/" rel="tag">deeplearning</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/med/" rel="tag">med</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mgnt/" rel="tag">mgnt</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/operation/" rel="tag">operation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/" rel="tag">security</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tech/" rel="tag">tech</a><span class="tag-list-count">35</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/book/" style="font-size: 14px;">book</a> <a href="/tags/career/" style="font-size: 14px;">career</a> <a href="/tags/cloud/" style="font-size: 12px;">cloud</a> <a href="/tags/deeplearning/" style="font-size: 18px;">deeplearning</a> <a href="/tags/math/" style="font-size: 10px;">math</a> <a href="/tags/med/" style="font-size: 12px;">med</a> <a href="/tags/mgnt/" style="font-size: 18px;">mgnt</a> <a href="/tags/misc/" style="font-size: 12px;">misc</a> <a href="/tags/operation/" style="font-size: 10px;">operation</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/tech/" style="font-size: 20px;">tech</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/06/summary2020/">留给2020</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/06/summary2019/">留给2019</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/02/gcp-study/">GCP搭建serverless</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/aliyun-server-less/">阿里云函数计算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/deep-learning-sequence-models-w3/">深度学习顺序模型第三周</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Jack Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  <span id="busuanzi_container_site_uv">
+	    with <span id="busuanzi_value_site_uv"></span> visitors
+	  </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
