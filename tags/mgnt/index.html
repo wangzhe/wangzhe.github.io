@@ -139,7 +139,11 @@
 </ul>
 <p><strong>附录本年度的主要工作结果</strong></p>
 <ul>
-<li><em>质量相关</em><img src="/2021/01/06/summary2020/stability_2.png" class="" title="stability_2.png border&#x3D;1">
+<li><p><em>NLP算法相关论文和材料目录</em></p>
+<img src="/2021/01/06/summary2020/NLP.png" class="" title="NLP.png border&#x3D;1">
+</li>
+<li><p><em>质量相关</em></p>
+<img src="/2021/01/06/summary2020/stability_2.png" class="" title="stability_2.png border&#x3D;1">
 <img src="/2021/01/06/summary2020/stability_3.png" class="" title="stability_3.png border&#x3D;1">
 <img src="/2021/01/06/summary2020/stability_4.png" class="" title="stability_4.png border&#x3D;1">
 <img src="/2021/01/06/summary2020/stability_5.png" class="" title="stability_5.png border&#x3D;1"></li>
@@ -935,6 +939,21 @@
 <script src="/js/script.js"></script>
 
 
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

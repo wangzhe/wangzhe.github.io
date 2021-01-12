@@ -3,12 +3,12 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Tag: Security | 杰克船长的小屋</title>
+  <title>Tag: security | 杰克船长的小屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="让医生行医更轻松，让中国的医生也成为最受尊敬的一族">
 <meta property="og:type" content="website">
 <meta property="og:title" content="杰克船长的小屋">
-<meta property="og:url" content="http://wangzhe.github.io/tags/Security/index.html">
+<meta property="og:url" content="http://wangzhe.github.io/tags/security/index.html">
 <meta property="og:site_name" content="杰克船长的小屋">
 <meta property="og:description" content="让医生行医更轻松，让中国的医生也成为最受尊敬的一族">
 <meta property="og:locale">
@@ -63,10 +63,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-iso27001" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hippa-part1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/07/03/iso27001/" class="article-date">
-  <time datetime="2016-07-03T14:26:22.000Z" itemprop="datePublished">Jul 3 2016</time>
+    <a href="/2015/12/17/hippa-part1/" class="article-date">
+  <time datetime="2015-12-17T06:09:48.000Z" itemprop="datePublished">Dec 17 2015</time>
 </a>
     
   <div class="article-category">
@@ -81,7 +81,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/03/iso27001/">ISO27001工作记录之一声叹息</a>
+      <a class="article-title" href="/2015/12/17/hippa-part1/">关于HIPAA</a>
     </h1>
   
 
@@ -89,45 +89,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>因为要和许多中国／国际企业合作，我们需要一套更加完备的信息安全认证。所以这两个礼拜搞ISO27001搞的很心烦，于是写写27001的概念，顺便聊聊认证体系。</p>
+        <p>最近因为工作的关系，必须系统的学习一下HIPAA，把学习结果给大家分享一下，如下：</p>
+<h3 id="第一部分：什么是HIPAA"><a href="#第一部分：什么是HIPAA" class="headerlink" title="第一部分：什么是HIPAA"></a>第一部分：什么是HIPAA</h3><p>特别词汇说明（terms）：<br>Portability：这里特别说明，根据wiki在社会保险（social security）方面的解释，所谓携带型是保存（preserve）、维护（maintain）和交换（transfer）三个词的合意总称，因为很没有中文对应意思，所以特此解释，后面还是翻译成可携带［1］。</p>
+<p>HIPAA，全称Health Insurance Portability and Accountability Act. 是美国关于健康保险的携带和责任的法案。HIPAA的提出，旨在改革健康医疗产业，降低费用，简化管理过程和负担，增强隐私保护和个人信息安全保护。可以说，HIPAA是美国健康卫生领域的基础大法，也是整个相关后续政策的基石。自从1996年HIPAA被正式提出以后，法案经历了5次比较大的更新，分别对医疗卫生领域在保险和医疗管理方面的工作，进行了一系列逐渐细致化和现代化的制约。</p>
+<img src="/2015/12/17/hippa-part1/evolution1996.jpg" class="" title="1996年第一次正式形成法案">
+<img src="/2015/12/17/hippa-part1/evolution1997.jpg" class="" title="1997年引入保险改革">
+<img src="/2015/12/17/hippa-part1/evolution2009.jpg" class="" title="2009年引入ARRA／HITECH法案">
+<p>在美国2009年更新了HIPAA，引入了美国复苏与再投资法案ARRA（American Recovery and Reinvestment Act），第一次开始引入HITECH（全称Health Information Technology for Economic and Clinic Health Act）。该法案旨在拓展对EHR（Electronic Health Records） 的使用，并开始对ePHI进行了大量升级，详细解释了HIPAA对隐私和安全的保护，同时增加了更多强制实施的内容和相对应的不符合情况下的惩罚措施。该法案与2010年2月强制生效。</p>
+<img src="/2015/12/17/hippa-part1/evolution2013.jpg" class="" title="2013年由美国卫生与公共关系部下发Omnibus政策">
+<p>之后，在2013年1月，由美国卫生与公共服务部（Department of Health and Human）最终发布了Omnibus Rule，将过去的HITECH和GINA（Generic Information Nondiscrimination Act of 2008）进行了融合，并增加了更多详细的指导细节。虽然作为行政命令，Omnibus Rule并不是法案，但是它更加细则。政令与2013年9月正式施行。所有non-compilance将会收到非常严重的惩罚。</p>
+<p>HIPAA会影响到两类组群<br>A. 健康覆盖实体－医疗健康提供者（如医生、护士）、医疗健康规划者（如保险公司、雇主、政府）、医疗健康数据清洗者<br>B. 医疗健康业务工作组织－所有为覆盖实体提供服务的第三方合作伙伴（如律师、会计、医疗公司、咨询师等）</p>
+<h3 id="第二部分，关于的组成"><a href="#第二部分，关于的组成" class="headerlink" title="第二部分，关于的组成"></a>第二部分，关于的组成</h3><p>下图描述了HIPAA的主要结果组成。</p>
+<img src="/2015/12/17/hippa-part1/hippa.jpg" class="" title="HIPAA的结构">
+<p>HIPAA与所有涉及健康相关的医疗、保险和个人都有直接关系。法案主要分为五个主题，合并为两大部分组成，分别是简化管理（administrative simplification）［2］和保险改革（insurance reform），这两个部分也分别对应了HIPAA的两个关键要求，前者是责任（Accountability），后者对应可携带（Portability）。通常意义上大家所说的HIPAA，都是指的管理责任这部分。如图所示主要包括三个组成子模块儿：<br>1）事务、代码集和身份识别</p>
 <ul>
-<li><p>关于ISO27001:</p>
-<p>ISO27001认证，由英国标准协会（BSI）于1995年2月提出，中文全称《信息安全管理实施细则》（BS7799-1:1995）。它提供了一套综合性的、由信息安全最佳惯例构成的实施细则，目的是为确定各类信息系统通用控制提供唯一的参考基准。1998，提出了第二个部分，中文全称《信息安全管理体系规范》，它规定了信息安全管理体系的要求和对信息安全控制的要求。2005年被ISO国际标准化组织采纳，形成了ISO/IEC 27001:2005。完整的ISO27001包括了11个方面、39个控制目标和133项控制措施。是一个不折不扣让一个互联网人晕到吐血的管理制度。主要11个方向包括：</p>
-<ol>
-<li>安全方针</li>
-<li>信息安全组织</li>
-<li>资产管理</li>
-<li>人力资源安全</li>
-<li>物理和环境安全</li>
-<li>通信和操作管理</li>
-<li>访问控制</li>
-<li>信息系统获取、开发和维护</li>
-<li>信息安全事故管理</li>
-<li>业务连续性管理</li>
-<li>符合性</li>
-</ol>
-<p>通过对整个ISO27001这11个方面的落地，实现一个ISMS(信息安全管理系统)。这里特别说明，这个系统不是互联网概念上的系统，指的是一个体系化的东西，包括了上面所属管理、行政、人事、信息技术等各个方面。详细的就不在这里说了，实在是好多。目前这个工作已经在做了，这里给大家看一下我们的列表，这里面大概60%是技术团队要做的。</p>
-<img src="/2016/07/03/iso27001/list.png" class="" title="杏树林ISO27001工作清单">
+<li><p>关于事务，2002年启用的HIPAA关于事务（Transaction）的规定要求，完整的事物要求包含以下内容：<br>提交和收费处信息<br>是否任何参与“Health Plan”计划<br>准入性、覆盖范围、救济金等<br>需要给健康计划提供者的付费内容<br>健康保险计划之外的附加费用<br>状态请求和相应<br>相关证书以及认证</p>
 </li>
-<li><p>ISO27001与HIPAA</p>
-<p>之前有不少人问HIPAA的事情，现在估计也会有不少人问ISO27991和HIPAA的区别。所以这里简单说明一下。从概念上说，ISO是一个标准，可以由相关评级机构进行评级，办法符合标准的认证证书。这个证书可以用来和企业进行合作，以表明我司在信息安全方面的准备和能力是充分的。而HIPAA是一个法案（也可以说是一个法律），就是每个医疗相关企业遵守是必须的，不遵守如果被举报就要吃官司。哦，对了，这里还要特别说明，ISO和医疗无关，HIPAA是专门为医疗信息保护准备。所以ISO主要讲的是信息保护这个系统工程要做哪些和怎么做；而HIPAA虽然原则上提供了一些强制性的标准和工作方法，但是其核心内容更加强掉哪些信息是禁止泄露的。</p>
-<p>所以说，本次公司的ISO27001认证，我们也是请了相关具有评估资质的公司来进行评审。</p>
+<li><p>关于代码集（Code Sets）部分，正如HIPAA的初衷，规定代码集大大方便了系统的交互。标准的代码，帮助系统设计之间进行有效的沟通。该部分包含5大集合，主要是为了描述疾病（desease），创伤（injury），症状（Symptoms）和操作行为（Actions）分别是：<br>ICD-9-CM 国际疾病分类（International Classification of Disease）<br>CPT （Physician Current Procedural Terminology）<br>HCPCS HCFA操作代码系统（HCFA Procedural Coding System）包括设备、诊断、治疗、管理疾病等<br>CDT 现代牙医术语（Current Dental Terminology）<br>NDC 国家药品代码（National Drug Codes）</p>
 </li>
-<li><p>ISO27001我们所做的和下一步需要做的事情</p>
-<p>下一步主要要做的事情就是完善文档和制度了。这里我想特别说明，之所以我会很重视这件事情，不是为了完善文档和制度，反而是从一个专业技术的角度，想想怎么从里面尽可能找些方法，避免繁琐的文档和制度。在我心里，过于完善的制度和方法，对研发和快速迭代，快速试错本事是有害的。所以，尽最大程度的减少ISO27001对互联网团队的伤害，是我最近想研究的一个话题。有了结果的话，可以再写一篇博文了，呵呵。看一下一片标准的ISO27001文档的样子，像下面这种文档理论上是每次都要写的。做过企业软件的人，应该知道。</p>
-<img src="/2016/07/03/iso27001/doc_list.png" class="" title="ISO27001工作文档清单">
-<img src="/2016/07/03/iso27001/doc.png" class="" title="ISO27001文档内容">
+<li><p>关于独立标示（Unique Identifiers）用来表明患者、供应商、赔款人和雇主<br>ProviderID：给所有健康服务供应商的10位数字ID号码<br>EmployerID：所有为健康医疗提供资金的雇主，由9位数字表示（EIN）<br>PayerID：所有为健康医疗服务付钱的组织，由9位数字表示（EIN）<br>PatientID：所有接受服务的患者，目前尚在国会（congress）讨论中，主要是Social Security Number已经存在，是不是还需要一个独立的ID存在争议。</p>
 </li>
 </ul>
-<p>总之，ISO27001确实是一个挺麻烦的东西。但是，从企业合作的角度，又不得不去做，并且也可以成为公司系统安全方面比较好的一个PR背书，从这一点上看，质量体系的工作比HIPAA的工作实际上在中国更有公信力。所以吧，对于我来讲对于这东西属于虽然很反感，不屑，但是又知道很有用，不得不去做的东西。希望看到文章的技术兄弟，也是对此表示一种尊敬吧。我自己承认，了解还是有必要的，只是要做多少，大家根据实际情况做到心中有数就好。</p>
+<p>2）隐私－任何形式下的健康信息保护（PHI）<br>美国卫生及公共服务部（Department of Health and Human Services）［4］在2000年颁布，2002年修改了个人医疗信息隐私政策，明确了医疗实体禁止使用和披露个人受保护健康信息（Protected Health Information）。要求受保护的内容包括电子病历，纸质病历和口头沟通。同时HIPAA作为联邦政府法案，是各州遵循但不限于的基础。各州有权利要求医疗供应商等遵循更加严格的州法案。</p>
+<p>PHI包含所有个人可辨识健康信息，包含任何形式过去、现在和可能未来的健康情况。（纸质电子病历、医疗交费记录，包括抄写副本）, 其中有一个非常重要的部分叫做个人可辨识信息（Individually Identifiable Information）<br>－姓名（Name）<br>－住址（Address）<br>－电子邮件（E-mail）<br>－日期（Dates）<br>－账户号（Account Number）<br>－证书号（Certification Number）<br>－驾照（License Number）<br>－车证（Vehicle Number）<br>－社会保险号（Social Security Number）<br>－病历号（Medical Record Number）<br>－健康医疗保险号（Health Plan Beneficiary Number）<br>－面部信息（Facial Photograph）<br>－电话号码（Telephone Number）<br>－网络地址（URLs）<br>－网络IP地址（IP Address）<br>－生物身份识别（Biometric Identification）<br>－其他独立识别码</p>
+<p>了解了这个部分，我们就可以明白为什么HIPAA的一个非常有意思的规定，PHI的使用和暴露可以在两种情况下被使用。</p>
+<ul>
+<li>被授权情况 </li>
+<li>祛标示信息情况</li>
+</ul>
+<p>也就是说在祛标示信息（De-identity）后，其实所有的数据就可以被Freely的使用不收到太多限制。</p>
+<p>3）安全－电子信息形式下的健康信息保护（ePHI）<br><img src="/2015/12/17/hippa-part1/security.jpg" class="" title="安全"><br>虽然安全被分成了三个级别，但是作为一个技术同学，我还是重点看了看技术安全的五个方面：</p>
+<ul>
+<li>访问控制 （ACCESS Control）</li>
+<li>审计控制（Audit Controls（R））</li>
+<li>数据完整性（Integrity）</li>
+<li>认证（Person and Entity Authentication）</li>
+<li>传输安全（Transmission Security）</li>
+</ul>
+<p>隐私和安全的区别：<br>隐私关注个人受保护健康信息（PHI）的控制和使用权力。任何形式的该信息不得在未经授权的情况下进行暴露。<br>安全特指电子受保护健康信息（ePHI）的防护标准。防止该信息在未经授权情况下被暴露、破坏或丢失<br>隐私信息部分依赖于安全来确保被保护。</p>
+<p>参考文献：<br>［1］Portability (social security) <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Portability_(social_security">https://en.wikipedia.org/wiki/Portability_(social_security</a>)<br>［2］HIPPA <a target="_blank" rel="noopener" href="http://baike.baidu.com/link?url=FeWuYF_ezrLt1Cg1v94jfq6zb2GfplUzM4FtURhfhMRYmKn3Hmu8erdzR9m7SG0iD9jDZcTM0ARPDOQxY-1QPK">http://baike.baidu.com/link?url=FeWuYF_ezrLt1Cg1v94jfq6zb2GfplUzM4FtURhfhMRYmKn3Hmu8erdzR9m7SG0iD9jDZcTM0ARPDOQxY-1QPK</a><br>［3］Pre Existing Conditions - Understanding Exclusions and Creditable Coverage  <a target="_blank" rel="noopener" href="http://healthinsurance.about.com/od/healthinsurancebasics/a/preexisting_conditions_overview.html">http://healthinsurance.about.com/od/healthinsurancebasics/a/preexisting_conditions_overview.html</a><br>［4］美国卫生及公共服务部 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E5%8D%AB%E7%94%9F%E5%8F%8A%E5%85%AC%E5%85%B1%E6%9C%8D%E5%8A%A1%E9%83%A8">https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E5%8D%AB%E7%94%9F%E5%8F%8A%E5%85%AC%E5%85%B1%E6%9C%8D%E5%8A%A1%E9%83%A8</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wangzhe.github.io/2016/07/03/iso27001/" data-id="ckjjlgj5p00201oz4ftryctgq" class="article-share-link">Share</a>
+      <a data-url="http://wangzhe.github.io/2015/12/17/hippa-part1/" data-id="ckjjlgj5k001o1oz4bjfz5zt1" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Security/" rel="tag">Security</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/security/" rel="tag">security</a></li></ul>
 
     </footer>
   </div>
@@ -250,86 +258,21 @@
 <script src="/js/script.js"></script>
 
 
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</body>
-</html> href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li></ul>
-    </div>
   </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/01/06/summary2020/">留给2020</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/06/summary2019/">留给2019</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/02/gcp-study/">GCP搭建serverless</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/02/aliyun-server-less/">阿里云函数计算</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/deep-learning-sequence-models-w3/">深度学习顺序模型第三周</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-  </script>
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2021 Jack Wang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-	  <span id="busuanzi_container_site_uv">
-	    with <span id="busuanzi_value_site_uv"></span> visitors
-	  </span>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
